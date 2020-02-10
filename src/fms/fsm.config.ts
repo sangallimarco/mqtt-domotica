@@ -13,7 +13,8 @@ export enum MachineState {
 
 export enum MachineAction {
     TOGGLE = 'TOGGLE',
-    STOP = 'STOP'
+    STOP = 'STOP',
+    REMOVE = 'REMOVE'
 }
 
 export interface ToggleEvent {
@@ -24,8 +25,12 @@ export interface StopEvent {
     type: MachineAction.STOP
 }
 
-export type MachineEvents = ToggleEvent | StopEvent;
+export interface RemoveEvent {
+    type: MachineAction.REMOVE,
+    id: number;
+}
 
+export type MachineEvents = ToggleEvent | StopEvent | RemoveEvent;
 
 
 export interface MachineContext {

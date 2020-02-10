@@ -1,5 +1,6 @@
 import {assign, Machine} from "xstate";
-import {InitialContext, MachineAction, MachineContext, MachineEvents, MachineService, MachineState} from "./FSM.types";
+import {InitialContext, MachineAction, MachineContext, MachineEvents, MachineService, MachineState} from "./fsm.config";
+import {removeTodo} from "./fsm.service";
 
 export const testFSMComponentMachine = Machine<MachineContext, MachineEvents>({
     initial: MachineState.INACTIVE,
@@ -15,6 +16,9 @@ export const testFSMComponentMachine = Machine<MachineContext, MachineEvents>({
                 [MachineAction.TOGGLE]: {
                     target: MachineState.INACTIVE,
                     actions: (ctx) => console.log(ctx)
+                },
+                [MachineAction.REMOVE]: {
+                    actions: assign((ctx, e) => removeTodo(ctx, e.id))
                 }
             }
         },
