@@ -18,7 +18,7 @@ const App: React.FC = () => {
         <Grommet theme={theme}>
             <div className="App">
                 <TestComponent label="yeahhh!"/>
-                <FsmContainerComponent label={'ok'}/>
+                <FsmContainerComponent label={'Container Label'}/>
             </div>
         </Grommet>
     );

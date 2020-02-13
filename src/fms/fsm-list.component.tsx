@@ -10,11 +10,6 @@ interface TestFSMItemProps {
 export const FsmListComponent: React.FC<TestFSMItemProps> = (props) => {
     const {todos, clickItem} = props;
 
-    // usage  onClick={handleClick(id)}
-    // const handleClick = (id: number) => (event: React.MouseEvent<HTMLDivElement>) =>{
-    //     clickItem(id);
-    // }
-
     return (
         <Grid size={todos.length}>
             {

@@ -34,10 +34,12 @@ export type MachineEvents = ToggleEvent | StopEvent | RemoveEvent;
 
 
 export interface MachineContext {
+    label: string;
     todos: Todo[];
 }
 
-export const InitialContext = {
+export const InitialContext: MachineContext = {
+    label: '',
     todos: []
 };
 
