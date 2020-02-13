@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app';
+import React from "react";
+import App from "./app";
+import { shallow } from "enzyme";
+import { TestComponent } from "./test.component";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+it("renders without crashing", () => {
+  const wrapper = shallow(<App />);
+  expect(wrapper.exists(TestComponent)).toBeTruthy();
 });

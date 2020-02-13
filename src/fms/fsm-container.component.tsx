@@ -24,8 +24,8 @@ export const FsmContainerComponent: React.FC<TestFSMComponentProps> = (props) =>
 
     return (
         <div>
-            <CustomButton onClick={() => send(MachineAction.TOGGLE)}>OK</CustomButton>
-            <Button onClick={() => send(MachineAction.TOGGLE)}
+            <CustomButton onClick={() => send({type: MachineAction.TOGGLE})}>OK</CustomButton>
+            <Button onClick={() => send({type: MachineAction.TOGGLE})}
                     primary
                     label={state.value === MachineState.INACTIVE
                         ? 'Click to activate'

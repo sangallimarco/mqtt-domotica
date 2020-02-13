@@ -1,8 +1,17 @@
-import {assign, Machine} from "xstate";
+import {assign, Machine, StateSchema} from "xstate";
 import {InitialContext, MachineAction, MachineContext, MachineEvents, MachineService, MachineState} from "./fsm.config";
 import {removeTodo} from "./fsm.service";
 
-export const testFSMComponentMachine = Machine<MachineContext, MachineEvents>({
+
+interface MachineSchema extends StateSchema<MachineContext> {
+    states: {
+        [MachineState.INACTIVE]: {},
+        [MachineState.ACTIVE]: {},
+        [MachineState.PROCESSING]: {}
+    }
+}
+
+export const testFSMComponentMachine = Machine<MachineContext, MachineSchema, MachineEvents>({
     initial: MachineState.INACTIVE,
     context: InitialContext,
     states: {
