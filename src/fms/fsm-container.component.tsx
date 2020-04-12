@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useMachine } from "@xstate/react/lib";
 import { FsmListComponent } from "./fsm-list.component";
 import {
@@ -11,6 +11,7 @@ import { testFSMComponentMachine } from "./fsm.statechart";
 import { fetchTodos } from "./fsm.service";
 import { Button } from "grommet";
 import { Button as CustomButton } from "../components/button.component";
+import {WsBus, WsPayload} from '../ws/ws-service';
 
 export interface TestFSMComponentProps {
   label: string;
@@ -18,6 +19,12 @@ export interface TestFSMComponentProps {
 
 export const FsmContainerComponent: React.FC<TestFSMComponentProps> = props => {
   const { label } = props;
+
+  useEffect(()=> {
+    WsBus.subscribe((message: WsPayload) => {
+      console.log(message);
+    })
+  },[]);
 
   const [state, send] = useMachine(testFSMComponentMachine, {
     context: { ...InitialContext, label },
