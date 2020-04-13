@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useMachine } from "@xstate/react/lib";
 import { FsmListComponent } from "./fsm-list.component";
 import {
@@ -9,9 +9,7 @@ import {
 } from "./fsm.config";
 import { testFSMComponentMachine } from "./fsm.statechart";
 import { fetchTodos } from "./fsm.service";
-import { Button } from "grommet";
-import { Button as CustomButton } from "../components/button.component";
-import {WsBus, WsPayload} from '../ws/ws-service';
+import { Button, Box } from "grommet";
 
 export interface TestFSMComponentProps {
   label: string;
@@ -19,12 +17,6 @@ export interface TestFSMComponentProps {
 
 export const FsmContainerComponent: React.FC<TestFSMComponentProps> = props => {
   const { label } = props;
-
-  useEffect(()=> {
-    WsBus.subscribe((message: WsPayload) => {
-      console.log(message);
-    })
-  },[]);
 
   const [state, send] = useMachine(testFSMComponentMachine, {
     context: { ...InitialContext, label },
@@ -41,23 +33,21 @@ export const FsmContainerComponent: React.FC<TestFSMComponentProps> = props => {
     context: { label: contextLabel, todos }
   } = state;
   return (
-    <div>
-      <CustomButton onClick={() => send({ type: MachineAction.TOGGLE })}>
-        OK
-      </CustomButton>
+    <Box gridArea="main">
+      <Button onClick={() => send({ type: MachineAction.TOGGLE })} label="Reset"/>
       <Button
         onClick={() => send({ type: MachineAction.TOGGLE })}
         primary
         label={
           state.matches(MachineState.INACTIVE)
-            ? "Click to activate"
-            : "Active! Click to deactivate"
+            ? "Start"
+            : "Reload"
         }
       />
       <div>
         {contextLabel} {todos.length}
       </div>
       <FsmListComponent todos={todos} clickItem={clickItem} />
-    </div>
+    </Box>
   );
 };

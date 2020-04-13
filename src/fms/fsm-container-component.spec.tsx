@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { FsmContainerComponent } from "./fsm-container.component";
 import React from 'react';
 import { render } from '@testing-library/react';
-import { screen, fireEvent } from '@testing-library/dom';
+import {  fireEvent } from '@testing-library/dom';
 
 describe('FSMContainer',() => {
     it('should render', () => {

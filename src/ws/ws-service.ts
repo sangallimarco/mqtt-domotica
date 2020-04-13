@@ -1,30 +1,17 @@
-import { WsTemp } from './ws-service';
-import { GenericMessage } from "./bus";
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import mqtt from 'mqtt';
+import { TopicMessage, Topic } from './ws.types';
 
-export enum WsType {
-    TEMP = 'TEMP',
-    POWER = 'POWER'
-}
-
-// define domain type
-type WsGeneric<P> = GenericMessage<WsType, P>;
-
-export type WsTemp = WsGeneric<string>; // type factory!!!
-export type WsPayload = WsTemp;
-
-export const WsBus = new Subject<WsPayload>();
+export const WsBus = new Subject<TopicMessage>();
 
 export const mqttClient = mqtt.connect(
-    'ws://192.168.0.31:9001', 
+    'ws://192.168.0.31:9001',
     // {
     //     username: 'ral', 
     //     password: 'passwd'
     // }
-    );
-
-// function subscriber(type: payload: )
+);
 
 mqttClient.on('connect', function () {
     mqttClient.subscribe('presence', function (err) {
@@ -32,14 +19,21 @@ mqttClient.on('connect', function () {
             mqttClient.publish('presence', 'Hello mqtt')
         }
     })
-    mqttClient.subscribe(WsType.TEMP);
+    // subscribe to all topics
+    mqttClient.subscribe([Topic.TEMP, Topic.POWER]);
 })
 
-mqttClient.on('message', (topic: WsType, message: any) => { // fix any here
+mqttClient.on('message', (topic: Topic, message: Buffer) => {
     // message is Buffer
-    const payload =  message.toString();
+    const payload = message.toString();
     console.log(topic, message.toString());
     // mqttClient.end()
-
-    WsBus.next({type: topic, payload});
+    WsBus.next({ topic, payload });
 });
+
+
+export function filterByTopic(topic: Topic): Observable<TopicMessage> {
+    return WsBus.pipe(
+        filter((message)=> message.topic === topic)
+    );
+}
