@@ -6,15 +6,14 @@ import { TempComponent } from "./temp/temp.component";
 import { Topic } from "./ws/ws.types";
 
 const customTheme = deepMerge(grommet, {
-    global: {
-      focus: {
-        border: {
-          color: "white"
-        }
-      }
-    }
-  });
-  
+  global: {
+    font: {
+      family: "Roboto",
+      size: "14px",
+      height: "20px",
+    },
+  },
+});
 
 const App: React.FC = () => {
   return (
@@ -29,10 +28,10 @@ const App: React.FC = () => {
           { name: "main", start: [1, 1], end: [1, 1] },
         ]}
       >
-          <Box gridArea="header">
-              <TempComponent topic={Topic.TEMP}/>
-          </Box>
-          <Box gridArea="nav">Nav</Box>
+        <Box gridArea="header">
+          <TempComponent topic={Topic.TEMP} />
+        </Box>
+        <Box gridArea="nav">Nav</Box>
         <FsmContainerComponent label={"Container Label"} />
       </Grid>
     </Grommet>
