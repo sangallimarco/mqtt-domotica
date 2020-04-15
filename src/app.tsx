@@ -29,6 +29,7 @@ const App: React.FC = () => {
           { name: 'POWER', start: [2, 1], end: [3, 1] },
 
           { name: 'PUMPS_SWITCH', start: [0, 2], end: [1, 2] },
+          { name: 'SPACER2', start: [1, 2], end: [2, 2] }, // there is no way leave gaps
           { name: 'PROCESS_SWITCH', start: [2, 2], end: [3, 2] },
         ]}
       >
