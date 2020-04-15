@@ -11,7 +11,7 @@ export interface valueProps {
   label: string;
 }
 
-export const GaugeComponent: React.FC<valueProps> = (props) => {
+export const MQTTGauge: React.FC<valueProps> = (props) => {
   const { topic, symbol, label } = props;
   const [value, setValue] = useState(0);
 
