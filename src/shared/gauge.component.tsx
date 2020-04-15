@@ -4,7 +4,7 @@ import { useState } from "react";
 import { filterByTopic } from "./bus.service";
 import { Topic } from "./bus.types";
 import { Meter, Stack, Box, Text } from "grommet";
-import { stringToFixed } from "./formatters";
+import { stringToNumber, numberToFixed } from "./formatters";
 
 export interface valueProps {
   topic: Topic;
@@ -18,8 +18,7 @@ export const MQTTGauge: React.FC<valueProps> = (props) => {
 
   useEffect(() => {
     const sub = filterByTopic(topic).subscribe(({payload}) => {
-      const newValue = stringToFixed(payload);
-      setValue(newValue);
+      setValue(stringToNumber(payload));
     });
 
     return () => {
@@ -48,7 +47,7 @@ export const MQTTGauge: React.FC<valueProps> = (props) => {
         >
           <Text size="small">{label} </Text>
           <Text size="xlarge" weight="bold">
-            {value}
+            {numberToFixed(value)}
           </Text>
           <Text size="small"> {symbol}</Text>
         </Box>

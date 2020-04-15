@@ -1,10 +1,16 @@
 import {Decimal} from 'decimal.js';
 
-export function stringToFixed(value: string, decimal: number = 2): number {
+export function numberToFixed(value: number, decimal: number = 2): string {
     try {
-        const formatted =  new Decimal(value).toFixed(decimal);
-        return Number(formatted);
+       return  new Decimal(value).toFixed(decimal);
     } catch(e) {
-        return 0;
+        return '0';
     }
+}
+
+export function stringToNumber(value: string): number {
+    if (value && value.length > 0) {
+        return Number(value);
+    }
+    return 0;
 }
