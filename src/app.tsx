@@ -18,7 +18,7 @@ const customTheme = deepMerge(grommet, {
 
 const App: React.FC = () => {
   return (
-    <Grommet full theme={customTheme}>
+    <Grommet full theme={customTheme} themeMode="dark">
       <Grid
         rows={['min-content', 'max-content', 'max-content']}
         columns={['1fr', '1fr', '1fr']}
