@@ -11,6 +11,7 @@
     "@types/react-dom": "16.9.3",
     "@types/styled-components": "^4.4.2",
     "@xstate/react": "^0.8.1",
+    "decimal.js": "^10.2.0",
     "grommet": "^2.12.0",
     "grommet-icons": "^4.4.0",
     "lodash": "^4.17.15",
