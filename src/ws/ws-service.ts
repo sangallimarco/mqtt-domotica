@@ -1,9 +1,13 @@
 import { Subject, Observable } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import mqtt from 'mqtt';
-import { TopicMessage, Topic } from './ws.types';
+import { Topic } from './ws.types';
+import {isNil} from 'lodash';
 
-export const WsBus = new Subject<TopicMessage>();
+export type TopicMap = Map<Topic, string>;
+export const WsBus = new Subject<TopicMap>();
+
+export const topicMap: TopicMap = new Map();
 
 export const mqttClient = mqtt.connect(
     'ws://192.168.0.31:9001',
@@ -20,20 +24,21 @@ mqttClient.on('connect', function () {
         }
     })
     // subscribe to all topics
-    mqttClient.subscribe([Topic.TEMP, Topic.POWER]);
+    mqttClient.subscribe([Topic.TEMP1, Topic.POWER, Topic.TEMP2]);
 })
 
 mqttClient.on('message', (topic: Topic, message: Buffer) => {
     // message is Buffer
     const payload = message.toString();
-    console.log(topic, message.toString());
+    topicMap.set(topic, payload);
     // mqttClient.end()
-    WsBus.next({ topic, payload });
+    WsBus.next(topicMap);
 });
 
 
-export function filterByTopic(topic: Topic): Observable<TopicMessage> {
+export function filterByTopic<T extends Topic>(topic: T): Observable<string | undefined> {
     return WsBus.pipe(
-        filter((message)=> message.topic === topic)
+        map((dataMap) => dataMap.get(topic)),
+        filter(value => !isNil(value))
     );
 }

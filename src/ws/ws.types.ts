@@ -1,17 +1,20 @@
 export enum Topic {
-    TEMP = 'sensors/temp1',
+    TEMP1 = 'sensors/temp1',
+    TEMP2 = 'sensors/temp2',
     POWER = 'sensors/power'
 }
 
 
-export interface TopicMessage {
-    topic: Topic,
-    payload: string
+// not used yet
+export interface TopicGenericMessage<T extends Topic, P> {
+    topic: T,
+    payload: P
 }
 
-// export type MessageReturnType<T, P> = Extract<GenericMessage<T>, { eventType: P }>;
+export type TopicReturnMessage<T extends Topic> = Extract<Extract<TopicMessage, { topic: T }>, 'payload'>;
 
 // define domain type
-// type WsGeneric<P> = GenericMessage<WsType, P>;
-// export type WsTemp = WsGeneric<string>; // type factory!!!
-// export type WsPayload = WsTemp; // union type here
+export type TopicTempMessage = TopicGenericMessage<Topic.TEMP1, number>;
+export type TopicPowerMessage = TopicGenericMessage<Topic.POWER,string>;
+
+export type TopicMessage = TopicTempMessage | TopicPowerMessage;
