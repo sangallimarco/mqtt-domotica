@@ -5,7 +5,6 @@
   "dependencies": {
     "@types/jest": "24.0.21",
     "@types/lodash": "^4.14.149",
-    "@types/mqtt": "^2.5.0",
     "@types/node": "12.12.5",
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.3",
