@@ -23,7 +23,6 @@ export const MQTTButton: React.FC<MQTTButtonProps> = (props) => {
     <Box align="center" pad="large">
       <Button
         size="large"
-        primary
         label={label}
         onMouseDown={handleDown}
         onMouseUp={handleUp}

@@ -4,6 +4,7 @@ import { deepMerge } from "grommet/utils";
 import { MQTTGauge } from "./shared/gauge.component";
 import { Topic } from "./shared/bus.types";
 import { MQTTButton } from "./shared/button.component";
+import { MQTTSwitch } from "./shared/switch.component copy";
 
 const customTheme = deepMerge(grommet, {
   global: {
@@ -47,6 +48,10 @@ const App: React.FC = () => {
         </Box>
         <Box gridArea="PUMPS_SWITCH">
           <MQTTButton topic={Topic.PUMPS_SWITCH} label="Test Pumps"/>
+        </Box>
+
+        <Box gridArea="PROCESS_SWITCH">
+          <MQTTSwitch topic={Topic.PROCESS_SWITCH} label="Start Process"/>
         </Box>
        
       </Grid>

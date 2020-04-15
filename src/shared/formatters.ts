@@ -14,3 +14,14 @@ export function stringToNumber(value: string): number {
     }
     return 0;
 }
+
+export function stringToBoolean(value: string): boolean {
+    if (value && value.length > 0) {
+        return value === '1';
+    }
+    return false;
+}
+
+export function booleanToString(value: boolean): string {
+    return value ? '1' : '0';
+}
