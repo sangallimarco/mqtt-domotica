@@ -3,7 +3,7 @@ export enum Topic {
     TEMP2 = 'sensors/temp2',
     POWER = 'sensors/power',
     PUMPS_SWITCH = 'buttons/pumps',
-    PROCESS_SWITCH = 'buttons/process'
+    PROCESS_SWITCH = 'buttons/light'
 }
 
 export const SensorTopics = [Topic.TEMP1, Topic.TEMP2, Topic.POWER, Topic.PROCESS_SWITCH];
