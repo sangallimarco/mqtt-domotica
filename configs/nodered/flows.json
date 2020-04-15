@@ -35,6 +35,13 @@
         "info": ""
     },
     {
+        "id": "ef768b5b.b73498",
+        "type": "tab",
+        "label": "Shellis",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "bb7a73a3.e2475",
         "type": "ui_tab",
         "z": "",
@@ -1846,6 +1853,117 @@
         "retain": "true",
         "broker": "d488fe3d.4aee5",
         "x": 890,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "5679ee43.60b14",
+        "type": "shelly-switch",
+        "z": "ef768b5b.b73498",
+        "hostname": "192.168.0.40",
+        "description": "Shelly1",
+        "x": 720,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "69081635.a11138",
+        "type": "inject",
+        "z": "ef768b5b.b73498",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 220,
+        "y": 140,
+        "wires": [
+            [
+                "b64de2a6.e7d0c"
+            ]
+        ]
+    },
+    {
+        "id": "8c0a8967.6ad2d8",
+        "type": "function",
+        "z": "ef768b5b.b73498",
+        "name": "",
+        "func": "const on = msg.payload > 0;\nmsg.payload = {on};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 530,
+        "y": 140,
+        "wires": [
+            [
+                "5679ee43.60b14",
+                "4d6318ee.fb7928"
+            ]
+        ]
+    },
+    {
+        "id": "b64de2a6.e7d0c",
+        "type": "random",
+        "z": "ef768b5b.b73498",
+        "name": "",
+        "low": "0",
+        "high": "1",
+        "inte": "true",
+        "property": "payload",
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "8c0a8967.6ad2d8"
+            ]
+        ]
+    },
+    {
+        "id": "4d6318ee.fb7928",
+        "type": "debug",
+        "z": "ef768b5b.b73498",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 740,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b19ff695.b142b8",
+        "type": "mqtt in",
+        "z": "ef768b5b.b73498",
+        "name": "",
+        "topic": "shellies/shelly1pm-8CAAB5056D9C/relay/0/power",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "d488fe3d.4aee5",
+        "x": 410,
+        "y": 360,
+        "wires": [
+            [
+                "1d413bc4.5e1694"
+            ]
+        ]
+    },
+    {
+        "id": "1d413bc4.5e1694",
+        "type": "debug",
+        "z": "ef768b5b.b73498",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 730,
         "y": 360,
         "wires": []
     }
