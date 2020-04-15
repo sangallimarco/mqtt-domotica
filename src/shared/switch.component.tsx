@@ -7,23 +7,24 @@ import { CirclePlay, PauseFill } from "grommet-icons";
 
 export interface MQTTButtonProps {
   topic: Topic;
+  feedBackTopic: Topic;
   label: string;
 }
 
 export const MQTTSwitch: React.FC<MQTTButtonProps> = (props) => {
-  const { topic, label } = props;
+  const { topic, label, feedBackTopic } = props;
 
   const [on, setOn] = useState(false);
 
   useEffect(() => {
-    const sub = filterByTopic(topic).subscribe(({payload}) => {
+    const sub = filterByTopic(feedBackTopic).subscribe(({payload}) => {
       setOn(stringToBoolean(payload));
     });
 
     return () => {
       sub.unsubscribe();
     };
-  }, [topic]);
+  }, [feedBackTopic]);
 
   const handleToggle = () => {
     const toggleStatus = !on;

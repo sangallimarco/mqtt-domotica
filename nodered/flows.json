@@ -449,7 +449,7 @@
             "41b31a4d.6477a4"
         ],
         "x": 135,
-        "y": 520,
+        "y": 560,
         "wires": [
             [
                 "50b4f1c0.66664",
@@ -491,7 +491,7 @@
             "55263472.e0ca9c"
         ],
         "x": 135,
-        "y": 580,
+        "y": 620,
         "wires": [
             [
                 "2fe471b4.decd2e",
@@ -522,7 +522,7 @@
             "66dcbf73.20be98"
         ],
         "x": 135,
-        "y": 380,
+        "y": 420,
         "wires": [
             [
                 "c8451bd.63b98e8"
@@ -552,7 +552,7 @@
         "seg1": "",
         "seg2": "",
         "x": 250,
-        "y": 640,
+        "y": 680,
         "wires": []
     },
     {
@@ -771,7 +771,7 @@
         "pinmode": 0,
         "client": "56d9e465.8a289c",
         "x": 900,
-        "y": 380,
+        "y": 420,
         "wires": []
     },
     {
@@ -783,7 +783,7 @@
         "pinmode": 0,
         "client": "56d9e465.8a289c",
         "x": 900,
-        "y": 580,
+        "y": 620,
         "wires": []
     },
     {
@@ -795,7 +795,7 @@
         "pinmode": 0,
         "client": "56d9e465.8a289c",
         "x": 900,
-        "y": 520,
+        "y": 560,
         "wires": []
     },
     {
@@ -807,10 +807,11 @@
         "outputs": 1,
         "noerr": 0,
         "x": 400,
-        "y": 380,
+        "y": 420,
         "wires": [
             [
-                "eb06dc37.c81ca"
+                "eb06dc37.c81ca",
+                "43a916ad.7d95a8"
             ]
         ]
     },
@@ -1022,7 +1023,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 610,
-        "y": 840,
+        "y": 880,
         "wires": []
     },
     {
@@ -1038,7 +1039,7 @@
         "once": true,
         "onceDelay": "1",
         "x": 190,
-        "y": 780,
+        "y": 820,
         "wires": [
             [
                 "d58d8853.7429c8"
@@ -1053,7 +1054,7 @@
         "array": false,
         "name": "",
         "x": 370,
-        "y": 780,
+        "y": 820,
         "wires": [
             [
                 "48a486c9.e15ed",
@@ -1072,7 +1073,7 @@
         "pinmode": 0,
         "client": "56d9e465.8a289c",
         "x": 900,
-        "y": 780,
+        "y": 820,
         "wires": []
     },
     {
@@ -1349,7 +1350,7 @@
         "seg1": "",
         "seg2": "",
         "x": 230,
-        "y": 460,
+        "y": 500,
         "wires": []
     },
     {
@@ -1743,7 +1744,7 @@
         "seg1": "",
         "seg2": "",
         "x": 600,
-        "y": 720,
+        "y": 760,
         "wires": []
     },
     {
@@ -1756,38 +1757,7 @@
         "retain": "true",
         "broker": "d488fe3d.4aee5",
         "x": 870,
-        "y": 720,
-        "wires": []
-    },
-    {
-        "id": "37812c3f.d3dc14",
-        "type": "mqtt in",
-        "z": "4779e57d.bf9eac",
-        "name": "",
-        "topic": "presence",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "d488fe3d.4aee5",
-        "x": 1200,
-        "y": 560,
-        "wires": [
-            [
-                "531c8d63.625074"
-            ]
-        ]
-    },
-    {
-        "id": "531c8d63.625074",
-        "type": "debug",
-        "z": "4779e57d.bf9eac",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 1470,
-        "y": 560,
+        "y": 760,
         "wires": []
     },
     {
@@ -1800,7 +1770,7 @@
         "retain": "true",
         "broker": "d488fe3d.4aee5",
         "x": 870,
-        "y": 480,
+        "y": 500,
         "wires": []
     },
     {
@@ -1813,7 +1783,7 @@
         "retain": "true",
         "broker": "d488fe3d.4aee5",
         "x": 870,
-        "y": 640,
+        "y": 680,
         "wires": []
     },
     {
@@ -1838,7 +1808,7 @@
         "type": "mqtt in",
         "z": "4779e57d.bf9eac",
         "name": "Light",
-        "topic": "buttons/light",
+        "topic": "sensors/light",
         "qos": "0",
         "datatype": "auto",
         "broker": "d488fe3d.4aee5",
@@ -1865,5 +1835,18 @@
                 "1dfd0c3.ce276f4"
             ]
         ]
+    },
+    {
+        "id": "43a916ad.7d95a8",
+        "type": "mqtt out",
+        "z": "4779e57d.bf9eac",
+        "name": "LightStatus",
+        "topic": "/sensors/light",
+        "qos": "",
+        "retain": "true",
+        "broker": "d488fe3d.4aee5",
+        "x": 890,
+        "y": 360,
+        "wires": []
     }
 ]
