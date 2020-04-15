@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { filterByTopic } from "../ws/ws-service";
-import { Topic } from "../ws/ws.types";
+import { filterByTopic } from "./bus.service";
+import { Topic } from "./bus.types";
 import { Meter, Stack, Box, Text } from "grommet";
 
 export interface valueProps {
@@ -16,8 +16,8 @@ export const GaugeComponent: React.FC<valueProps> = (props) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    const sub = filterByTopic(topic).subscribe((message) => {
-      setValue(Number(message));
+    const sub = filterByTopic(topic).subscribe(({payload}) => {
+      setValue(Number(payload));
     });
 
     return () => {
