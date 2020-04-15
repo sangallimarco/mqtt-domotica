@@ -17,7 +17,6 @@ export const GaugeComponent: React.FC<valueProps> = (props) => {
 
   useEffect(() => {
     const sub = filterByTopic(topic).subscribe((message) => {
-      console.log(message);
       setValue(Number(message));
     });
 
