@@ -35,7 +35,7 @@ const App: React.FC = () => {
         ]}
       >
          <Box gridArea="HEADER" align="center">
-          <Heading size="large">Dashboard</Heading>
+          <Heading size="medium">Dashboard</Heading>
         </Box>
         <Box gridArea="TEMP1">
           <MQTTGauge topic={Topic.TEMP1} symbol="C" label="Ambient"/>

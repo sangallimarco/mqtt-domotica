@@ -6,12 +6,14 @@ import { Topic, SensorTopics, TopicMessage } from './bus.types';
 export const MessageBusRead = new Subject<TopicMessage>();
 
 export const mqttClient = mqtt.connect(
-    'ws://192.168.0.31:9001',
+   process.env.REACT_APP_MQTT,
     // {
     //     username: 'ral', 
     //     password: 'passwd'
     // }
 );
+
+console.log(process.env.REACT_APP_MQTT);
 
 mqttClient.on('connect', function () {
     mqttClient.subscribe('presence', function (err) {
