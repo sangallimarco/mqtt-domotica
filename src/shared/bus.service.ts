@@ -24,8 +24,6 @@ mqttClient.on('connect', function () {
     // subscribe to all topics
     mqttClient.subscribe(SensorTopics);
     MessageBusRead.next({topic: Topic.CONNECTED, payload: '1'});
-
-    mqttClient.
 })
 
 mqttClient.on('message', (topic: Topic, message: Buffer) => {
