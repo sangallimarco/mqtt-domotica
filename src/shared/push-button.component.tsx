@@ -8,7 +8,7 @@ export interface MQTTButtonProps {
   label: string;
 }
 
-export const MQTTButton: React.FC<MQTTButtonProps> = (props) => {
+export const MQTTPushButton: React.FC<MQTTButtonProps> = (props) => {
   const { topic, label } = props;
 
   const handleDown = () => {
@@ -20,7 +20,7 @@ export const MQTTButton: React.FC<MQTTButtonProps> = (props) => {
   };
 
   return (
-    <Box align="center" pad="large">
+    <Box align="center" pad="small">
       <Button
         size="large"
         label={label}

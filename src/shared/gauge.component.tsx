@@ -27,7 +27,7 @@ export const MQTTGauge: React.FC<valueProps> = (props) => {
   }, [topic]);
 
   return (
-    <Box align="center" pad="large">
+    <Box align="center" pad="small">
       <Stack anchor="center">
         <Meter
           type="circle"

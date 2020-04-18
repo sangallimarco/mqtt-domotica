@@ -1,4 +1,6 @@
 export enum Topic {
+    CONNECTED = 'CONNECTED',
+
     TEMP1 = 'sensors/temp1',
     TEMP2 = 'sensors/temp2',
     POWER = 'sensors/power',

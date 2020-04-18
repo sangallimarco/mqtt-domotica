@@ -35,7 +35,7 @@ export const MQTTSwitch: React.FC<MQTTButtonProps> = (props) => {
   const icon = !on ? <CirclePlay/> : <PauseFill/>;
 
   return (
-    <Box align="center" pad="large">
+    <Box align="center" pad="small">
       <Button
         icon={icon}
         size="large"

@@ -23,14 +23,22 @@ mqttClient.on('connect', function () {
     })
     // subscribe to all topics
     mqttClient.subscribe(SensorTopics);
+    MessageBusRead.next({topic: Topic.CONNECTED, payload: '1'});
+
+    mqttClient.
 })
 
 mqttClient.on('message', (topic: Topic, message: Buffer) => {
     // message is Buffer
     const payload = message.toString();
     MessageBusRead.next({topic, payload});
+    console.log(topic, payload);
 });
 
+
+mqttClient.on('disconnect', () => {
+    MessageBusRead.next({topic: Topic.CONNECTED, payload: '0'});
+});
 
 
 // helpers
