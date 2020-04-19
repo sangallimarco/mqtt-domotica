@@ -48,7 +48,7 @@ export const MQTTGauge: React.FC<valueProps> = (props) => {
           gap="xsmall"
         >
           <Text size="medium">{label} </Text>
-          <Text size="xlarge" weight="bold">
+          <Text size="xxlarge" weight="bold">
             {numberToFixed(value)}
           </Text>
           <Text size="small"> {symbol}</Text>
