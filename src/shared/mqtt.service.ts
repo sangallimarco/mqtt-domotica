@@ -14,6 +14,7 @@ export const mqttClient = mqtt.connect(
    MQTTConfigOptions
 );
 
+// Events
 mqttClient.on('connect', function () {
     mqttClient.subscribe('presence', function (err) {
         if (!err) {
@@ -28,7 +29,7 @@ mqttClient.on('connect', function () {
 mqttClient.on('message', (topic: Topic, message: Buffer) => {
     // message is Buffer
     const payload = message.toString(); // TODO can be parsed as JSON if required
-    //
+
     MessageBusRead.next({topic, payload});
     console.log(topic, payload);
 });
