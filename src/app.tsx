@@ -15,6 +15,12 @@ const customTheme = deepMerge(grommet, {
       size: "14px",
       height: "20px",
     },
+    drop: {
+      background: { dark: "dark-2", light: "neutral-2" },
+      border: { radius: "2em" },
+      zIndex: "13",
+      shadowSize: '0'
+    }
   },
 });
 
@@ -35,7 +41,6 @@ const App: React.FC = () => {
           { name: "TEMP2", start: [1, 2], end: [2, 2] },
           { name: "POWER", start: [2, 2], end: [3, 2] },
         ]}
-        gap="2em"
       >
         <Box gridArea="HEADER" align="center">
           <Box gridArea="HEADER" align="center" direction="row" pad="small">
@@ -63,6 +68,8 @@ const App: React.FC = () => {
             topic={Topic.PROCESS_SWITCH}
             feedBackTopic={Topic.PROCESS_STATUS}
             label="Process"
+            confirmLabel="Start"
+            safe={true}
           />
         </Box>
       </Grid>

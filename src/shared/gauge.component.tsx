@@ -13,7 +13,7 @@ export interface valueProps extends MeterProps {
 }
 
 export const MQTTGauge: React.FC<valueProps> = (props) => {
-  const { topic, symbol, label, max, thickness = 'medium' } = props;
+  const { topic, symbol, label, max, thickness = 'large' } = props;
   const [value, setValue] = useState(0);
 
   useEffect(() => {
