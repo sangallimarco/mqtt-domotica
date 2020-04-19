@@ -589,7 +589,7 @@
         "once": true,
         "onceDelay": 0.1,
         "x": 200,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "1100c18a.49df4e"
@@ -605,49 +605,10 @@
         "outputs": 1,
         "noerr": 0,
         "x": 490,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "ececf617.3a75c8"
-            ]
-        ]
-    },
-    {
-        "id": "eb40e44e.613c88",
-        "type": "inject",
-        "z": "4e650360.d34e4c",
-        "name": "Manual",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 170,
-        "y": 280,
-        "wires": [
-            [
-                "4daa6d92.697e04"
-            ]
-        ]
-    },
-    {
-        "id": "4daa6d92.697e04",
-        "type": "function",
-        "z": "4e650360.d34e4c",
-        "name": "Toggle Pump",
-        "func": "const flag = 'pump';\nconst status = !global.get(flag);\nglobal.set(flag, status);\nmsg.payload = status ? 0 : 1;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 490,
-        "y": 280,
-        "wires": [
-            [
-                "ececf617.3a75c8",
-                "932003e8.26689",
-                "42888706.4aff08",
-                "7cca655c.83d9bc"
             ]
         ]
     },
@@ -761,8 +722,8 @@
         "pin": "12",
         "pin_all": 0,
         "client": "56d9e465.8a289c",
-        "x": 200,
-        "y": 200,
+        "x": 220,
+        "y": 280,
         "wires": [
             [
                 "a3fb701.e4adc9"
@@ -860,7 +821,7 @@
         "pin": "12",
         "pinmode": 0,
         "client": "56d9e465.8a289c",
-        "x": 1200,
+        "x": 1280,
         "y": 280,
         "wires": []
     },
@@ -869,16 +830,17 @@
         "type": "function",
         "z": "4e650360.d34e4c",
         "name": "Converter",
-        "func": "const flag = 'pump';\nconst {payload} = msg;\nconst status = payload === '1' ? true : false;\nglobal.set(flag, status);\nmsg.payload = status ? 0 : 1;\nreturn msg;",
+        "func": "const flag = 'pump';\nconst {payload} = msg;\nconst status = payload === '1' ? true : false;\nglobal.set(flag, status);\n\n// invert\nmsg.payload = status ? '0' : '1';\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 480,
-        "y": 200,
+        "x": 500,
+        "y": 280,
         "wires": [
             [
                 "42888706.4aff08",
                 "932003e8.26689",
-                "dc70acf2.e5ff4"
+                "dc70acf2.e5ff4",
+                "ececf617.3a75c8"
             ]
         ]
     },
@@ -894,7 +856,8 @@
         "y": 280,
         "wires": [
             [
-                "5a6960f9.54ffd"
+                "5a6960f9.54ffd",
+                "f577a6e7.ad0e88"
             ]
         ]
     },
@@ -920,16 +883,6 @@
         "client": "56d9e465.8a289c",
         "x": 980,
         "y": 560,
-        "wires": []
-    },
-    {
-        "id": "802e8708.eda398",
-        "type": "comment",
-        "z": "4e650360.d34e4c",
-        "name": "",
-        "info": "Set timers here for each pump",
-        "x": 1120,
-        "y": 800,
         "wires": []
     },
     {
@@ -1088,7 +1041,7 @@
         "type": "debug",
         "z": "2fe16c20.567474",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1802,8 +1755,8 @@
         "qos": "0",
         "datatype": "auto",
         "broker": "d488fe3d.4aee5",
-        "x": 250,
-        "y": 140,
+        "x": 270,
+        "y": 220,
         "wires": [
             [
                 "a3fb701.e4adc9"
@@ -1965,6 +1918,19 @@
         "complete": "false",
         "x": 730,
         "y": 360,
+        "wires": []
+    },
+    {
+        "id": "f577a6e7.ad0e88",
+        "type": "mqtt out",
+        "z": "4e650360.d34e4c",
+        "name": "PumpsStatus",
+        "topic": "sensors/pumps",
+        "qos": "",
+        "retain": "true",
+        "broker": "d488fe3d.4aee5",
+        "x": 1280,
+        "y": 200,
         "wires": []
     }
 ]

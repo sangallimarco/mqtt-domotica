@@ -4,7 +4,6 @@ import { deepMerge } from "grommet/utils";
 import { MQTTGauge } from "./shared/gauge.component";
 import { Topic } from "./shared/bus.types";
 import { MQTTSwitch } from "./shared/switch.component";
-import { MQTTPushButton } from "./shared/push-button.component";
 import { Grow } from "grommet-icons";
 import { MQTTActivity } from "./shared/activity.component";
 
@@ -19,8 +18,8 @@ const customTheme = deepMerge(grommet, {
       background: { dark: "dark-2", light: "neutral-2" },
       border: { radius: "2em" },
       zIndex: "13",
-      shadowSize: '0'
-    }
+      shadowSize: "0",
+    },
   },
 });
 
@@ -58,7 +57,13 @@ const App: React.FC = () => {
           <MQTTGauge topic={Topic.POWER} symbol="W" label="Socket" max={100} />
         </Box>
         <Box gridArea="PUMPS_SWITCH">
-          <MQTTPushButton topic={Topic.PUMPS_SWITCH} label="Pumps" />
+          <MQTTSwitch
+            topic={Topic.PUMPS_SWITCH}
+            feedBackTopic={Topic.PUMPS_STATUS}
+            label="Pumps"
+            confirmLabel="Start"
+            safe={true}
+          />
         </Box>
         <Box gridArea="NETWORK">
           <MQTTActivity topic={Topic.CONNECTED} />
