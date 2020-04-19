@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { sendMessage, filterByTopic } from "./bus.service";
 import { Topic } from "./bus.types";
-import { Box, Button } from "grommet";
+import { Box, Button, ButtonProps } from "grommet";
 import { stringToBoolean, booleanToString } from "./formatters";
 import { CirclePlay, PauseFill } from "grommet-icons";
 
-export interface MQTTButtonProps {
+export interface MQTTButtonProps extends ButtonProps{
   topic: Topic;
   feedBackTopic: Topic;
-  label: string;
 }
 
 export const MQTTSwitch: React.FC<MQTTButtonProps> = (props) => {

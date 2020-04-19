@@ -35,6 +35,7 @@ const App: React.FC = () => {
           { name: "TEMP2", start: [1, 2], end: [2, 2] },
           { name: "POWER", start: [2, 2], end: [3, 2] },
         ]}
+        gap="2em"
       >
         <Box gridArea="HEADER" align="center">
           <Box gridArea="HEADER" align="center" direction="row" pad="small">
@@ -43,13 +44,13 @@ const App: React.FC = () => {
           </Box>
         </Box>
         <Box gridArea="TEMP1">
-          <MQTTGauge topic={Topic.TEMP1} symbol="C" label="Ambient" />
+          <MQTTGauge topic={Topic.TEMP1} symbol="C" label="Ambient" max={35} />
         </Box>
         <Box gridArea="TEMP2">
-          <MQTTGauge topic={Topic.TEMP2} symbol="C" label="Socket" />
+          <MQTTGauge topic={Topic.TEMP2} symbol="C" label="Socket" max={35} />
         </Box>
         <Box gridArea="POWER">
-          <MQTTGauge topic={Topic.POWER} symbol="W" label="Socket" />
+          <MQTTGauge topic={Topic.POWER} symbol="W" label="Socket" max={100} />
         </Box>
         <Box gridArea="PUMPS_SWITCH">
           <MQTTPushButton topic={Topic.PUMPS_SWITCH} label="Pumps" />

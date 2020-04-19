@@ -3,21 +3,21 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { filterByTopic } from "./bus.service";
 import { Topic } from "./bus.types";
-import { Meter, Stack, Box, Text } from "grommet";
+import { Meter, Stack, Box, Text, MeterProps } from "grommet";
 import { stringToNumber, numberToFixed } from "./formatters";
 
-export interface valueProps {
+export interface valueProps extends MeterProps {
   topic: Topic;
   symbol: string;
   label: string;
 }
 
 export const MQTTGauge: React.FC<valueProps> = (props) => {
-  const { topic, symbol, label } = props;
+  const { topic, symbol, label, max, thickness = 'medium' } = props;
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    const sub = filterByTopic(topic).subscribe(({payload}) => {
+    const sub = filterByTopic(topic).subscribe(({ payload }) => {
       setValue(stringToNumber(payload));
     });
 
@@ -38,6 +38,8 @@ export const MQTTGauge: React.FC<valueProps> = (props) => {
           ]}
           aria-label="meter"
           size="medium"
+          max={max}
+          thickness={thickness}
         />
         <Box
           direction="row"
@@ -45,7 +47,7 @@ export const MQTTGauge: React.FC<valueProps> = (props) => {
           pad={{ bottom: "xsmall" }}
           gap="xsmall"
         >
-          <Text size="small">{label} </Text>
+          <Text size="medium">{label} </Text>
           <Text size="xlarge" weight="bold">
             {numberToFixed(value)}
           </Text>
