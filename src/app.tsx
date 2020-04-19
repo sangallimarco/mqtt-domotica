@@ -1,11 +1,11 @@
 import React from "react";
 import { Grommet, Grid, Box, grommet, Heading } from "grommet";
 import { deepMerge } from "grommet/utils";
-import { MQTTGauge } from "./shared/gauge.component";
-import { Topic } from "./shared/bus.types";
-import { MQTTSwitch } from "./shared/switch.component";
+import { MQTTGauge } from "./components/gauge.component";
+import { Topic } from "./shared/mqtt.types";
+import { MQTTSwitch } from "./components/switch.component";
 import { Grow } from "grommet-icons";
-import { MQTTActivity } from "./shared/activity.component";
+import { MQTTActivity } from "./components/activity.component";
 
 const customTheme = deepMerge(grommet, {
   global: {

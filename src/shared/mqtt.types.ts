@@ -12,6 +12,7 @@ export enum Topic {
     PROCESS_SWITCH = 'actuators/light',
 }
 
+// sensors
 export const SensorTopics = [Topic.TEMP1, Topic.TEMP2, Topic.POWER, Topic.PROCESS_STATUS, Topic.PUMPS_STATUS];
 export const AllTopics = Object.values(Topic);
 

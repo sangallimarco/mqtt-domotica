@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import { sendMessage, filterByTopic } from "./bus.service";
-import { Topic } from "./bus.types";
+import React, { useState, useRef } from "react";
+import { UseMQTT } from "../shared/mqtt.service";
+import { Topic } from "../shared/mqtt.types";
 import { Box, Button, ButtonProps, Drop } from "grommet";
-import { stringToBoolean, booleanToString } from "./formatters";
+import { stringToBoolean, booleanToString } from "../shared/formatters";
 import { CirclePlay, PauseFill } from "grommet-icons";
 
 export interface MQTTButtonProps extends ButtonProps {
@@ -14,19 +14,12 @@ export interface MQTTButtonProps extends ButtonProps {
 
 export const MQTTSwitch: React.FC<MQTTButtonProps> = (props) => {
   const { topic, label, feedBackTopic, confirmLabel, safe } = props;
+  
   const boxRef = useRef();
-  const [on, setOn] = useState(false);
   const [openDrop, setOpenDrop] = useState(false);
+  const {message, sendMessage} = UseMQTT(feedBackTopic);
 
-  useEffect(() => {
-    const sub = filterByTopic(feedBackTopic).subscribe(({ payload }) => {
-      setOn(stringToBoolean(payload));
-    });
-
-    return () => {
-      sub.unsubscribe();
-    };
-  }, [feedBackTopic]);
+  const on = stringToBoolean(message);
 
   const handleToggle = () => {
     const toggleStatus = !on;
@@ -44,7 +37,6 @@ export const MQTTSwitch: React.FC<MQTTButtonProps> = (props) => {
   const handleConfirm = () => {
     setOpenDrop(false);
     sendMessage({ topic, payload: booleanToString(true) });
-    setOn(true);
   };
 
   const handleCloseDrop = () => {

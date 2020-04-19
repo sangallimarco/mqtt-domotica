@@ -1,10 +1,8 @@
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { filterByTopic } from "./bus.service";
-import { Topic } from "./bus.types";
+import { UseMQTT } from "../shared/mqtt.service";
+import { Topic } from "../shared/mqtt.types";
 import { Meter, Stack, Box, Text, MeterProps } from "grommet";
-import { stringToNumber, numberToFixed } from "./formatters";
+import { stringToNumber, numberToFixed } from "../shared/formatters";
 
 export interface valueProps extends MeterProps {
   topic: Topic;
@@ -14,17 +12,10 @@ export interface valueProps extends MeterProps {
 
 export const MQTTGauge: React.FC<valueProps> = (props) => {
   const { topic, symbol, label, max, thickness = 'large' } = props;
-  const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    const sub = filterByTopic(topic).subscribe(({ payload }) => {
-      setValue(stringToNumber(payload));
-    });
-
-    return () => {
-      sub.unsubscribe();
-    };
-  }, [topic]);
+  
+  const {message} = UseMQTT(topic);
+  const value = stringToNumber(message);
+  const formattedValue = numberToFixed(value);
 
   return (
     <Box align="center" pad="small">
@@ -33,7 +24,7 @@ export const MQTTGauge: React.FC<valueProps> = (props) => {
           type="circle"
           values={[
             {
-              value,
+              value
             },
           ]}
           aria-label="meter"
@@ -49,7 +40,7 @@ export const MQTTGauge: React.FC<valueProps> = (props) => {
         >
           <Text size="medium">{label} </Text>
           <Text size="xxlarge" weight="bold">
-            {numberToFixed(value)}
+            {formattedValue}
           </Text>
           <Text size="small"> {symbol}</Text>
         </Box>
