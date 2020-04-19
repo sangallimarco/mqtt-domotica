@@ -5,15 +5,13 @@ import mqtt from 'mqtt';
 import { Topic, SensorTopics, TopicMessage } from './mqtt.types';
 import { useEffect } from 'react';
 import { booleanToString } from './formatters';
+import { MQTTConfigOptions } from './mqtt.config';
 
 export const MessageBusRead = new Subject<TopicMessage>();
 
 export const mqttClient = mqtt.connect(
    process.env.REACT_APP_MQTT,
-    // {
-    //     username: 'ral', 
-    //     password: 'passwd'
-    // }
+   MQTTConfigOptions
 );
 
 mqttClient.on('connect', function () {
