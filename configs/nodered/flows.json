@@ -1813,7 +1813,7 @@
         "id": "5679ee43.60b14",
         "type": "shelly-switch",
         "z": "ef768b5b.b73498",
-        "hostname": "192.168.0.40",
+        "hostname": "192.168.0.38",
         "description": "Shelly1",
         "x": 720,
         "y": 140,
@@ -1846,15 +1846,15 @@
         "type": "function",
         "z": "ef768b5b.b73498",
         "name": "",
-        "func": "const on = msg.payload > 0;\nmsg.payload = {on};\nreturn msg;",
+        "func": "msg.payload = msg.payload > 0 ? 'on' : 'off';\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 530,
         "y": 140,
         "wires": [
             [
-                "5679ee43.60b14",
-                "4d6318ee.fb7928"
+                "4d6318ee.fb7928",
+                "899e7729.702a58"
             ]
         ]
     },
@@ -1932,5 +1932,60 @@
         "x": 1280,
         "y": 200,
         "wires": []
+    },
+    {
+        "id": "899e7729.702a58",
+        "type": "mqtt out",
+        "z": "ef768b5b.b73498",
+        "name": "",
+        "topic": "shellies/shelly1pm-8CAAB5056D9C/relay/0/command",
+        "qos": "",
+        "retain": "",
+        "broker": "d488fe3d.4aee5",
+        "x": 860,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "630bcfd3.241d8",
+        "type": "mqtt out",
+        "z": "4e650360.d34e4c",
+        "name": "",
+        "topic": "shellies/shelly1pm-8CAAB5056D9C/relay/0/command",
+        "qos": "",
+        "retain": "",
+        "broker": "d488fe3d.4aee5",
+        "x": 1100,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "25128.4d11eed8c",
+        "type": "cronplus",
+        "z": "4e650360.d34e4c",
+        "name": "Lemon",
+        "outputField": "payload",
+        "timeZone": "",
+        "options": [
+            {
+                "topic": "Water On",
+                "payload": "on",
+                "type": "str",
+                "expression": "0 0 */3 * * * *"
+            },
+            {
+                "topic": "Water Off",
+                "payload": "off",
+                "type": "str",
+                "expression": "10 0 */3 * * * *"
+            }
+        ],
+        "x": 170,
+        "y": 940,
+        "wires": [
+            [
+                "630bcfd3.241d8"
+            ]
+        ]
     }
 ]
