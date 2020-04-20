@@ -10,10 +10,11 @@ export interface MQTTButtonProps extends ButtonProps {
   feedBackTopic: Topic;
   confirmLabel: string;
   safe: boolean;
+  shellyMode?: boolean;
 }
 
 export const MQTTSwitch: React.FC<MQTTButtonProps> = (props) => {
-  const { topic, label, feedBackTopic, confirmLabel, safe } = props;
+  const { topic, label, feedBackTopic, confirmLabel, safe, shellyMode } = props;
   
   const boxRef = useRef();
   const [openDrop, setOpenDrop] = useState(false);
@@ -25,18 +26,18 @@ export const MQTTSwitch: React.FC<MQTTButtonProps> = (props) => {
     const toggleStatus = !on;
     if (!toggleStatus) {
       setOpenDrop(false);
-      sendMessage({ topic, payload: booleanToString(false) });
+      sendMessage({ topic, payload: booleanToString(false, shellyMode) });
     } else {
       setOpenDrop(true);
       if (!safe) {
-        sendMessage({ topic, payload: booleanToString(true) });
+        sendMessage({ topic, payload: booleanToString(true, shellyMode) });
       }
     }
   };
 
   const handleConfirm = () => {
     setOpenDrop(false);
-    sendMessage({ topic, payload: booleanToString(true) });
+    sendMessage({ topic, payload: booleanToString(true, shellyMode) });
   };
 
   const handleCloseDrop = () => {

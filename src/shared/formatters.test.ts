@@ -7,12 +7,22 @@ describe('Formatters',() => {
             expect(stringToBoolean('0')).toEqual(false);
             expect(stringToBoolean('')).toEqual(false);
         });
+
+        it('should convert a string into a bool (Shelly)', () => {
+            expect(stringToBoolean('on')).toEqual(true);
+            expect(stringToBoolean('off')).toEqual(false);
+        });
     });
 
     describe('booleanToString()',() => {
         it('should a boolean into a string', () => {
             expect(booleanToString(true)).toEqual('1');
             expect(booleanToString(false)).toEqual('0');
+        });
+
+        it('should a boolean into a string (Shelly)', () => {
+            expect(booleanToString(true, true)).toEqual('on',);
+            expect(booleanToString(false, true)).toEqual('off');
         });
     });
 
