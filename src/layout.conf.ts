@@ -60,3 +60,7 @@ export const DesktopGrid: GridProps = {
       { name: AreaName.OUTDOOR_PUMP_ENERGY, start: [2, 5], end: [3, 5] }
     ]
   }
+
+  export const MaxTemp = 40;
+
+  export const MaxPower = 100;
