@@ -11,9 +11,9 @@ export interface valueProps extends MeterProps {
 }
 
 export const MQTTGauge: React.FC<valueProps> = (props) => {
-  const { topic, symbol, label, max, thickness = 'medium' } = props;
-  
-  const {message} = UseMQTT(topic);
+  const { topic, symbol, label, max, thickness = "large" } = props;
+
+  const { message } = UseMQTT(topic);
   const value = stringToNumber(message);
   const formattedValue = numberToFixed(value);
 
@@ -24,7 +24,7 @@ export const MQTTGauge: React.FC<valueProps> = (props) => {
           type="circle"
           values={[
             {
-              value
+              value,
             },
           ]}
           aria-label="meter"
@@ -32,17 +32,20 @@ export const MQTTGauge: React.FC<valueProps> = (props) => {
           max={max}
           thickness={thickness}
         />
-        <Box
-          direction="row"
-          align="center"
-          pad={{ bottom: "xsmall" }}
-          gap="xsmall"
-        >
-          <Text size="medium">{label} </Text>
-          <Text size="xlarge" weight="bold">
-            {formattedValue}
-          </Text>
-          <Text size="small"> {symbol}</Text>
+
+        <Box direction="column" align="center">
+          <Text size="large">{label} </Text>
+          <Box
+            direction="row"
+            align="center"
+            pad={{ bottom: "xsmall" }}
+            gap="xsmall"
+          >
+            <Text size="xlarge" weight="bold">
+              {formattedValue}
+            </Text>
+            <Text size="medium"> {symbol}</Text>
+          </Box>
         </Box>
       </Stack>
     </Box>

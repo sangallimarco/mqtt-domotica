@@ -14,7 +14,7 @@ export const MQTTActivity: React.FC<MQTTButtonProps> = (props) => {
   const {message} = UseMQTT(topic);
 
   const connected = stringToBoolean(message);
-  const icon = !connected ? <Connect size="large"/> : <Inherit size="large"/>;
+  const icon = !connected ? <Connect color="status-error" size="large"/> : <Inherit color="status-ok" size="large"/>;
 
   return (
     <Box align="center" pad="small">
