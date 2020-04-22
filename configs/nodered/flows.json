@@ -1971,13 +1971,13 @@
                 "topic": "Water On",
                 "payload": "on",
                 "type": "str",
-                "expression": "0 0 */3 * * * *"
+                "expression": "0 0 9,13,17 * * * *"
             },
             {
                 "topic": "Water Off",
                 "payload": "off",
                 "type": "str",
-                "expression": "10 0 */3 * * * *"
+                "expression": "10 0 9,13,17 * * * *"
             }
         ],
         "x": 170,
