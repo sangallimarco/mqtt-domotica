@@ -680,13 +680,13 @@
                 "topic": "Water On",
                 "payload": "0",
                 "type": "num",
-                "expression": "0 0 */6 * * * *"
+                "expression": "0 0 */12 * * * *"
             },
             {
                 "topic": "Water Off",
                 "payload": "1",
                 "type": "num",
-                "expression": "4 0 */6 * * * *"
+                "expression": "4 0 */12 * * * *"
             }
         ],
         "x": 170,
@@ -1811,18 +1811,6 @@
         "wires": []
     },
     {
-        "id": "5679ee43.60b14",
-        "type": "shelly-switch",
-        "z": "ef768b5b.b73498",
-        "hostname": "192.168.0.38",
-        "description": "Shelly1",
-        "x": 720,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "69081635.a11138",
         "type": "inject",
         "z": "ef768b5b.b73498",
@@ -1903,23 +1891,9 @@
         "y": 360,
         "wires": [
             [
-                "1d413bc4.5e1694"
+                "4d6318ee.fb7928"
             ]
         ]
-    },
-    {
-        "id": "1d413bc4.5e1694",
-        "type": "debug",
-        "z": "ef768b5b.b73498",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 730,
-        "y": 360,
-        "wires": []
     },
     {
         "id": "f577a6e7.ad0e88",
@@ -1943,8 +1917,8 @@
         "qos": "",
         "retain": "",
         "broker": "d488fe3d.4aee5",
-        "x": 860,
-        "y": 60,
+        "x": 880,
+        "y": 140,
         "wires": []
     },
     {
@@ -1972,13 +1946,13 @@
                 "topic": "Water On",
                 "payload": "on",
                 "type": "str",
-                "expression": "0 0 9,14 * * * *"
+                "expression": "0 0 10,17 * * * *"
             },
             {
                 "topic": "Water Off",
                 "payload": "off",
                 "type": "str",
-                "expression": "12 0 9,14 * * * *"
+                "expression": "8 0 10,17 * * * *"
             }
         ],
         "x": 170,
