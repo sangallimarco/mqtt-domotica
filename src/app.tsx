@@ -12,6 +12,7 @@ import {
   MaxPower,
   getLayourConfig,
 } from "./layout.conf";
+import { MQTTImage } from "./components/image.component";
 
 interface ResponsiveGridProps {
   children: ReactNode[];
@@ -129,6 +130,20 @@ const App: React.FC = () => {
             max={MaxPower}
           />
         </Box>
+
+        <Box gridArea={AreaName.HEADER_CAM} align="center">
+          <Box align="center" direction="row" pad="small">
+            <Grow />
+            <Heading size="xsmall">Camera</Heading>
+          </Box>
+        </Box>
+
+        <Box gridArea={AreaName.CAM} alignContent="center">
+          <MQTTImage
+            topic={Topic.CAM}
+          />
+        </Box>
+
       </ResponsiveGrid>
     </Grommet>
   );

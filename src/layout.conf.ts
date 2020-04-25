@@ -1,5 +1,5 @@
-import { GridProps, grommet } from "grommet";
-import { deepMerge } from "grommet/utils";
+import { GridProps, grommet } from 'grommet';
+import { deepMerge } from 'grommet/utils';
 
 export enum AreaName {
     HEADER = 'HEADER',
@@ -15,21 +15,23 @@ export enum AreaName {
     OUTDOOR_FUTURE2 = 'OUTDOOR_FUTURE2',
     OUTDOOR_PUMP_POWER = 'OUTDOOR_PUMP_POWER',
     OUTDOOR_PUMP_TEMP = 'OUTDOOR_PUMP_TEMP',
-    OUTDOOR_PUMP_ENERGY = 'OUTDOOR_PUMP_ENERGY'
+    OUTDOOR_PUMP_ENERGY = 'OUTDOOR_PUMP_ENERGY',
+    HEADER_CAM = 'HEADER_CAM',
+    CAM = 'CAM'
 }
 
 export const customTheme = deepMerge(grommet, {
     global: {
         font: {
-            family: "Roboto",
-            size: "14px",
-            height: "20px",
+            family: 'Roboto',
+            size: '14px',
+            height: '20px',
         },
         drop: {
-            background: { dark: "dark-2", light: "neutral-2" },
-            border: { radius: "2em" },
-            zIndex: "13",
-            shadowSize: "0",
+            background: { dark: 'dark-2', light: 'neutral-2' },
+            border: { radius: '2em' },
+            zIndex: '13',
+            shadowSize: '0',
         },
         breakpoints: {
             xsmall: {
@@ -50,8 +52,8 @@ export const customTheme = deepMerge(grommet, {
 
 
 export const DesktopGrid: GridProps = {
-    rows: ["min-content", "min-content", "min-content", "min-content", "min-content", "min-content"],
-    columns: ["1fr", "1fr", "1fr"],
+    rows: Array(8).fill('min-content'),
+    columns: ['1fr', '1fr', '1fr'],
     areas: [
         { name: AreaName.HEADER, start: [0, 0], end: [3, 0] },
 
@@ -71,12 +73,15 @@ export const DesktopGrid: GridProps = {
 
         { name: AreaName.OUTDOOR_PUMP_POWER, start: [0, 5], end: [1, 5] },
         { name: AreaName.OUTDOOR_PUMP_TEMP, start: [1, 5], end: [2, 5] },
-        { name: AreaName.OUTDOOR_PUMP_ENERGY, start: [2, 5], end: [3, 5] }
+        { name: AreaName.OUTDOOR_PUMP_ENERGY, start: [2, 5], end: [3, 5] },
+
+        { name: AreaName.HEADER_CAM, start: [0, 6], end: [3, 6] },
+        { name: AreaName.CAM, start: [0, 7], end: [3, 7] }
     ]
 }
 
 export const MobileGrid: GridProps = {
-    rows: Array(12).fill('min-content'),
+    rows: Array(14).fill('min-content'),
     columns: ['1fr','1fr'],
     areas: [
         { name: AreaName.HEADER, start: [0, 0], end: [1, 0] },
@@ -97,12 +102,15 @@ export const MobileGrid: GridProps = {
 
         { name: AreaName.OUTDOOR_PUMP_POWER, start: [0, 9], end: [2, 9] },
         { name: AreaName.OUTDOOR_PUMP_TEMP, start: [0, 10], end: [2, 10] },
-        { name: AreaName.OUTDOOR_PUMP_ENERGY, start: [0, 11], end: [2, 11] }
+        { name: AreaName.OUTDOOR_PUMP_ENERGY, start: [0, 11], end: [2, 11] },
+
+        { name: AreaName.HEADER_CAM, start: [0, 12], end: [2, 12] },
+
+        { name: AreaName.CAM, start: [0, 13], end: [2, 13] }
     ]
 }
 
 export function getLayourConfig(size: number): GridProps {
-    console.error(size);
     return size < 750 ? MobileGrid : DesktopGrid;
 }
 

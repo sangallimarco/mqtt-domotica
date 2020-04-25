@@ -14,11 +14,13 @@ export enum Topic {
 
     PUMPS_SWITCH = 'actuators/pumps',
     PROCESS_SWITCH = 'actuators/light',
-    OUTDOOR_PUMPS_SWITCH = 'shellies/shelly1pm-8CAAB5056D9C/relay/0/command'
+    OUTDOOR_PUMPS_SWITCH = 'shellies/shelly1pm-8CAAB5056D9C/relay/0/command',
+
+    CAM = 'sensors/cam'
 }
 
 // sensors
-export const SensorTopics = [Topic.TEMP1, Topic.TEMP2, Topic.POWER, Topic.PROCESS_STATUS, Topic.PUMPS_STATUS, Topic.OUTDOOR_PUMPS_STATUS, Topic.OUTDOOR_POWER, Topic.OUTDOOR_TEMP, Topic.OUTDOOR_ENERGY];
+export const SensorTopics = [Topic.TEMP1, Topic.TEMP2, Topic.POWER, Topic.PROCESS_STATUS, Topic.PUMPS_STATUS, Topic.OUTDOOR_PUMPS_STATUS, Topic.OUTDOOR_POWER, Topic.OUTDOOR_TEMP, Topic.OUTDOOR_ENERGY, Topic.CAM];
 export const AllTopics = Object.values(Topic);
 
 // not used yet
