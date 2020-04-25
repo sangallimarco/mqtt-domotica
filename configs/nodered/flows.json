@@ -680,13 +680,13 @@
                 "topic": "Water On",
                 "payload": "0",
                 "type": "num",
-                "expression": "0 0 */3 * * * *"
+                "expression": "0 0 */6 * * * *"
             },
             {
                 "topic": "Water Off",
                 "payload": "1",
                 "type": "num",
-                "expression": "4 0 */3 * * * *"
+                "expression": "4 0 */6 * * * *"
             }
         ],
         "x": 170,
@@ -795,13 +795,13 @@
                 "topic": "Water On",
                 "payload": "0",
                 "type": "num",
-                "expression": "0 0 */4 * * * *"
+                "expression": "0 0 */6 * * * *"
             },
             {
                 "topic": "Water Off",
                 "payload": "1",
                 "type": "num",
-                "expression": "3 0 */4 * * * *"
+                "expression": "3 0 */6 * * * *"
             }
         ],
         "x": 170,
@@ -1110,7 +1110,7 @@
         "tls": true,
         "name": "sangalli.marco@gmail.com",
         "dname": "",
-        "x": 880,
+        "x": 1000,
         "y": 180,
         "wires": []
     },
@@ -1122,7 +1122,7 @@
         "func": "return {\n    to: 'sangalli.marco@gmail.com',\n    topic: 'HOME',\n    payload: 'Please call me immediately!!!',\n    attachments: [{path: msg.payload, content:'picture'}]\n};\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 660,
+        "x": 780,
         "y": 180,
         "wires": [
             [
@@ -1139,7 +1139,7 @@
         "filedefpath": "1",
         "filepath": "",
         "fileformat": "jpeg",
-        "resolution": "9",
+        "resolution": "8",
         "rotation": "0",
         "fliph": "0",
         "flipv": "0",
@@ -1154,7 +1154,7 @@
         "led": "0",
         "awb": "auto",
         "name": "",
-        "x": 480,
+        "x": 540,
         "y": 180,
         "wires": [
             [
@@ -1193,8 +1193,8 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 690,
-        "y": 260,
+        "x": 910,
+        "y": 320,
         "wires": []
     },
     {
@@ -1606,8 +1606,8 @@
         "pin": "13",
         "pin_all": 0,
         "client": "56d9e465.8a289c",
-        "x": 220,
-        "y": 320,
+        "x": 200,
+        "y": 360,
         "wires": [
             [
                 "970a9c9.004476"
@@ -1632,7 +1632,7 @@
                 "topic": "Water Off",
                 "payload": "1",
                 "type": "num",
-                "expression": "8 0 8 * * *"
+                "expression": "12 0 8 * * *"
             }
         ],
         "x": 180,
@@ -1674,10 +1674,11 @@
         "repair": false,
         "outputs": 1,
         "x": 350,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
-                "7c938134.c881f"
+                "7c938134.c881f",
+                "929695cf.b32de"
             ]
         ]
     },
@@ -1880,7 +1881,7 @@
         "type": "debug",
         "z": "ef768b5b.b73498",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1911,7 +1912,7 @@
         "type": "debug",
         "z": "ef768b5b.b73498",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1971,13 +1972,13 @@
                 "topic": "Water On",
                 "payload": "on",
                 "type": "str",
-                "expression": "0 0 9,13,17 * * * *"
+                "expression": "0 0 9,14 * * * *"
             },
             {
                 "topic": "Water Off",
                 "payload": "off",
                 "type": "str",
-                "expression": "10 0 9,13,17 * * * *"
+                "expression": "12 0 9,14 * * * *"
             }
         ],
         "x": 170,
@@ -1985,6 +1986,143 @@
         "wires": [
             [
                 "630bcfd3.241d8"
+            ]
+        ]
+    },
+    {
+        "id": "6bc73a6.60e4d44",
+        "type": "base64",
+        "z": "d02b3e88.3ba44",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 800,
+        "y": 460,
+        "wires": [
+            [
+                "dda6499.b01e3b8",
+                "6d0e504e.33757"
+            ]
+        ]
+    },
+    {
+        "id": "a1496508.0dd1e8",
+        "type": "mqtt out",
+        "z": "d02b3e88.3ba44",
+        "name": "Snapshot",
+        "topic": "sensors/cam",
+        "qos": "",
+        "retain": "true",
+        "broker": "d488fe3d.4aee5",
+        "x": 1100,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "6d364ad0.dba5ac",
+        "type": "mqtt in",
+        "z": "d02b3e88.3ba44",
+        "name": "",
+        "topic": "actuators/cam",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "d488fe3d.4aee5",
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "970a9c9.004476"
+            ]
+        ]
+    },
+    {
+        "id": "929695cf.b32de",
+        "type": "camerapi-takephoto",
+        "z": "d02b3e88.3ba44",
+        "filemode": "0",
+        "filename": "",
+        "filedefpath": "1",
+        "filepath": "",
+        "fileformat": "jpeg",
+        "resolution": "2",
+        "rotation": "0",
+        "fliph": "0",
+        "flipv": "0",
+        "brightness": "50",
+        "contrast": "0",
+        "sharpness": "0",
+        "quality": "80",
+        "imageeffect": "none",
+        "exposuremode": "auto",
+        "iso": "0",
+        "agcwait": "1.0",
+        "led": "0",
+        "awb": "auto",
+        "name": "Photo Buffer",
+        "x": 530,
+        "y": 460,
+        "wires": [
+            [
+                "6bc73a6.60e4d44"
+            ]
+        ]
+    },
+    {
+        "id": "641c978b.637278",
+        "type": "inject",
+        "z": "d02b3e88.3ba44",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 180,
+        "y": 460,
+        "wires": [
+            [
+                "929695cf.b32de"
+            ]
+        ]
+    },
+    {
+        "id": "6d0e504e.33757",
+        "type": "function",
+        "z": "d02b3e88.3ba44",
+        "name": "converter",
+        "func": "msg.payload = `data:image/jpeg;base64,${msg.payload}`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 960,
+        "y": 460,
+        "wires": [
+            [
+                "a1496508.0dd1e8"
+            ]
+        ]
+    },
+    {
+        "id": "c0adbe1.94a5d4",
+        "type": "cronplus",
+        "z": "d02b3e88.3ba44",
+        "name": "Snapshot",
+        "outputField": "payload",
+        "timeZone": "",
+        "options": [
+            {
+                "topic": "Take Snapshot",
+                "payload": "true",
+                "type": "bool",
+                "expression": "0 */5 * * * *"
+            }
+        ],
+        "x": 180,
+        "y": 540,
+        "wires": [
+            [
+                "929695cf.b32de"
             ]
         ]
     }
