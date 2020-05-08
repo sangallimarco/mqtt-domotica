@@ -178,7 +178,7 @@
         "id": "f9226d72.51e73",
         "type": "myStrom Config Button Plus",
         "z": "",
-        "host": "192.168.0.17",
+        "host": "192.168.0.37",
         "mac": "2C:3A:E8:01:83:53",
         "name": "Buttonplus 1"
     },
@@ -228,6 +228,12 @@
         "willQos": "0",
         "willRetain": "false",
         "willPayload": ""
+    },
+    {
+        "id": "fd81058d.d62d28",
+        "type": "arduino-board",
+        "z": "",
+        "device": "/dev/ttyUSB0"
     },
     {
         "id": "ad951b2a.f13eb8",
@@ -683,13 +689,13 @@
                 "topic": "Water On",
                 "payload": "0",
                 "type": "num",
-                "expression": "0 0 */12 * * * *"
+                "expression": "0 0 9 * * * *"
             },
             {
                 "topic": "Water Off",
                 "payload": "1",
                 "type": "num",
-                "expression": "4 0 */12 * * * *"
+                "expression": "5 0 9 * * * *"
             }
         ],
         "x": 170,
@@ -1934,7 +1940,7 @@
         "retain": "",
         "broker": "d488fe3d.4aee5",
         "x": 1100,
-        "y": 940,
+        "y": 960,
         "wires": []
     },
     {
@@ -1949,20 +1955,20 @@
                 "topic": "Water On",
                 "payload": "on",
                 "type": "str",
-                "expression": "0 0 10,17 * * * *"
+                "expression": "0 0 10,15,18 * * * *"
             },
             {
                 "topic": "Water Off",
                 "payload": "off",
                 "type": "str",
-                "expression": "8 0 10,17 * * * *"
+                "expression": "20 0 10,15,18 * * * *"
             }
         ],
         "x": 170,
         "y": 940,
         "wires": [
             [
-                "630bcfd3.241d8"
+                "548d32fa.e5cb0c"
             ]
         ]
     },
@@ -2100,6 +2106,99 @@
         "wires": [
             [
                 "929695cf.b32de"
+            ]
+        ]
+    },
+    {
+        "id": "fa2c8735.c7191",
+        "type": "openweathermap",
+        "z": "4e650360.d34e4c",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "zurich",
+        "country": "switzerland",
+        "language": "en",
+        "x": 530,
+        "y": 900,
+        "wires": [
+            [
+                "2e5adddb.4322e2"
+            ]
+        ]
+    },
+    {
+        "id": "2e5adddb.4322e2",
+        "type": "switch",
+        "z": "4e650360.d34e4c",
+        "name": "Clear Weather",
+        "property": "payload.weather",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Clear",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 740,
+        "y": 900,
+        "wires": [
+            [
+                "630bcfd3.241d8"
+            ]
+        ]
+    },
+    {
+        "id": "548d32fa.e5cb0c",
+        "type": "switch",
+        "z": "4e650360.d34e4c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 330,
+        "y": 940,
+        "wires": [
+            [
+                "fa2c8735.c7191"
+            ],
+            [
+                "630bcfd3.241d8"
+            ]
+        ]
+    },
+    {
+        "id": "d641cb9.b48beb8",
+        "type": "arduino in",
+        "z": "2fe16c20.567474",
+        "name": "",
+        "pin": "6",
+        "state": "ANALOG",
+        "arduino": "fd81058d.d62d28",
+        "x": 580,
+        "y": 1060,
+        "wires": [
+            [
+                "54e4bc55.36c4a4"
             ]
         ]
     }
