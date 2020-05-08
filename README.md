@@ -2,7 +2,7 @@
 
 Small application able to connect to MQTT broker using WS.
 
-Please defined your `.env.production` containing all the required details present in `.env`
+Please defined your `.env.production.local` containing all the required details present in `.env`
 
 
 ## RCA
