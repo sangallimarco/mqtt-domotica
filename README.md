@@ -1,3 +1,12 @@
+### WIP
+
+Small application able to connect to MQTT broker using WS.
+
+Please defined your `.env.production` containing all the required details present in `.env`
+
+
+## RCA
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
