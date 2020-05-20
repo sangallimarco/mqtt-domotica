@@ -9,10 +9,11 @@ import { getConfigOptions } from './mqtt.config'
 
 
 export const MessageBusRead = new Subject<TopicMessage>()
+const options =  getConfigOptions() // get config from localStorage
 
 export const mqttClient = mqtt.connect(
    process.env.REACT_APP_MQTT,
-   getConfigOptions() // get config from localStorage
+   options
 )
 
 // Events
@@ -25,19 +26,16 @@ mqttClient.on('connect', function () {
     // subscribe to all topics
     mqttClient.subscribe(SensorTopics)
     MessageBusRead.next({topic: Topic.CONNECTED, payload: booleanToString(true)})
+    mqttClient.on('message', (topic: Topic, message: Buffer) => {
+        // message is Buffer
+        const payload = message.toString() // TODO can be parsed as JSON if required
+        MessageBusRead.next({topic, payload})
+    })
+    
+    mqttClient.on('disconnect', () => {
+        MessageBusRead.next({topic: Topic.CONNECTED, payload: booleanToString(false)})
+    })
 })
-
-mqttClient.on('message', (topic: Topic, message: Buffer) => {
-    // message is Buffer
-    const payload = message.toString() // TODO can be parsed as JSON if required
-    MessageBusRead.next({topic, payload})
-})
-
-
-mqttClient.on('disconnect', () => {
-    MessageBusRead.next({topic: Topic.CONNECTED, payload: booleanToString(false)})
-})
-
 
 // Helpers
 export function filterByTopic<T extends Topic>(topic: T): Observable<TopicMessage> {
