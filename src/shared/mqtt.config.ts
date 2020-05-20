@@ -1,6 +1,17 @@
-import { IClientOptions } from "mqtt";
+import { IClientOptions } from "mqtt"
+import { isEmpty } from "lodash"
 
-export const MQTTConfigOptions: IClientOptions = {
-        username: process.env.REACT_APP_MQTT_USER, 
-        password: process.env.REACT_APP_MQTT_PASSWD
-};
+export const CONFIG_PATH = 'config'
+
+export function getConfigOptions(): IClientOptions {
+        const storedData = window.localStorage.getItem(CONFIG_PATH)
+        return storedData ? JSON.parse(storedData) : {}
+}
+
+export function storeConfigOptions(options: IClientOptions): void {
+        window.localStorage.setItem(CONFIG_PATH, JSON.stringify(options))
+}
+
+export function hasValidConfig() : boolean {
+        return !isEmpty(getConfigOptions())
+}
