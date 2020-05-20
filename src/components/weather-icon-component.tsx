@@ -1,6 +1,8 @@
 import {
+  faBolt,
   faCloud,
   faCloudRain,
+  faExclamation,
   faSnowflake,
   faSun,
   IconDefinition,
@@ -20,7 +22,7 @@ export const iconConfig: Record<string, IconDefinition> = {
   Clouds: faCloud,
   Rain: faCloudRain,
   Snow: faSnowflake,
-  Thunderstorm: faCloudRain,
+  Thunderstorm: faBolt,
   Drizzle: faCloudRain,
 }
 
@@ -28,7 +30,7 @@ export const MQTTWeatherIcon: React.FC<MQTTWeatherIconProps> = (props) => {
   const { topic } = props
   const { message } = UseMQTT(topic)
 
-  const icon = iconConfig[message] || 'comet'
+  const icon = iconConfig[message] || faExclamation
 
-  return <FontAwesomeIcon icon={icon} />
+  return <FontAwesomeIcon size="3x" icon={icon} />
 }

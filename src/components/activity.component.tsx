@@ -1,9 +1,9 @@
-import React from "react"
-import { UseMQTT } from "../shared/mqtt.service"
-import { Topic } from "../shared/mqtt.types"
-import { Box } from "grommet"
-import { stringToBoolean } from "../shared/formatters"
-import { Inherit, Connect } from "grommet-icons"
+import { faNetworkWired, faPlug } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react'
+import { stringToBoolean } from '../shared/formatters'
+import { UseMQTT } from '../shared/mqtt.service'
+import { Topic } from '../shared/mqtt.types'
 
 export interface MQTTButtonProps {
   topic: Topic
@@ -11,14 +11,10 @@ export interface MQTTButtonProps {
 
 export const MQTTActivity: React.FC<MQTTButtonProps> = (props) => {
   const { topic } = props
-  const {message} = UseMQTT(topic)
+  const { message } = UseMQTT(topic)
 
   const connected = stringToBoolean(message)
-  const icon = !connected ? <Connect color="status-error" size="large"/> : <Inherit color="status-ok" size="large"/>
+  const icon = !connected ? faPlug : faNetworkWired
 
-  return (
-    <Box align="center" pad="small">
-      {icon}
-    </Box>
-  )
+  return <FontAwesomeIcon size="3x" icon={icon} />
 }
