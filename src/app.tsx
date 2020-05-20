@@ -1,18 +1,16 @@
-import { Grommet, Main } from "grommet"
-import React, { ReactNode } from "react"
+import { Grommet } from "grommet"
+import React from "react"
 import { ConfigForm } from "./config/config-form"
+import { Dashboard } from "./dashboard"
 import { customTheme } from "./layout.conf"
-import { getConfigOptions } from "./shared/mqtt.config"
+import { hasValidConfig } from "./shared/mqtt.config"
 
-interface ResponsiveGridProps {
-  children: ReactNode[]
-}
 
 const App: React.FC = () => {
-  const hasConfig = getConfigOptions()
+  const hasConfig = hasValidConfig()
   return (
     <Grommet full theme={customTheme} themeMode="dark">
-      {hasConfig ? <Main /> : <ConfigForm />}
+      {hasConfig ? <Dashboard /> : <ConfigForm />}
     </Grommet>
   )
 }

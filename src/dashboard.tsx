@@ -18,7 +18,7 @@ const ResponsiveGrid = (props: ResponsiveGridProps) => {
   return <Grid {...gridProps}>{props.children}</Grid>
 }
 
-export const Main: React.FC = () => {
+export const Dashboard: React.FC = () => {
   return (
       <ResponsiveGrid>
         <Box gridArea={AreaName.HEADER} align="center">
