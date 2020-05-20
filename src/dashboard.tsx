@@ -5,7 +5,13 @@ import { MQTTActivity } from './components/activity.component'
 import { MQTTGauge } from './components/gauge.component'
 import { MQTTImage } from './components/image.component'
 import { MQTTSwitch } from './components/switch.component'
-import { AreaName, getLayourConfig, MaxPower, MaxTemp } from './layout.conf'
+import {
+  AreaName,
+  getLayourConfig,
+  MaxPower,
+  MaxTemp,
+  MaxEnergy,
+} from './layout.conf'
 import { Topic } from './shared/mqtt.types'
 import { MQTTWeatherIcon } from './components/weather-icon-component'
 
@@ -128,7 +134,7 @@ export const Dashboard: React.FC = () => {
           topic={Topic.OUTDOOR_ENERGY}
           symbol="W/m"
           label="Energy"
-          max={MaxPower}
+          max={MaxEnergy}
         />
       </Box>
 
