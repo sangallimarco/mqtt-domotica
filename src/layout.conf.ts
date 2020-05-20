@@ -1,5 +1,5 @@
-import { GridProps, grommet } from 'grommet';
-import { deepMerge } from 'grommet/utils';
+import { GridProps, grommet } from 'grommet'
+import { deepMerge } from 'grommet/utils'
 
 export enum AreaName {
     HEADER = 'HEADER',
@@ -48,7 +48,7 @@ export const customTheme = deepMerge(grommet, {
             }
         }
     },
-});
+})
 
 
 export const DesktopGrid: GridProps = {
@@ -111,8 +111,8 @@ export const MobileGrid: GridProps = {
 }
 
 export function getLayourConfig(size: number): GridProps {
-    return size < 750 ? MobileGrid : DesktopGrid;
+    return size < 750 ? MobileGrid : DesktopGrid
 }
 
-export const MaxTemp = 40;
-export const MaxPower = 100;
+export const MaxTemp = 40
+export const MaxPower = 100

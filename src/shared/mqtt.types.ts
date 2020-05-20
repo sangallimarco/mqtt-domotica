@@ -20,8 +20,8 @@ export enum Topic {
 }
 
 // sensors
-export const SensorTopics = [Topic.TEMP1, Topic.TEMP2, Topic.POWER, Topic.PROCESS_STATUS, Topic.PUMPS_STATUS, Topic.OUTDOOR_PUMPS_STATUS, Topic.OUTDOOR_POWER, Topic.OUTDOOR_TEMP, Topic.OUTDOOR_ENERGY, Topic.CAM];
-export const AllTopics = Object.values(Topic);
+export const SensorTopics = [Topic.TEMP1, Topic.TEMP2, Topic.POWER, Topic.PROCESS_STATUS, Topic.PUMPS_STATUS, Topic.OUTDOOR_PUMPS_STATUS, Topic.OUTDOOR_POWER, Topic.OUTDOOR_TEMP, Topic.OUTDOOR_ENERGY, Topic.CAM]
+export const AllTopics = Object.values(Topic)
 
 // not used yet
 export interface TopicMessage {
