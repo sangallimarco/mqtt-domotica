@@ -11,7 +11,7 @@ describe('MQTT config helpers', () => {
   })
 
   describe('getConfigOptions', () => {
-    it('should get the config options if localStorage item present', () => {
+    test('should get the config options if localStorage item present', () => {
       window.localStorage.setItem(
         CONFIG_PATH,
         JSON.stringify({ username: 'me', password: 'pwd' })
@@ -21,7 +21,7 @@ describe('MQTT config helpers', () => {
   })
 
   describe('storeConfigOptions', () => {
-    it('should store config into localStorage', () => {
+    test('should store config into localStorage', () => {
       storeConfigOptions({ password: 'pwd', username: 'me' })
       expect(window.localStorage.getItem(CONFIG_PATH)).toEqual(
         '{"password":"pwd","username":"me"}'
@@ -30,11 +30,11 @@ describe('MQTT config helpers', () => {
   })
 
   describe('hasValidConfig', () => {
-    it('should return false if localStorage does not contain a config', () => {
+    test('should return false if localStorage does not contain a config', () => {
       expect(hasValidConfig()).toEqual(false)
     })
 
-    it('should return true if localStorage does  contain a configg', () => {
+    test('should return true if localStorage does  contain a configg', () => {
       window.localStorage.setItem(
         CONFIG_PATH,
         JSON.stringify({ username: 'me', password: 'pwd' })
