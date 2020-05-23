@@ -133,7 +133,7 @@ export const Dashboard: React.FC = () => {
         <MQTTGauge
           topic={Topic.OUTDOOR_ENERGY}
           symbol="W/h"
-          label="Power"
+          label="Energy"
           max={MaxEnergy}
         />
       </Box>
