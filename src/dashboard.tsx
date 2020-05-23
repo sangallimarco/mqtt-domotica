@@ -55,9 +55,9 @@ export const Dashboard: React.FC = () => {
 
       <Box gridArea={AreaName.POWER}>
         <MQTTGauge
-          topic={Topic.POWER}
+          topic={Topic.INDOOR_POWER}
           symbol="W"
-          label="Socket"
+          label="Process"
           max={MaxPower}
         />
       </Box>
@@ -132,8 +132,8 @@ export const Dashboard: React.FC = () => {
       <Box gridArea={AreaName.OUTDOOR_PUMP_ENERGY}>
         <MQTTGauge
           topic={Topic.OUTDOOR_ENERGY}
-          symbol="W/m"
-          label="Energy"
+          symbol="W/h"
+          label="Power"
           max={MaxEnergy}
         />
       </Box>

@@ -7,14 +7,20 @@ export enum Topic {
   OUTDOOR_POWER = 'shellies/shelly1pm-8CAAB5056D9C/relay/0/power',
   OUTDOOR_TEMP = 'shellies/shelly1pm-8CAAB5056D9C/temperature',
   OUTDOOR_ENERGY = 'shellies/shelly1pm-8CAAB5056D9C/relay/0/energy',
+  OUTDOOR_PUMPS_STATUS = 'shellies/shelly1pm-8CAAB5056D9C/relay/0',
+  OUTDOOR_PUMPS_SWITCH = 'shellies/shelly1pm-8CAAB5056D9C/relay/0/command',
+
+  INDOOR_POWER = 'shellies/shelly1pm-8CAAB505F8A6/relay/0/power',
+  INDOOR_TEMP = 'shellies/shelly1pm-8CAAB505F8A6/temperature',
+  INDOOR_ENERGY = 'shellies/shelly1pm-8CAAB505F8A6/relay/0/energy',
+  INDOOR_LIGHT_STATUS = 'shellies/shelly1pm-8CAAB505F8A6/relay/0',
+  INDOOR_LIGHT_SWITCH = 'shellies/shelly1pm-8CAAB505F8A6/relay/0/command',
 
   PROCESS_STATUS = 'sensors/light',
   PUMPS_STATUS = 'sensors/pumps',
-  OUTDOOR_PUMPS_STATUS = 'shellies/shelly1pm-8CAAB5056D9C/relay/0',
 
   PUMPS_SWITCH = 'actuators/pumps',
   PROCESS_SWITCH = 'actuators/light',
-  OUTDOOR_PUMPS_SWITCH = 'shellies/shelly1pm-8CAAB5056D9C/relay/0/command',
 
   CAM = 'sensors/cam',
 
@@ -32,6 +38,8 @@ export const SensorTopics = [
   Topic.OUTDOOR_POWER,
   Topic.OUTDOOR_TEMP,
   Topic.OUTDOOR_ENERGY,
+  Topic.INDOOR_POWER,
+  Topic.INDOOR_ENERGY,
   Topic.CAM,
   Topic.WEATHER,
 ]
