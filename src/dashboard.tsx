@@ -1,21 +1,21 @@
+import { Box } from 'grommet'
+import { Header } from 'grommet/components/Header'
 import React, { ReactNode } from 'react'
+import { MQTTActivity } from './components/activity'
 import { Card } from './components/card'
 import { MQTTGauge } from './components/gauge'
+import { MQTTImage } from './components/image'
 import { MQTTSwitch } from './components/switch'
+import { MQTTWeatherIcon } from './components/weather-icon'
 import {
   DesktopGrid,
-  MaxPower,
-  MobileGrid,
-  MaxTemp,
   MaxEnergy,
+  MaxPower,
+  MaxTemp,
+  MobileGrid,
   TabletGrid,
 } from './layout.conf'
 import { Topic } from './shared/mqtt.types'
-import { MQTTImage } from './components/image'
-import { Header } from 'grommet/components/Header'
-import { MQTTActivity } from './components/activity'
-import { MQTTWeatherIcon } from './components/weather-icon'
-import { Box, Tab } from 'grommet'
 
 interface ResponsiveGridProps {
   children: ReactNode[]
