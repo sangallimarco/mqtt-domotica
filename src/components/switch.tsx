@@ -44,7 +44,7 @@ export const MQTTSwitch: React.FC<MQTTButtonProps> = (props) => {
   }
 
   return (
-    <Box align="center" pad="small">
+    <Box align="center">
       <Button
         ref={boxRef as any}
         size="large"

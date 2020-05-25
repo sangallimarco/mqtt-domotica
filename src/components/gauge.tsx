@@ -23,7 +23,7 @@ export const MQTTGauge: React.FC<valueProps> = (props) => {
   const color = getMeterColor(value, max)
 
   return (
-    <Box align="center" pad="small">
+    <Box align="center">
       <Stack anchor="center">
         <Meter
           type="circle"
