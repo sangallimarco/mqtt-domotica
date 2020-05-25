@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { UseMQTT } from '../shared/mqtt.service'
 import { Topic } from '../shared/mqtt.types'
+import { Box } from 'grommet'
 
 export interface MQTTImageProps {
   topic: Topic
@@ -16,5 +17,15 @@ export const MQTTImage: React.FC<MQTTImageProps> = (props) => {
   const { topic } = props
   const { message } = UseMQTT(topic)
 
-  return <ImageContainer src={message} />
+  return (
+    <Box
+      pad="xsmall"
+      background="dark-2"
+      alignContent="center"
+      justify="center"
+      round={true}
+    >
+      <ImageContainer src={message} />
+    </Box>
+  )
 }
