@@ -14,7 +14,7 @@ export const Card: React.FC<CardProps> = ({ title, children }) => {
       align="center"
       pad="medium"
       background="dark-1"
-      gap="small"
+      gap="medium"
       round={true}
     >
       <h1>{title}</h1>
