@@ -8,24 +8,27 @@ import {
   MobileGrid,
   MaxTemp,
   MaxEnergy,
+  TabletGrid,
 } from './layout.conf'
 import { Topic } from './shared/mqtt.types'
 import { MQTTImage } from './components/image'
 import { Header } from 'grommet/components/Header'
 import { MQTTActivity } from './components/activity'
 import { MQTTWeatherIcon } from './components/weather-icon'
-import { Box } from 'grommet'
+import { Box, Tab } from 'grommet'
 
 interface ResponsiveGridProps {
   children: ReactNode[]
 }
 
 const ResponsiveGrid = (props: ResponsiveGridProps) => {
-  return window.innerWidth < 750 ? (
-    <MobileGrid>{props.children}</MobileGrid>
-  ) : (
-    <DesktopGrid>{props.children}</DesktopGrid>
-  )
+  if (window.innerWidth > 1440) {
+    return <DesktopGrid>{props.children}</DesktopGrid>
+  } else if (window.innerWidth > 750) {
+    return <TabletGrid>{props.children}</TabletGrid>
+  } else {
+    return <MobileGrid>{props.children}</MobileGrid>
+  }
 }
 
 export const Dashboard: React.FC = () => {

@@ -51,14 +51,20 @@ export const customTheme = deepMerge(grommet, {
   },
 })
 
-// components
 export const MobileGrid = styled.div`
   display: grid;
   grid-gap: 1em;
   grid-auto-rows: min-content;
   grid-template-columns: 1fr;
 `
-// components
+
+export const TabletGrid = styled.div`
+  display: grid;
+  grid-gap: 1em;
+  grid-auto-rows: min-content;
+  grid-template-columns: repeat(2, 1fr);
+`
+
 export const DesktopGrid = styled.div`
   display: grid;
   grid-gap: 1em;
