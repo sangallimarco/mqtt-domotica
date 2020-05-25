@@ -32,5 +32,5 @@ export const MQTTWeatherIcon: React.FC<MQTTWeatherIconProps> = (props) => {
 
   const icon = iconConfig[message] || faExclamation
 
-  return <FontAwesomeIcon size="3x" icon={icon} />
+  return <FontAwesomeIcon size="2x" icon={icon} />
 }

@@ -1,9 +1,8 @@
-import React, { useState, useRef } from "react"
-import { UseMQTT } from "../shared/mqtt.service"
-import { Topic } from "../shared/mqtt.types"
-import { Box, Button, ButtonProps, Drop } from "grommet"
-import { stringToBoolean, booleanToString } from "../shared/formatters"
-import { CirclePlay, PauseFill } from "grommet-icons"
+import { Box, Button, ButtonProps, Drop } from 'grommet'
+import React, { useRef, useState } from 'react'
+import { booleanToString, stringToBoolean } from '../shared/formatters'
+import { UseMQTT } from '../shared/mqtt.service'
+import { Topic } from '../shared/mqtt.types'
 
 export interface MQTTButtonProps extends ButtonProps {
   topic: Topic
@@ -15,10 +14,10 @@ export interface MQTTButtonProps extends ButtonProps {
 
 export const MQTTSwitch: React.FC<MQTTButtonProps> = (props) => {
   const { topic, label, feedBackTopic, confirmLabel, safe, shellyMode } = props
-  
+
   const boxRef = useRef()
   const [openDrop, setOpenDrop] = useState(false)
-  const {message, sendMessage} = UseMQTT(feedBackTopic)
+  const { message, sendMessage } = UseMQTT(feedBackTopic)
 
   const on = stringToBoolean(message)
 
@@ -44,12 +43,9 @@ export const MQTTSwitch: React.FC<MQTTButtonProps> = (props) => {
     setOpenDrop(false)
   }
 
-  const icon = !on ? <CirclePlay /> : <PauseFill />
-
   return (
     <Box align="center" pad="small">
       <Button
-        icon={icon}
         ref={boxRef as any}
         size="large"
         primary={on}
@@ -58,7 +54,7 @@ export const MQTTSwitch: React.FC<MQTTButtonProps> = (props) => {
       />
       {safe && openDrop && (
         <Drop
-          align={{ top: "bottom", left: "left" }}
+          align={{ top: 'bottom', left: 'left' }}
           target={boxRef.current}
           onClickOutside={handleCloseDrop}
         >

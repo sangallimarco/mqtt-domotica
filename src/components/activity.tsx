@@ -16,5 +16,5 @@ export const MQTTActivity: React.FC<MQTTButtonProps> = (props) => {
   const connected = stringToBoolean(message)
   const icon = !connected ? faPlug : faNetworkWired
 
-  return <FontAwesomeIcon size="3x" icon={icon} />
+  return <FontAwesomeIcon size="2x" icon={icon} />
 }

@@ -48,6 +48,7 @@ export const SensorTopics = [
   Topic.OUTDOOR_POWER,
   Topic.OUTDOOR_TEMP,
   Topic.OUTDOOR_ENERGY,
+  Topic.INDOOR_TEMP,
   Topic.INDOOR_POWER,
   Topic.INDOOR_ENERGY,
   Topic.CAM,
