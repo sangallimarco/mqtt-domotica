@@ -39,6 +39,4 @@ export enum Topic {
 }
 
 // Subscribe to sensors
-export const SensorTopics = [
-  Topic.TEMP1,
-]
+export const SensorTopics = [Topic.TEMP1, Topic.TEMP2]
