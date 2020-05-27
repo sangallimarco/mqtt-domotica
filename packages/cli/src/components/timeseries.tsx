@@ -23,7 +23,7 @@ export const MQTTimeSeries: React.FC<TimeSeriesChartProps> = ({
       <Stack fill>
         <Box align="center" fill>
           <Chart
-            type="bar"
+            type="area"
             values={values}
             round
             bounds={[xBounds, yBounds]}
