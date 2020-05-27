@@ -41,5 +41,9 @@
     "path": "^0.12.7",
     "redis": "^3.0.2",
     "solc": "^0.6.6"
+  },
+  "pkg": {
+    "scripts": "build/**/*.js",
+    "assets": "views/**/*"
   }
 }
