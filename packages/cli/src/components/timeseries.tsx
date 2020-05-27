@@ -18,7 +18,7 @@ export const MQTTimeSeries: React.FC<TimeSeriesChartProps> = ({
   const values = stringToTimeSeries(message)
 
   return (
-    <Box align="center" fill="horizontal" pad="large">
+    <Box align="center" fill="horizontal" pad="small">
       <Box align="center" direction="column" gap="small" fill="horizontal">
         <Text size="large">{label} </Text>
         <Chart
