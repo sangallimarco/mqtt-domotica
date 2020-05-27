@@ -1,4 +1,6 @@
-import { Decimal } from 'decimal.js'
+import { Decimal } from 'decimal.js';
+import { TimeSeries } from './mqtt.types';
+import { isArray } from 'lodash';
 
 export function numberToFixed(value: number, decimal: number = 2): string {
   try {
@@ -38,4 +40,19 @@ export function getMeterColor(value: number, max: number): string {
     return 'status-warning'
   }
   return 'status-ok'
+}
+
+
+export function stringToTimeSeries(value: string): number[][] {
+  if (value && value.length > 0) {
+    let result = [];
+    try {
+      result = JSON.parse(value);
+    } catch (e) {
+      //
+    }
+    return isArray(result) ? result.map((item: TimeSeries, index) => [index, Number(item.value)]) : []
+  }
+
+  return [];
 }

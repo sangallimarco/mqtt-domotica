@@ -13,8 +13,7 @@ const ImageContainer = styled.img`
   border-radius: 1em;
 `
 
-export const MQTTImage: React.FC<MQTTImageProps> = (props) => {
-  const { topic } = props
+export const MQTTImage: React.FC<MQTTImageProps> = ({ topic }) => {
   const { message } = UseMQTT(topic)
 
   return (

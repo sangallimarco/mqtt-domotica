@@ -16,6 +16,7 @@ import {
   TabletGrid,
 } from './layout.conf'
 import { Topic } from './shared/mqtt.types'
+import { MQTTimeSeries } from './components/timeseries'
 
 interface ResponsiveGridProps {
   children: ReactNode[]
@@ -65,6 +66,7 @@ export const Dashboard: React.FC = () => {
             label="Socket"
             max={MaxTemp}
           />
+          <MQTTimeSeries label="Socket Temp Chart" topic={Topic.TEMP2_SERIES} />
         </Card>
 
         <Card title="Indoor Pumps">
@@ -81,6 +83,7 @@ export const Dashboard: React.FC = () => {
             label="Temp"
             max={MaxTemp}
           />
+          <MQTTimeSeries label="Temp Chart" topic={Topic.TEMP1_SERIES} />
           <MQTTImage topic={Topic.CAM} />
         </Card>
 

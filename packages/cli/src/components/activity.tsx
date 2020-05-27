@@ -9,8 +9,7 @@ export interface MQTTButtonProps {
   topic: Topic
 }
 
-export const MQTTActivity: React.FC<MQTTButtonProps> = (props) => {
-  const { topic } = props
+export const MQTTActivity: React.FC<MQTTButtonProps> = ({ topic }) => {
   const { message } = UseMQTT(topic)
 
   const connected = stringToBoolean(message)

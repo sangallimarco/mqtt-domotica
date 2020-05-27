@@ -21,6 +21,7 @@ export enum Topic {
 
   // RPI actuators and sensors
   TEMP1 = 'sensors/temp1',
+  TEMP1_SERIES = 'sensors/temp1-time-series',
   PUMPS_STATUS = 'sensors/pumps',
   PUMPS_SWITCH = 'actuators/pumps',
 
@@ -28,6 +29,7 @@ export enum Topic {
   LIVINGROOM_SWITCH = 'actuators/livingroom',
   LIVINGROOM_STATUS = 'sensors/livingroom',
   TEMP2 = 'sensors/temp2',
+  TEMP2_SERIES = 'sensors/temp2-time-series',
   POWER = 'sensors/power',
 
   // Cam streams
@@ -40,7 +42,9 @@ export enum Topic {
 // Subscribe to sensors
 export const SensorTopics = [
   Topic.TEMP1,
+  Topic.TEMP1_SERIES,
   Topic.TEMP2,
+  Topic.TEMP2_SERIES,
   Topic.POWER,
   Topic.PROCESS_STATUS,
   Topic.PUMPS_STATUS,
@@ -57,7 +61,12 @@ export const SensorTopics = [
 ]
 export const AllTopics = Object.values(Topic)
 
-// not used yet
+// JSON stringified data transported by MQTT
+export interface TimeSeries { 
+  ts: string
+  value: string
+}
+
 export interface TopicMessage {
   topic: Topic
   payload: string

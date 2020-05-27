@@ -28,7 +28,7 @@ mqttClient.on('connect', function () {
     MessageBusRead.next({topic: Topic.CONNECTED, payload: booleanToString(true)})
     mqttClient.on('message', (topic: Topic, message: Buffer) => {
         // message is Buffer
-        const payload = message.toString() // TODO can be parsed as JSON if required
+        const payload = message.toString();
         MessageBusRead.next({topic, payload})
     })
     
@@ -46,7 +46,7 @@ export function filterByTopic<T extends Topic>(topic: T): Observable<TopicMessag
 
 export function sendMessage(message: TopicMessage): void {
     const {topic, payload} = message
-    mqttClient.publish(topic, payload)
+    mqttClient.publish(topic, JSON.stringify(payload))
 }
 
 // Custom Hook
