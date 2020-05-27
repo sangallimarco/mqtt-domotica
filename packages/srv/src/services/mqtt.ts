@@ -5,7 +5,6 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 function getMQTTOptions() {
-  console.log(process.env.MQTT_USERNAME, process.env.MQTT_PASSWORD)
   return process.env.MQTT_USERNAME && process.env.MQTT_PASSWORD
     ? {
         username: process.env.MQTT_USERNAME,
@@ -21,5 +20,5 @@ export function addToMQTT(
   value: string,
   postfix = '-time-series'
 ): void {
-  mqttClient.publish(`${topic}${postfix}`, value)
+  mqttClient.publish(`${topic}${postfix}`, value, {qos: 0, retain: true})
 }
