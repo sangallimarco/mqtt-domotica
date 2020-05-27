@@ -1,8 +1,7 @@
-import { Decimal } from 'decimal.js';
-import { TimeSeries } from './mqtt.types';
-import { isArray } from 'lodash';
+import { Decimal } from 'decimal.js'
+import { TimeSeries } from './mqtt.types'
 
-export function numberToFixed(value: number, decimal: number = 2): string {
+export function numberToFixed(value: number | string, decimal: number = 2): string {
   try {
     return new Decimal(value).toFixed(decimal)
   } catch (e) {
@@ -43,16 +42,43 @@ export function getMeterColor(value: number, max: number): string {
 }
 
 
-export function stringToTimeSeries(value: string): number[][] {
+export interface TimeSeriesData {
+  xBounds: number[]
+  yBounds: number[]
+  values: number[][]
+}
+
+export function stringToTimeSeries(value: string): TimeSeriesData {
+  let xBounds = [Infinity, -Infinity]
+  let yBounds = [Infinity, -Infinity]
+  let values = []
+
   if (value && value.length > 0) {
-    let result = [];
+    let result = []
     try {
-      result = JSON.parse(value);
+      result = JSON.parse(value)
     } catch (e) {
       //
     }
-    return isArray(result) ? result.map((item: TimeSeries, index) => [index, Number(item.value)]) : []
+
+    values = result.map((item: TimeSeries, index: number) => {
+      const value = new Decimal(item.value).toDecimalPlaces(2).toNumber()
+
+      if (value > yBounds[1]) {
+        yBounds[1] = value
+      }else if (value < yBounds[0]) {
+        yBounds[0] = value
+      }
+
+      return [index, value]
+    }
+    )
+    xBounds = [0, values.length - 1]
   }
 
-  return [];
+  return {
+    xBounds,
+    yBounds,
+    values
+  }
 }
