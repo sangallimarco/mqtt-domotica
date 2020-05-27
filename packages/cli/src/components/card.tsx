@@ -3,7 +3,6 @@ import React from 'react'
 
 export interface CardProps {
   title: string
-  header?: React.ReactNode
 }
 
 export const Card: React.FC<CardProps> = ({ title, children }) => {

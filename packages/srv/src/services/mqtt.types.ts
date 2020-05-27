@@ -1,3 +1,4 @@
+// this should be shared
 export enum Topic {
   CONNECTED = 'CONNECTED',
 
@@ -38,27 +39,4 @@ export enum Topic {
 }
 
 // Subscribe to sensors
-export const SensorTopics = [
-  Topic.TEMP1,
-  Topic.TEMP2,
-  Topic.POWER,
-  Topic.PROCESS_STATUS,
-  Topic.PUMPS_STATUS,
-  Topic.OUTDOOR_PUMPS_STATUS,
-  Topic.OUTDOOR_POWER,
-  Topic.OUTDOOR_TEMP,
-  Topic.OUTDOOR_ENERGY,
-  Topic.INDOOR_TEMP,
-  Topic.INDOOR_POWER,
-  Topic.INDOOR_ENERGY,
-  Topic.CAM,
-  Topic.WEATHER,
-  Topic.LIVINGROOM_STATUS,
-]
-export const AllTopics = Object.values(Topic)
-
-// not used yet
-export interface TopicMessage {
-  topic: Topic
-  payload: string
-}
+export const SensorTopics = [Topic.TEMP1, Topic.TEMP2]

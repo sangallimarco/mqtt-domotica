@@ -12,8 +12,7 @@ export interface MQTTButtonProps extends ButtonProps {
   shellyMode?: boolean
 }
 
-export const MQTTSwitch: React.FC<MQTTButtonProps> = (props) => {
-  const { topic, label, feedBackTopic, confirmLabel, safe, shellyMode } = props
+export const MQTTSwitch: React.FC<MQTTButtonProps> = ({ topic, label, feedBackTopic, confirmLabel, safe, shellyMode }) => {
 
   const boxRef = useRef()
   const [openDrop, setOpenDrop] = useState(false)

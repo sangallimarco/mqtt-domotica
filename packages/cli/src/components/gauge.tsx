@@ -14,8 +14,7 @@ export interface valueProps extends MeterProps {
   label: string
 }
 
-export const MQTTGauge: React.FC<valueProps> = (props) => {
-  const { topic, symbol, label, max = 1, thickness = 'large' } = props
+export const MQTTGauge: React.FC<valueProps> = ({ topic, symbol, label, max = 1, thickness = 'large' }) => {
 
   const { message } = UseMQTT(topic)
   const value = stringToNumber(message)

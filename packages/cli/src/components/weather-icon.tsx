@@ -26,8 +26,7 @@ export const iconConfig: Record<string, IconDefinition> = {
   Drizzle: faCloudRain,
 }
 
-export const MQTTWeatherIcon: React.FC<MQTTWeatherIconProps> = (props) => {
-  const { topic } = props
+export const MQTTWeatherIcon: React.FC<MQTTWeatherIconProps> = ({ topic }) => {
   const { message } = UseMQTT(topic)
 
   const icon = iconConfig[message] || faExclamation
