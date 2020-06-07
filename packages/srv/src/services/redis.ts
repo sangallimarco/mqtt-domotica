@@ -1,7 +1,7 @@
 import * as redis from 'redis'
 const client = redis.createClient()
 
-const BUFFER_LENGTH = 100
+const BUFFER_LENGTH = 50
 
 export interface Item {
   ts: string
