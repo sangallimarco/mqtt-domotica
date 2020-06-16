@@ -14,8 +14,11 @@ mqttClient.on('connect', () => {
 
   mqttClient.on('message', async (topic: string, message: Buffer) => {
     const payload = message.toString()
+    console.log('Processing Message', topic, payload)
     processMQTTMessage(topic, payload)
   })
+
+  // TODO send status to a regular interval
 })
 
 mqttClient.on('disconnect', () => {
