@@ -5,9 +5,10 @@ module.exports = {
       script: './worker.js',
       watch: true,
       env: {
-        MQTT: 'mqtt://127.0.0.1',
-        MQTT_USERNAME: 'xxx',
-        MQTT_PASSWORD: 'xxx',
+        MQTT: 'mqtt://192.168.0.2',
+        MQTT_USERNAME: '',
+        MQTT_PASSWORD: '',
+        MQTT_ID: 1
       },
     },
   ],
