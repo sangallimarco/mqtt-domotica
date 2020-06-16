@@ -1,0 +1,50 @@
+{
+  "name": "mqtt-rpi",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node build/index.js",
+    "build": "rimraf build && webpack",
+    "start:dev": "tsc-watch --onSuccess \"node build/index.js\"",
+    "test": "jest --watch",
+    "coverage": "jest --coverage"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.6",
+    "@types/express-jwt": "^0.0.42",
+    "@types/helmet": "^0.0.45",
+    "@types/node": "^13.11.1",
+    "@types/redis": "^2.8.21",
+    "@types/rpi-gpio": "^2.1.1",
+    "jest": "^24.9.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^24.3.0",
+    "ts-loader": "^7.0.5",
+    "tsc-watch": "^4.2.3",
+    "typescript": "^3.8.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.3",
+    "express-jwt-authz": "^2.3.1",
+    "fs-extra": "^9.0.0",
+    "helmet": "^3.22.0",
+    "jwks-rsa": "^1.8.0",
+    "lodash": "^4.17.15",
+    "mqtt": "^4.1.0",
+    "path": "^0.12.7",
+    "redis": "^3.0.2",
+    "rpi-gpio": "^2.1.7",
+    "solc": "^0.6.6"
+  }
+}

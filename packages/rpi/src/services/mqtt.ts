@@ -1,0 +1,59 @@
+import dotenv from 'dotenv'
+import mqtt from 'mqtt'
+import { convertInput, convertOutput } from './converters'
+import { writePin } from './gpio'
+import { Direction, GPIO_PIN, OUTPUT_PINS } from './types'
+
+export const DEVICE_FAMILY = 'rpi'
+
+dotenv.config()
+
+function getMQTTOptions() {
+  return process.env.MQTT_USERNAME && process.env.MQTT_PASSWORD
+    ? {
+      username: process.env.MQTT_USERNAME,
+      password: process.env.MQTT_PASSWORD,
+    }
+    : {}
+}
+// connect to MQTT Broker
+export const mqttClient = mqtt.connect(process.env.MQTT, getMQTTOptions())
+
+
+
+export function getMQTTPath(pin: GPIO_PIN, direction: Direction) {
+  return `${DEVICE_FAMILY}/${process.env.MQTT_ID}/${pin}/${direction}`
+}
+
+export function parseMQTTCommand(topic: string, value: string): [number, boolean] {
+  const parts = topic.split('/')
+  if (parts.length === 4) {
+    const direction = parts[3]
+    if (direction === Direction.COMMAND) {
+      return [parseInt(parts[2]), convertInput(value)]
+    }
+  }
+  return [-1, false]
+}
+
+export function addMQTTMessage(
+  pin: GPIO_PIN,
+  value: boolean
+): void {
+  const path = getMQTTPath(pin, Direction.STATUS)
+  const covertedValue = convertOutput(value)
+  mqttClient.publish(path, covertedValue, { qos: 0, retain: true })
+}
+
+export async function processMQTTMessage(topic: string, value: string): Promise<void> {
+  const [targetPin, convertedValue] = parseMQTTCommand(topic, value)
+  if (targetPin > 1) {
+    await writePin(targetPin, convertedValue)
+    addMQTTMessage(targetPin, convertedValue)
+  }
+}
+
+export function getCommandTopics(): string[] {
+  return OUTPUT_PINS.map((pin) => getMQTTPath(pin, Direction.COMMAND))
+}
+
