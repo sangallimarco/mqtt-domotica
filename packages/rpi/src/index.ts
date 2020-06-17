@@ -1,9 +1,13 @@
 import dotenv from 'dotenv'
 import { getCommandTopics, mqttClient, processMQTTMessage } from './services/mqtt'
+import { initPins } from './services/gpio'
 
 dotenv.config()
 
 console.log('Starting Worker', process.env.MQTT)
+
+// init gpio
+initPins()
 
 mqttClient.on('connect', () => {
   console.log('Connected')

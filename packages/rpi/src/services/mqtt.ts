@@ -4,7 +4,7 @@ import { convertInput, convertOutput } from './converters'
 import { writePin } from './gpio'
 import { Direction, GPIO_PIN, OUTPUT_PINS } from './types'
 
-export const DEVICE_FAMILY = 'rpi'
+export const DEVICE_FAMILY = 'rpis'
 
 dotenv.config()
 
@@ -30,7 +30,7 @@ export function parseMQTTCommand(topic: string, value: string): [number, boolean
   if (parts.length === 4) {
     const direction = parts[3]
     if (direction === Direction.COMMAND) {
-      return [parseInt(parts[2]), convertInput(value)]
+      return [parseInt(parts[2], 10), convertInput(value)]
     }
   }
   return [-1, false]
@@ -47,6 +47,7 @@ export function addMQTTMessage(
 
 export async function processMQTTMessage(topic: string, value: string): Promise<void> {
   const [targetPin, convertedValue] = parseMQTTCommand(topic, value)
+  console.log(targetPin, convertedValue)
   if (targetPin > 1) {
     await writePin(targetPin, convertedValue)
     addMQTTMessage(targetPin, convertedValue)

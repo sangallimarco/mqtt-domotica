@@ -3,22 +3,29 @@ import { INPUT, INPUT_PINS, OUTPUT, OUTPUT_PINS } from './types'
 const gpioPromise = gpio.promise
 
 export async function initPins(): Promise<boolean> {
-    const promiseChain: Promise<any>[] = []
-
-    OUTPUT_PINS.forEach((pin) => {
-        promiseChain.push(gpioPromise.setup(pin, 'out'))
-        promiseChain.push(gpioPromise.write(pin, false))
+    OUTPUT_PINS.forEach(async (pin) => {
+        console.log('Setup Output', pin)
+        await gpioPromise.setup(pin, gpio.DIR_OUT)
     })
-    INPUT_PINS.forEach((pin) => {
-        promiseChain.push(gpioPromise.setup(pin, 'in'))
+    INPUT_PINS.forEach(async (pin) => {
+        console.log('Setup Input', pin)
+        await gpioPromise.setup(pin, gpio.DIR_IN)
     })
 
-    await  Promise.all(promiseChain)
+    //TODO remove this one => there is an issue with rpi-gpio and setup
+    await new Promise((resolve, reject) => setTimeout(() => resolve(true), 10000))
+
+    OUTPUT_PINS.forEach(async (pin) => {
+        console.log('Set Default Output Values', pin)
+        await gpioPromise.write(pin, false)
+    })
+
     return true
 }
 
 export async function writePin(pin: OUTPUT, status: boolean): Promise<unknown> {
     if (OUTPUT_PINS.includes(pin)) {
+        console.log('Set Pin', pin, status)
         return gpioPromise.write(pin, status)
     }
     return null
