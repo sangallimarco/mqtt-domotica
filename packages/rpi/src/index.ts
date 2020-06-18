@@ -4,7 +4,7 @@ import { initPins } from './services/gpio'
 
 dotenv.config()
 
-console.log('Starting Worker', process.env.MQTT)
+console.log(`Starting Worker <${process.env.MQTT_ID}>: ${process.env.MQTT}`)
 
 // init gpio
 initPins()

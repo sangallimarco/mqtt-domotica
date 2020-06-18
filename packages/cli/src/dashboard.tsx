@@ -117,8 +117,8 @@ export const Dashboard: React.FC = () => {
 
         <Card title="Outdoor">
           <MQTTSwitch
-            topic={Topic.OUTDOOR_PUMPS_SWITCH}
-            feedBackTopic={Topic.OUTDOOR_PUMPS_STATUS}
+            topic={Topic.OUTDOOR_RPI_SWITCH}
+            feedBackTopic={Topic.OUTDOOR_RPI_STATUS}
             label="Switch"
             confirmLabel="On"
             safe={true}
