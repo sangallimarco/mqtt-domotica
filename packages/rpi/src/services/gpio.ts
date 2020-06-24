@@ -5,11 +5,19 @@ const gpioPromise = gpio.promise
 export async function initPins(): Promise<boolean> {
     OUTPUT_PINS.forEach(async (pin) => {
         console.log('Setup Output', pin)
-        await gpioPromise.setup(pin, gpio.DIR_OUT)
+        try {
+            await gpioPromise.setup(pin, gpio.DIR_OUT)
+        } catch (e) {
+            console.error(e)
+        }
     })
     INPUT_PINS.forEach(async (pin) => {
         console.log('Setup Input', pin)
-        await gpioPromise.setup(pin, gpio.DIR_IN)
+        try {
+            await gpioPromise.setup(pin, gpio.DIR_IN)
+        } catch (e) {
+            console.error(e)
+        }
     })
 
     //TODO remove this one => there is an issue with rpi-gpio and setup
@@ -17,7 +25,11 @@ export async function initPins(): Promise<boolean> {
 
     OUTPUT_PINS.forEach(async (pin) => {
         console.log('Set Default Output Values', pin)
-        await gpioPromise.write(pin, false)
+        try {
+            await gpioPromise.write(pin, false)
+        } catch (e) {
+            console.error(e)
+        }
     })
 
     return true

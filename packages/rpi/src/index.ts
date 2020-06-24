@@ -1,30 +1,39 @@
 import dotenv from 'dotenv'
-import { getCommandTopics, mqttClient, processMQTTMessage } from './services/mqtt'
+import mqtt from 'mqtt'
+import { getCommandTopics, processMQTTMessage, getMQTTOptions } from './services/mqtt'
 import { initPins } from './services/gpio'
 
 dotenv.config()
 
-console.log(`Starting Worker <${process.env.MQTT_ID}>: ${process.env.MQTT}`)
+async function main() {
+  console.log(`Starting Worker <${process.env.MQTT_ID}>: ${process.env.MQTT}`)
 
-// init gpio
-initPins()
+  // init gpio
+  await initPins()
 
-mqttClient.on('connect', () => {
-  console.log('Connected')
+  // connect to broker
+  const mqttClient = mqtt.connect(process.env.MQTT, getMQTTOptions())
+  mqttClient.on('connect', () => {
+    console.log('Connected')
 
-  // subscribe to all topic
-  const topics = getCommandTopics()
-  mqttClient.subscribe(topics)
+    // subscribe to all topic
+    const topics = getCommandTopics()
+    mqttClient.subscribe(topics)
 
-  mqttClient.on('message', async (topic: string, message: Buffer) => {
-    const payload = message.toString()
-    console.log('Processing Message', topic, payload)
-    processMQTTMessage(topic, payload)
+    // process messages
+    mqttClient.on('message', async (topic: string, message: Buffer) => {
+      const payload = message.toString()
+      console.log('Processing Message', topic, payload)
+      processMQTTMessage(topic, payload, mqttClient)
+    })
+
+    // TODO send status to a regular interval
   })
 
-  // TODO send status to a regular interval
-})
+  mqttClient.on('disconnect', () => {
+    console.log('Disconnected')
+  })
+}
 
-mqttClient.on('disconnect', () => {
-  console.log('Disconnected')
-})
+// run process
+main()
