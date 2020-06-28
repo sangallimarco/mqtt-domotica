@@ -41,4 +41,4 @@ main()
 
 process.on('SIGINT', () => {
   clearPins()
-}
+})
