@@ -2,9 +2,9 @@ import { BinaryValue } from "onoff"
 
 export enum GPIO_PIN {
     // outputs
-    GPIO17 = 11,
-    GPIO27 = 13,
-    GPIO22 = 15,
+    GPIO17 = 17,
+    GPIO27 = 27,
+    GPIO22 = 22,
 
     // inputs
     GPIO29 = 29,

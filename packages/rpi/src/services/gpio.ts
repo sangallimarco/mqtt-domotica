@@ -19,6 +19,7 @@ export function setInputsCallback(callback: InputCallback): void {
     INPUT_MAP.forEach((gpio, pin) => {
         gpio.watch((err, value) => {
             if (!err) {
+                console.log('Read Pin', pin, value)
                 callback(pin, value)
             }
         })
@@ -34,12 +35,11 @@ export function clearPins(): void {
     })
 }
 
-export async function writePin(pin: OUTPUT, value: BinaryValue): Promise<unknown> {
+export function writePin(pin: OUTPUT, value: BinaryValue): void {
     const output = OUTPUT_MAP.get(pin)
     if (output) {
-        console.log('Set Pin', pin, status)
-        return output.writeSync(value)
+        console.log('Set Pin', pin, value)
+        output.writeSync(value)
     }
-    return null
 }
 

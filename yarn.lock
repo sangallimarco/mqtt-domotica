@@ -1728,13 +1728,6 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.9.tgz#79df4ae965fb76d31943b54a6419599307a21394"
   integrity sha512-EPZBIGed5gNnfWCiwEIwTE2Jdg4813odnG8iNPMQGrqVxrI+wL68SPtPeCX+ZxGBaA6pKAVc6jaKgP/Q0QzfdQ==
 
-"@types/onoff@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@types/onoff/-/onoff-4.1.0.tgz#7aec860e4af009cd357dab2a7b9426334434d3f7"
-  integrity sha512-AvagXfwQ7Ki7IkjjjBqeVC5Hxayb7okpuOYaeFhHWhFUozYKPfAY+WfP6tZnE5ZEHfpOLv7fqm7YjpypIuoIrQ==
-  dependencies:
-    onoff "*"
-
 "@types/parse-json@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
@@ -8682,7 +8675,7 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
-onoff@*, onoff@^6.0.0:
+onoff@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/onoff/-/onoff-6.0.0.tgz#989258b0881eb883109aa63175a522349a70b7d5"
   integrity sha512-MLWs/s5vU0rfG+oTVXvGz7DIfAeynVEsZAZfbk8AL7gVVSaJerB2UxjkKRdUJIAMVFfdhgsZXZw+5eJAzdWspw==

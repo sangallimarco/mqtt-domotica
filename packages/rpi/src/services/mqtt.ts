@@ -43,11 +43,11 @@ export function addMQTTMessage(
   cli.publish(path, covertedValue, { qos: 0, retain: true })
 }
 
-export async function processMQTTMessage(topic: string, value: string, cli: MqttClient): Promise<void> {
+export function processMQTTMessage(topic: string, value: string, cli: MqttClient): void {
   const [targetPin, convertedValue] = parseMQTTCommand(topic, value)
   console.log(targetPin, convertedValue)
   if (targetPin > 1) {
-    await writePin(targetPin, convertedValue)
+    writePin(targetPin, convertedValue)
     addMQTTMessage(targetPin, convertedValue, cli)
   }
 }

@@ -22,7 +22,6 @@
     "@types/helmet": "^0.0.45",
     "@types/jest": "^26.0.3",
     "@types/node": "^13.11.1",
-    "@types/onoff": "^4.1.0",
     "@types/redis": "^2.8.21",
     "jest": "^24.9.0",
     "rimraf": "^3.0.2",
