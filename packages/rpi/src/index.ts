@@ -1,15 +1,13 @@
 import dotenv from 'dotenv'
 import mqtt from 'mqtt'
-import { getCommandTopics, processMQTTMessage, getMQTTOptions } from './services/mqtt'
-import { initPins } from './services/gpio'
+import { getCommandTopics, processMQTTMessage, getMQTTOptions, addMQTTMessage } from './services/mqtt'
+import { clearPins, setInputsCallback } from './services/gpio'
 
 dotenv.config()
 
 async function main() {
   console.log(`Starting Worker <${process.env.MQTT_ID}>: ${process.env.MQTT}`)
 
-  // init gpio
-  await initPins()
 
   // connect to broker
   const mqttClient = mqtt.connect(process.env.MQTT, getMQTTOptions())
@@ -27,7 +25,10 @@ async function main() {
       processMQTTMessage(topic, payload, mqttClient)
     })
 
-    // TODO send status to a regular interval
+    // send status on edge
+    setInputsCallback((pin, value) => {
+      addMQTTMessage(pin, value, mqttClient)
+    })
   })
 
   mqttClient.on('disconnect', () => {
@@ -37,3 +38,7 @@ async function main() {
 
 // run process
 main()
+
+process.on('SIGINT', () => {
+  clearPins()
+}

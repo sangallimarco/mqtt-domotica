@@ -1,52 +1,45 @@
-import gpio from 'rpi-gpio'
-import { INPUT, INPUT_PINS, OUTPUT, OUTPUT_PINS } from './types'
-const gpioPromise = gpio.promise
+import { BinaryValue, Gpio } from 'onoff';
+import { InputCallback, INPUT_PINS, OUTPUT, OUTPUT_PINS } from './types';
 
-export async function initPins(): Promise<boolean> {
-    OUTPUT_PINS.forEach(async (pin) => {
-        console.log('Setup Output', pin)
-        try {
-            await gpioPromise.setup(pin, gpio.DIR_OUT)
-        } catch (e) {
-            console.error(e)
-        }
-    })
-    INPUT_PINS.forEach(async (pin) => {
+const INPUT_MAP = new Map(
+    INPUT_PINS.map((pin) => {
         console.log('Setup Input', pin)
-        try {
-            await gpioPromise.setup(pin, gpio.DIR_IN)
-        } catch (e) {
-            console.error(e)
-        }
+        return [pin, new Gpio(pin, 'in', 'rising', { debounceTimeout: 10 })]
     })
+)
 
-    //TODO remove this one => there is an issue with rpi-gpio and setup
-    await new Promise((resolve, reject) => setTimeout(() => resolve(true), 10000))
-
-    OUTPUT_PINS.forEach(async (pin) => {
-        console.log('Set Default Output Values', pin)
-        try {
-            await gpioPromise.write(pin, false)
-        } catch (e) {
-            console.error(e)
-        }
+const OUTPUT_MAP = new Map(
+    OUTPUT_PINS.map((pin) => {
+        console.log('Setup Output', pin)
+        return [pin, new Gpio(pin, 'out')]
     })
+)
 
-    return true
+export function setInputsCallback(callback: InputCallback): void {
+    INPUT_MAP.forEach((gpio, pin) => {
+        gpio.watch((err, value) => {
+            if (!err) {
+                callback(pin, value)
+            }
+        })
+    })
 }
 
-export async function writePin(pin: OUTPUT, status: boolean): Promise<unknown> {
-    if (OUTPUT_PINS.includes(pin)) {
+export function clearPins(): void {
+    INPUT_MAP.forEach((input) => {
+        input.unexport()
+    })
+    OUTPUT_MAP.forEach((output) => {
+        output.unexport()
+    })
+}
+
+export async function writePin(pin: OUTPUT, value: BinaryValue): Promise<unknown> {
+    const output = OUTPUT_MAP.get(pin)
+    if (output) {
         console.log('Set Pin', pin, status)
-        return gpioPromise.write(pin, status)
+        return output.writeSync(value)
     }
     return null
-}
-
-export async function readPin(pin: INPUT): Promise<boolean> {
-    if (INPUT_PINS.includes(pin)) {
-        return gpioPromise.read(pin)
-    }
-    return false
 }
 
