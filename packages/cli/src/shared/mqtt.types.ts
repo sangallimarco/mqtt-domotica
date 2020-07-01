@@ -9,8 +9,8 @@ export enum Topic {
   OUTDOOR_PUMPS_SWITCH = 'shellies/shelly1pm-8CAAB5056D9C/relay/0/command',
 
   // RPI MQTT
-  OUTDOOR_RPI_STATUS = 'rpis/garden/11/status',
-  OUTDOOR_RPI_SWITCH = 'rpis/garden/11/command',
+  OUTDOOR_RPI_STATUS = 'rpis/garden/17/status',
+  OUTDOOR_RPI_SWITCH = 'rpis/garden/17/command',
   
   // Shelly Sterilisation Room
   INDOOR_POWER = 'shellies/shelly1pm-8CAAB505F8A6/relay/0/power',
