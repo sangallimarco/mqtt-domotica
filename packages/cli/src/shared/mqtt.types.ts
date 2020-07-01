@@ -9,8 +9,8 @@ export enum Topic {
   OUTDOOR_PUMPS_SWITCH = 'shellies/shelly1pm-8CAAB5056D9C/relay/0/command',
 
   // RPI MQTT
-  OUTDOOR_RPI_STATUS = 'rpis/garden/17/status',
-  OUTDOOR_RPI_SWITCH = 'rpis/garden/17/command',
+  RPI_ZERO_STATUS = 'rpis/garden/17/status',
+  RPI_ZERO_SWITCH = 'rpis/garden/17/command',
   
   // Shelly Sterilisation Room
   INDOOR_POWER = 'shellies/shelly1pm-8CAAB505F8A6/relay/0/power',
@@ -62,7 +62,7 @@ export const SensorTopics = [
   Topic.CAM,
   Topic.WEATHER,
   Topic.LIVINGROOM_STATUS,
-  Topic.OUTDOOR_RPI_STATUS
+  Topic.RPI_ZERO_STATUS
 ]
 export const AllTopics = Object.values(Topic)
 
