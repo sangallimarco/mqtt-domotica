@@ -143,6 +143,17 @@ export const Dashboard: React.FC = () => {
             max={MaxEnergy}
           />
         </Card>
+
+        <Card title="RPI">
+          <MQTTSwitch
+            topic={Topic.RPI_ZERO_SWITCH}
+            feedBackTopic={Topic.RPI_ZERO_STATUS}
+            label="Switch"
+            confirmLabel="On"
+            safe={true}
+            shellyMode={true}
+          />
+        </Card>
       </ResponsiveGrid>
     </Box>
   )

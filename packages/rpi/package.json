@@ -1,5 +1,5 @@
 {
-  "name": "mqtt-server",
+  "name": "mqtt-rpi",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node build/index.js",
     "build": "rimraf build && webpack",
+    "build:rpi": "tsc",
     "start:dev": "tsc-watch --onSuccess \"node build/index.js\"",
     "test": "jest --watch",
     "coverage": "jest --coverage"
@@ -40,7 +41,9 @@
     "fs-extra": "^9.0.0",
     "helmet": "^3.22.0",
     "jwks-rsa": "^1.8.0",
+    "lodash": "^4.17.15",
     "mqtt": "^4.1.0",
+    "onoff": "^6.0.0",
     "path": "^0.12.7",
     "redis": "^3.0.2",
     "solc": "^0.6.6"
