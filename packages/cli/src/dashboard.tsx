@@ -146,9 +146,17 @@ export const Dashboard: React.FC = () => {
 
         <Card title="RPI">
           <MQTTSwitch
-            topic={Topic.RPI_ZERO_SWITCH}
-            feedBackTopic={Topic.RPI_ZERO_STATUS}
-            label="Switch"
+            topic={Topic.RPI_ZERO_LIGHT_SWITCH}
+            feedBackTopic={Topic.RPI_ZERO_LIGHT_STATUS}
+            label="Light Switch"
+            confirmLabel="On"
+            safe={true}
+            shellyMode={true}
+          />
+          <MQTTSwitch
+            topic={Topic.RPI_ZERO_PUMP_SWITCH}
+            feedBackTopic={Topic.RPI_ZERO_PUMP_STATUS}
+            label="Pump Switch"
             confirmLabel="On"
             safe={true}
             shellyMode={true}
