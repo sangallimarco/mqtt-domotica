@@ -9,10 +9,10 @@ export enum Topic {
   OUTDOOR_PUMPS_SWITCH = 'shellies/shelly1pm-8CAAB5056D9C/relay/0/command',
 
   // RPI MQTT
-  RPI_ZERO_LIGHT_STATUS = 'rpis/garden/17/status',
-  RPI_ZERO_LIGHT_SWITCH = 'rpis/garden/17/command',
-  RPI_ZERO_PUMP_STATUS = 'rpis/garden/27/status',
-  RPI_ZERO_PUMP_SWITCH = 'rpis/garden/27/command',
+  RPI_ZERO_LIGHT_STATUS = 'rpis/garden/light/status',
+  RPI_ZERO_LIGHT_SWITCH = 'rpis/garden/light/command',
+  RPI_ZERO_PUMP_STATUS = 'rpis/garden/pump/status',
+  RPI_ZERO_PUMP_SWITCH = 'rpis/garden/pump/command',
   
   // Shelly Sterilisation Room
   INDOOR_POWER = 'shellies/shelly1pm-8CAAB505F8A6/relay/0/power',

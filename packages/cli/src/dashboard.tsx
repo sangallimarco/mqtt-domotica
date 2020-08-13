@@ -151,15 +151,15 @@ export const Dashboard: React.FC = () => {
             label="Light Switch"
             confirmLabel="On"
             safe={true}
-            shellyMode={true}
+            shellyMode={false}
           />
           <MQTTSwitch
             topic={Topic.RPI_ZERO_PUMP_SWITCH}
             feedBackTopic={Topic.RPI_ZERO_PUMP_STATUS}
             label="Pump Switch"
             confirmLabel="On"
-            safe={true}
-            shellyMode={true}
+            safe={false}
+            shellyMode={false}
           />
         </Card>
       </ResponsiveGrid>
