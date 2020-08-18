@@ -69,7 +69,7 @@ export const DesktopGrid = styled.div`
   display: grid;
   grid-gap: 1em;
   grid-auto-rows: min-content;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 `
 
 export const MaxTemp = 60

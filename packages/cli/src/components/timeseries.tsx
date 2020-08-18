@@ -25,7 +25,7 @@ export const MQTTimeSeries: React.FC<TimeSeriesChartProps> = ({
       direction="column"
       gap="medium"
       fill="horizontal"
-      height="medium"
+      height="small"
       pad="medium"
     >
       <Box direction="row" gap="small">
@@ -40,30 +40,30 @@ export const MQTTimeSeries: React.FC<TimeSeriesChartProps> = ({
       <Stack fill>
         <Box align="center" fill>
           <Chart
-            type="area"
+            type="line"
             values={values}
             bounds={[xBounds, yBounds]}
-            thickness="xxsmall"
+            thickness="xxxsmall"
             size={{ width: 'full', height: 'full' }}
-            color="dark-2"
+            color="accent-1"
           />
         </Box>
         <Box fill>
           <Box flex justify="between">
-            <Box border="top" align="start">
+            <Box border={{color: `dark-2`, side: 'top', style: 'dotted' }} align="start">
               <Box
-                pad="xsmall"
+                pad="xxsmall"
                 background={{ color: 'white', opacity: 'medium' }}
               >
-                <Text>{yBounds[1]}</Text>
+                <Text size="small">{yBounds[1]}</Text>
               </Box>
             </Box>
-            <Box border="bottom" align="start">
+            <Box border={{color: `dark-2`, side: 'bottom', style: 'dotted' }} align="start">
               <Box
-                pad="xsmall"
+                pad="xxsmall"
                 background={{ color: 'white', opacity: 'medium' }}
               >
-                <Text>{yBounds[0]}</Text>
+                <Text size="small">{yBounds[0]}</Text>
               </Box>
             </Box>
           </Box>

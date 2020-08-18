@@ -43,7 +43,7 @@ export const MQTTSwitch: React.FC<MQTTButtonProps> = ({ topic, label, feedBackTo
   }
 
   return (
-    <Box align="center">
+    <Box align="center" fill="horizontal">
       <Button
         ref={boxRef as any}
         size="large"

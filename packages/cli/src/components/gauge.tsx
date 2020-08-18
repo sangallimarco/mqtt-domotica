@@ -22,10 +22,12 @@ export const MQTTGauge: React.FC<valueProps> = ({ topic, symbol, label, max = 1,
   const color = getMeterColor(value, max)
 
   return (
-    <Box align="center">
+    <Box align="center" direction="column" gap="small" fill="horizontal">
+      <Text size="large">{label} </Text>
       <Stack anchor="center">
         <Meter
-          type="circle"
+          type="bar"
+          round={true}
           values={[
             {
               value,
@@ -37,21 +39,18 @@ export const MQTTGauge: React.FC<valueProps> = ({ topic, symbol, label, max = 1,
           max={max}
           thickness={thickness}
         />
-
-        <Box direction="column" align="center">
-          <Text size="large">{label} </Text>
           <Box
             direction="row"
             align="center"
             pad={{ bottom: 'xsmall' }}
             gap="xsmall"
           >
+            
             <Text size="xlarge" weight="bold">
               {formattedValue}
             </Text>
             <Text size="medium"> {symbol}</Text>
           </Box>
-        </Box>
       </Stack>
     </Box>
   )
