@@ -55,6 +55,7 @@ export const DesktopGrid = styled.div`
 
 export const MaxTemp = 60
 export const MaxPower = 100
+export const MaxQuality = 256
 export const MaxEnergy = 50000
 export const MinTemp = 10
 export const MaxPercentage = 100

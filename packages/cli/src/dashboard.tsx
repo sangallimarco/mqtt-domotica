@@ -14,7 +14,8 @@ import {
   MaxTemp,
   MobileGrid,
   TabletGrid,
-  MaxPercentage
+  MaxPercentage,
+  MaxQuality
 } from './layout.conf'
 import { Topic } from './shared/mqtt.types'
 import { MQTTimeSeries } from './components/timeseries'
@@ -187,7 +188,7 @@ export const Dashboard: React.FC = () => {
             topic={Topic.SEEED_AIR_STATUS}
             symbol=""
             label="Air Quality"
-            max={MaxPercentage}
+            max={MaxQuality}
           />
            <MQTTImage topic={Topic.SEEED_CAM} />
         </Card>
