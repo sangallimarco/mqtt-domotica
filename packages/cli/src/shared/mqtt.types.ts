@@ -43,6 +43,15 @@ export enum Topic {
 
   // Weather API streams
   WEATHER = 'sensors/weather',
+
+  // SEEED Grove
+  SEEED_TEMP_STATUS = 'rpis/seeed/temp/status',
+  SEEED_HUM_STATUS = 'rpis/seeed/humidity/status',
+  SEEED_AIR_STATUS = 'rpis/seeed/air/status',
+  SEEED_CAM = 'rpis/seeed/cam',
+  SEEED_UV_STATUS = 'rpis/seeed/temp/status',
+  SEEED_PUMP_STATUS = 'rpis/seeed/relay/status',
+  SEEED_PUMP_SWITCH = 'rpis/seeed/relay/command'
 }
 
 // Subscribe to sensors
@@ -65,7 +74,13 @@ export const SensorTopics = [
   Topic.WEATHER,
   Topic.LIVINGROOM_STATUS,
   Topic.RPI_ZERO_LIGHT_STATUS,
-  Topic.RPI_ZERO_PUMP_STATUS
+  Topic.RPI_ZERO_PUMP_STATUS,
+  Topic.SEEED_AIR_STATUS,
+  Topic.SEEED_HUM_STATUS,
+  Topic.SEEED_PUMP_STATUS,
+  Topic.SEEED_TEMP_STATUS,
+  Topic.SEEED_UV_STATUS,
+  Topic.SEEED_CAM
 ]
 export const AllTopics = Object.values(Topic)
 

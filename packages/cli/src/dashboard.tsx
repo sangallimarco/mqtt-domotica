@@ -14,6 +14,7 @@ import {
   MaxTemp,
   MobileGrid,
   TabletGrid,
+  MaxPercentage
 } from './layout.conf'
 import { Topic } from './shared/mqtt.types'
 import { MQTTimeSeries } from './components/timeseries'
@@ -161,6 +162,28 @@ export const Dashboard: React.FC = () => {
             safe={false}
             shellyMode={false}
           />
+        </Card>
+
+        <Card title="RPI Seeed">
+          <MQTTGauge
+            topic={Topic.SEEED_TEMP_STATUS}
+            symbol="C"
+            label="Temp"
+            max={MaxTemp}
+          />
+          <MQTTGauge
+            topic={Topic.SEEED_HUM_STATUS}
+            symbol="%"
+            label="Humidity"
+            max={MaxPercentage}
+          />
+          <MQTTGauge
+            topic={Topic.SEEED_UV_STATUS}
+            symbol="I"
+            label="UV"
+            max={MaxPercentage}
+          />
+           <MQTTImage topic={Topic.SEEED_CAM} />
         </Card>
       </ResponsiveGrid>
     </Box>

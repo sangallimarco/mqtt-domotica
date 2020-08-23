@@ -2,25 +2,6 @@ import { grommet } from 'grommet'
 import { deepMerge } from 'grommet/utils'
 import styled from 'styled-components'
 
-export enum AreaName {
-  HEADER = 'HEADER',
-  PUMPS_SWITCH = 'PUMPS_SWITCH',
-  LIGHT_SWITCH = 'LIGHT_SWITCH',
-  PROCESS_SWITCH = 'PROCESS_SWITCH',
-  TEMP1 = 'TEMP1',
-  TEMP2 = 'TEMP2',
-  POWER = 'POWER',
-  HEADER_OUTDOOR = 'HEADER_OUTDOOR',
-  OUTDOOR_PUMP_SWITCH = 'OUTDOOR_PUMP_SWITCH',
-  OUTDOOR_FUTURE1 = 'OUTDOOR_FUTURE1',
-  OUTDOOR_FUTURE2 = 'OUTDOOR_FUTURE2',
-  OUTDOOR_PUMP_POWER = 'OUTDOOR_PUMP_POWER',
-  OUTDOOR_PUMP_TEMP = 'OUTDOOR_PUMP_TEMP',
-  OUTDOOR_PUMP_ENERGY = 'OUTDOOR_PUMP_ENERGY',
-  HEADER_CAM = 'HEADER_CAM',
-  CAM = 'CAM',
-}
-
 export const customTheme = deepMerge(grommet, {
   global: {
     font: {
@@ -76,3 +57,4 @@ export const MaxTemp = 60
 export const MaxPower = 100
 export const MaxEnergy = 50000
 export const MinTemp = 10
+export const MaxPercentage = 100
