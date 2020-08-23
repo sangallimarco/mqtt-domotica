@@ -49,7 +49,7 @@ export enum Topic {
   SEEED_HUM_STATUS = 'rpis/seeed/humidity/status',
   SEEED_AIR_STATUS = 'rpis/seeed/air/status',
   SEEED_CAM = 'rpis/seeed/cam',
-  SEEED_UV_STATUS = 'rpis/seeed/temp/status',
+  SEEED_UV_STATUS = 'rpis/seeed/uv/status',
   SEEED_PUMP_STATUS = 'rpis/seeed/relay/status',
   SEEED_PUMP_SWITCH = 'rpis/seeed/relay/command'
 }

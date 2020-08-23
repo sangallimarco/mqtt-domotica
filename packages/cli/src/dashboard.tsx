@@ -183,6 +183,12 @@ export const Dashboard: React.FC = () => {
             label="UV"
             max={MaxPercentage}
           />
+          <MQTTGauge
+            topic={Topic.SEEED_AIR_STATUS}
+            symbol=""
+            label="Air Quality"
+            max={MaxPercentage}
+          />
            <MQTTImage topic={Topic.SEEED_CAM} />
         </Card>
       </ResponsiveGrid>
