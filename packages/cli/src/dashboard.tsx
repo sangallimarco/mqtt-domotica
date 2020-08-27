@@ -10,27 +10,15 @@ import { MQTTimeSeries } from './components/timeseries'
 import { MQTTWeatherIcon } from './components/weather-icon'
 import {
   DesktopGrid,
-
-
-
-
-
-
-
-
-  FloodDrainOnStatuses, MaxADC, MaxEnergy,
-
-
-
-
-  MaxPercentage, MaxPower,
-
-
-
-
-  MaxQuality, MaxTemp,
+  FloodDrainOnStatuses,
+  MaxADC,
+  MaxEnergy,
+  MaxPercentage,
+  MaxPower,
+  MaxQuality,
+  MaxTemp,
   MobileGrid,
-  TabletGrid
+  TabletGrid,
 } from './layout.conf'
 import { Topic } from './shared/mqtt.types'
 
@@ -210,6 +198,10 @@ export const Dashboard: React.FC = () => {
             max={MaxQuality}
           />
           <MQTTImage topic={Topic.SEEED_CAM} />
+        </Card>
+
+        <Card title="Test">
+          <MQTTImage topic={Topic.SPY_CAM} />
         </Card>
       </ResponsiveGrid>
     </Box>

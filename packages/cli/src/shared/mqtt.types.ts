@@ -48,7 +48,9 @@ export enum Topic {
   SEEED_PUMP_STATUS = 'rpis/seeed/pump/status',
   SEEED_PUMP_SWITCH = 'rpis/seeed/pump/command',
   SEEED_LAMP_STATUS = 'rpis/seeed/lamp/status',
-  SEEED_LAMP_SWITCH = 'rpis/seeed/lamp/command'
+  SEEED_LAMP_SWITCH = 'rpis/seeed/lamp/command',
+
+  SPY_CAM = 'rpis/spy/cam',
 }
 
 // Subscribe to sensors
@@ -83,6 +85,7 @@ export const SensorTopics = [
 
   Topic.CAM,
   Topic.SEEED_CAM,
+  Topic.SPY_CAM
 ]
 export const AllTopics = Object.values(Topic)
 
