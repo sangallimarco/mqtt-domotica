@@ -6,19 +6,33 @@ import { Card } from './components/card'
 import { MQTTGauge } from './components/gauge'
 import { MQTTImage } from './components/image'
 import { MQTTSwitch } from './components/switch'
+import { MQTTimeSeries } from './components/timeseries'
 import { MQTTWeatherIcon } from './components/weather-icon'
 import {
   DesktopGrid,
-  MaxEnergy,
-  MaxPower,
-  MaxTemp,
+
+
+
+
+
+
+
+
+  FloodDrainOnStatuses, MaxADC, MaxEnergy,
+
+
+
+
+  MaxPercentage, MaxPower,
+
+
+
+
+  MaxQuality, MaxTemp,
   MobileGrid,
-  TabletGrid,
-  MaxPercentage,
-  MaxQuality
+  TabletGrid
 } from './layout.conf'
 import { Topic } from './shared/mqtt.types'
-import { MQTTimeSeries } from './components/timeseries'
 
 interface ResponsiveGridProps {
   children: ReactNode[]
@@ -146,26 +160,25 @@ export const Dashboard: React.FC = () => {
           />
         </Card>
 
-        <Card title="RPI">
+        <Card title="RPI Seeed">
           <MQTTSwitch
-            topic={Topic.RPI_ZERO_LIGHT_SWITCH}
-            feedBackTopic={Topic.RPI_ZERO_LIGHT_STATUS}
-            label="Light Switch"
+            topic={Topic.SEEED_LAMP_SWITCH}
+            feedBackTopic={Topic.SEEED_LAMP_STATUS}
+            label="Lamp"
             confirmLabel="On"
             safe={true}
-            shellyMode={false}
+            shellyMode={true}
           />
           <MQTTSwitch
-            topic={Topic.RPI_ZERO_PUMP_SWITCH}
-            feedBackTopic={Topic.RPI_ZERO_PUMP_STATUS}
-            label="Pump Switch"
+            topic={Topic.SEEED_PUMP_SWITCH}
+            feedBackTopic={Topic.SEEED_PUMP_STATUS}
+            label="Pump"
             confirmLabel="On"
-            safe={false}
-            shellyMode={false}
+            safe={true}
+            shellyMode={true}
+            showStatus={true}
+            onStatuses={FloodDrainOnStatuses}
           />
-        </Card>
-
-        <Card title="RPI Seeed">
           <MQTTGauge
             topic={Topic.SEEED_TEMP_STATUS}
             symbol="C"
@@ -179,8 +192,14 @@ export const Dashboard: React.FC = () => {
             max={MaxPercentage}
           />
           <MQTTGauge
+            topic={Topic.SEEED_LIGHT_STATUS}
+            symbol=""
+            label="Light"
+            max={MaxADC}
+          />
+          <MQTTGauge
             topic={Topic.SEEED_UV_STATUS}
-            symbol="I"
+            symbol=""
             label="UV"
             max={MaxPercentage}
           />
@@ -190,7 +209,7 @@ export const Dashboard: React.FC = () => {
             label="Air Quality"
             max={MaxQuality}
           />
-           <MQTTImage topic={Topic.SEEED_CAM} />
+          <MQTTImage topic={Topic.SEEED_CAM} />
         </Card>
       </ResponsiveGrid>
     </Box>

@@ -1,24 +1,27 @@
 import { Box, Button, ButtonProps, Drop } from 'grommet'
 import React, { useRef, useState } from 'react'
-import { booleanToString, stringToBoolean } from '../shared/formatters'
+import { booleanToString } from '../shared/formatters'
 import { UseMQTT } from '../shared/mqtt.service'
 import { Topic } from '../shared/mqtt.types'
 
-export interface MQTTButtonProps extends ButtonProps {
+export interface MQTTSwitchProps extends ButtonProps {
   topic: Topic
   feedBackTopic: Topic
   confirmLabel: string
   safe: boolean
-  shellyMode?: boolean
+  shellyMode?: boolean,
+  showStatus?:boolean
+  onStatuses?: string[]
 }
 
-export const MQTTSwitch: React.FC<MQTTButtonProps> = ({ topic, label, feedBackTopic, confirmLabel, safe, shellyMode }) => {
+export const MQTTSwitch: React.FC<MQTTSwitchProps> = ({ topic, label, feedBackTopic, confirmLabel, safe, shellyMode, showStatus, onStatuses = ['on', '1']}) => {
 
   const boxRef = useRef()
   const [openDrop, setOpenDrop] = useState(false)
   const { message, sendMessage } = UseMQTT(feedBackTopic)
 
-  const on = stringToBoolean(message)
+  const on = onStatuses.includes(message)
+  const formattedLabel = showStatus ? `${label}: ${message}` : label;
 
   const handleToggle = () => {
     const toggleStatus = !on
@@ -48,7 +51,7 @@ export const MQTTSwitch: React.FC<MQTTButtonProps> = ({ topic, label, feedBackTo
         ref={boxRef as any}
         size="large"
         primary={on}
-        label={label}
+        label={formattedLabel}
         onClick={handleToggle}
       />
       {safe && openDrop && (

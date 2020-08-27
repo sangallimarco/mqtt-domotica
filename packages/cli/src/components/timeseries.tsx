@@ -6,12 +6,12 @@ import { Topic } from '../shared/mqtt.types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
-export interface TimeSeriesChartProps {
+export interface MQTTimeSeriesProps {
   topic: Topic
   label: string
 }
 
-export const MQTTimeSeries: React.FC<TimeSeriesChartProps> = ({
+export const MQTTimeSeries: React.FC<MQTTimeSeriesProps> = ({
   topic,
   label,
 }) => {

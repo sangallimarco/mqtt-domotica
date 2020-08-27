@@ -59,3 +59,6 @@ export const MaxQuality = 256
 export const MaxEnergy = 50000
 export const MinTemp = 10
 export const MaxPercentage = 100
+export const MaxADC = 1024
+
+export const FloodDrainOnStatuses = ['flood', 'drain'];

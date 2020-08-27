@@ -8,13 +8,13 @@ import {
   getMeterColor,
 } from '../shared/formatters'
 
-export interface valueProps extends MeterProps {
+export interface MQTTGaugeProps extends MeterProps {
   topic: Topic
   symbol: string
   label: string
 }
 
-export const MQTTGauge: React.FC<valueProps> = ({ topic, symbol, label, max = 1, thickness = 'large' }) => {
+export const MQTTGauge: React.FC<MQTTGaugeProps> = ({ topic, symbol, label, max = 1, thickness = 'large' }) => {
 
   const { message } = UseMQTT(topic)
   const value = stringToNumber(message)

@@ -5,11 +5,11 @@ import { stringToBoolean } from '../shared/formatters'
 import { UseMQTT } from '../shared/mqtt.service'
 import { Topic } from '../shared/mqtt.types'
 
-export interface MQTTButtonProps {
+export interface MQTTActivityProps {
   topic: Topic
 }
 
-export const MQTTActivity: React.FC<MQTTButtonProps> = ({ topic }) => {
+export const MQTTActivity: React.FC<MQTTActivityProps> = ({ topic }) => {
   const { message } = UseMQTT(topic)
 
   const connected = stringToBoolean(message)
