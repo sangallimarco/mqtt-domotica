@@ -6,7 +6,7 @@ export const customTheme = deepMerge(grommet, {
   global: {
     font: {
       family: 'Roboto',
-      size: '14px',
+      size: '12px',
       height: '20px',
     },
     drop: {
@@ -52,6 +52,14 @@ export const DesktopGrid = styled.div`
   grid-auto-rows: min-content;
   grid-template-columns: repeat(4, 1fr);
 `
+
+export const BigScreenGrid = styled.div`
+  display: grid;
+  grid-gap: 2em;
+  grid-auto-rows: min-content;
+  grid-template-columns: repeat(6, 1fr);
+`
+
 
 export const MaxTemp = 60
 export const MaxPower = 100

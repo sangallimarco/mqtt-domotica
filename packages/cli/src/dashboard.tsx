@@ -19,6 +19,7 @@ import {
   MaxTemp,
   MobileGrid,
   TabletGrid,
+  BigScreenGrid,
 } from './layout.conf'
 import { Topic } from './shared/mqtt.types'
 
@@ -27,9 +28,13 @@ interface ResponsiveGridProps {
 }
 
 const ResponsiveGrid = (props: ResponsiveGridProps) => {
-  if (window.innerWidth > 1440) {
+  const { innerWidth } = window
+
+  if (innerWidth > 3000) {
+    return <BigScreenGrid>{props.children}</BigScreenGrid>
+  } else if (innerWidth > 1440) {
     return <DesktopGrid>{props.children}</DesktopGrid>
-  } else if (window.innerWidth > 750) {
+  } else if (innerWidth > 750) {
     return <TabletGrid>{props.children}</TabletGrid>
   } else {
     return <MobileGrid>{props.children}</MobileGrid>
@@ -39,7 +44,7 @@ const ResponsiveGrid = (props: ResponsiveGridProps) => {
 export const Dashboard: React.FC = () => {
   return (
     <Box round="full" direction="column" gap="medium">
-      <Header background="dark-3" pad="small">
+      <Header background="dark-3" pad="small" gap="small">
         <Box round="full">
           <h1>Dashboard</h1>
         </Box>
