@@ -28,8 +28,8 @@ export const iconConfig: Record<string, IconDefinition> = {
 
 export const MQTTWeatherIcon: React.FC<MQTTWeatherIconProps> = ({ topic }) => {
   const { message } = UseMQTT(topic)
-
-  const icon = iconConfig[message] || faExclamation
+  const sanitisedMessage = message.toString()
+  const icon = iconConfig[sanitisedMessage] || faExclamation
 
   return <FontAwesomeIcon size="2x" icon={icon} />
 }

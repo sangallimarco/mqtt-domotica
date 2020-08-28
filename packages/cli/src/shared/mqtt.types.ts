@@ -97,5 +97,5 @@ export interface TimeSeries {
 
 export interface TopicMessage {
   topic: Topic
-  payload: string
+  payload: Buffer | string
 }

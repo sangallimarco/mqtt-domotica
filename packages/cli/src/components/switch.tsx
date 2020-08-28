@@ -19,9 +19,10 @@ export const MQTTSwitch: React.FC<MQTTSwitchProps> = ({ topic, label, feedBackTo
   const boxRef = useRef()
   const [openDrop, setOpenDrop] = useState(false)
   const { message, sendMessage } = UseMQTT(feedBackTopic)
+  const sanitisedMessage = message.toString()
 
-  const on = onStatuses.includes(message)
-  const formattedLabel = showStatus ? `${label}: ${message}` : label;
+  const on = onStatuses.includes(sanitisedMessage)
+  const formattedLabel = showStatus ? `${label}: ${sanitisedMessage}` : label;
 
   const handleToggle = () => {
     const toggleStatus = !on

@@ -28,7 +28,7 @@ mqttClient.on('connect', function () {
     MessageBusRead.next({topic: Topic.CONNECTED, payload: booleanToString(true)})
     mqttClient.on('message', (topic: Topic, message: Buffer) => {
         // message is Buffer
-        const payload = message.toString();
+        const payload = message;
         MessageBusRead.next({topic, payload})
     })
     
@@ -51,13 +51,13 @@ export function sendMessage(message: TopicMessage): void {
 
 // Custom Hook
 export interface UseMQTTReturnType {
-    message: string
+    message: Buffer | string
     sendMessage: (message: TopicMessage) => void
 }
 
 export function UseMQTT(topic: Topic): UseMQTTReturnType {
 
-    const [message, setMessage] = useState<string>('')
+    const [message, setMessage] = useState<Buffer | string>('')
 
     useEffect(() => {
         const sub = filterByTopic(topic).subscribe(({ payload }) => {

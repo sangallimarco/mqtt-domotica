@@ -17,7 +17,8 @@ export interface MQTTGaugeProps extends MeterProps {
 export const MQTTGauge: React.FC<MQTTGaugeProps> = ({ topic, symbol, label, max = 1, thickness = 'large' }) => {
 
   const { message } = UseMQTT(topic)
-  const value = stringToNumber(message)
+  const sanitisedMessage = message.toString()
+  const value = stringToNumber(sanitisedMessage)
   const formattedValue = numberToFixed(value)
   const color = getMeterColor(value, max)
 

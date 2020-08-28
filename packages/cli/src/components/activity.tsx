@@ -11,8 +11,8 @@ export interface MQTTActivityProps {
 
 export const MQTTActivity: React.FC<MQTTActivityProps> = ({ topic }) => {
   const { message } = UseMQTT(topic)
-
-  const connected = stringToBoolean(message)
+  const sanitisedMessage = message.toString()
+  const connected = stringToBoolean(sanitisedMessage)
   const icon = !connected ? faPlug : faNetworkWired
 
   return <FontAwesomeIcon size="2x" icon={icon} />
