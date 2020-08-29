@@ -190,12 +190,12 @@ export const Dashboard: React.FC = () => {
             label="Light"
             max={MaxADC}
           />
-          <MQTTGauge
+          {/* <MQTTGauge
             topic={Topic.SEEED_UV_STATUS}
             symbol=""
             label="UV"
             max={MaxPercentage}
-          />
+          /> */}
           <MQTTGauge
             topic={Topic.SEEED_AIR_STATUS}
             symbol=""
