@@ -40,6 +40,7 @@ export enum Topic {
 
   // SEEED Grove
   SEEED_TEMP_STATUS = 'rpis/seeed/temp/status',
+  SEEED_TEMP_TIMESERIES = 'rpis/seeed/temp/timeseries',
   SEEED_HUM_STATUS = 'rpis/seeed/humidity/status',
   SEEED_AIR_STATUS = 'rpis/seeed/air/status',
   SEEED_LIGHT_STATUS = 'rpis/seeed/light/status',
@@ -82,6 +83,7 @@ export const SensorTopics = [
   Topic.SEEED_UV_STATUS,
   Topic.SEEED_LAMP_STATUS,
   Topic.SEEED_LIGHT_STATUS,
+  Topic.SEEED_TEMP_TIMESERIES,
 
   Topic.CAM,
   Topic.SEEED_CAM,
@@ -90,10 +92,7 @@ export const SensorTopics = [
 export const AllTopics = Object.values(Topic)
 
 // JSON stringified data transported by MQTT
-export interface TimeSeries { 
-  ts: string
-  value: string
-}
+export type TimeSeries = [string, string]
 
 export interface TopicMessage {
   topic: Topic

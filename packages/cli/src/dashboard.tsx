@@ -172,18 +172,7 @@ export const Dashboard: React.FC = () => {
             showStatus={true}
             onStatuses={FloodDrainOnStatuses}
           />
-          <MQTTGauge
-            topic={Topic.SEEED_TEMP_STATUS}
-            symbol="C"
-            label="Temp"
-            max={MaxTemp}
-          />
-          <MQTTGauge
-            topic={Topic.SEEED_HUM_STATUS}
-            symbol="%"
-            label="Humidity"
-            max={MaxPercentage}
-          />
+
           <MQTTGauge
             topic={Topic.SEEED_LIGHT_STATUS}
             symbol=""
@@ -202,12 +191,29 @@ export const Dashboard: React.FC = () => {
             label="Air Quality"
             max={MaxQuality}
           />
+
+          <MQTTGauge
+            topic={Topic.SEEED_HUM_STATUS}
+            symbol="%"
+            label="Humidity"
+            max={MaxPercentage}
+          />
+          <MQTTGauge
+            topic={Topic.SEEED_TEMP_STATUS}
+            symbol="C"
+            label="Temp"
+            max={MaxTemp}
+          />
+          <MQTTimeSeries
+            label="Temp Chart"
+            topic={Topic.SEEED_TEMP_TIMESERIES}
+          />
           <MQTTImage topic={Topic.SEEED_CAM} />
         </Card>
 
-        <Card title="Test">
+        {/* <Card title="Test">
           <MQTTImage topic={Topic.SPY_CAM} />
-        </Card>
+        </Card> */}
       </ResponsiveGrid>
     </Box>
   )

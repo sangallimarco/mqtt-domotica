@@ -62,7 +62,8 @@ export function stringToTimeSeries(value: string): TimeSeriesData {
     }
 
     values = result.map((item: TimeSeries, index: number) => {
-      const value = new Decimal(item.value).toDecimalPlaces(2).toNumber()
+      const [timestamp, itemValue] = item;
+      const value = new Decimal(itemValue).toDecimalPlaces(2).toNumber()
 
       if (value > yBounds[1]) {
         yBounds[1] = value
