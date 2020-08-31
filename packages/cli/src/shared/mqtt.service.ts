@@ -46,7 +46,7 @@ export function filterByTopic<T extends Topic>(topic: T): Observable<TopicMessag
 
 export function sendMessage(message: TopicMessage): void {
     const {topic, payload} = message
-    mqttClient.publish(topic, payload)
+    mqttClient.publish(topic, payload, {qos: 1})
 }
 
 // Custom Hook
