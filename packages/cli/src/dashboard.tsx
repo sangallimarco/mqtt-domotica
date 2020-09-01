@@ -191,24 +191,33 @@ export const Dashboard: React.FC = () => {
             label="Air Quality"
             max={MaxQuality}
           />
-
-          <MQTTGauge
-            topic={Topic.SEEED_HUM_STATUS}
-            symbol="%"
-            label="Humidity"
-            max={MaxPercentage}
-          />
           <MQTTGauge
             topic={Topic.SEEED_TEMP_STATUS}
             symbol="C"
             label="Temp"
             max={MaxTemp}
           />
+          <MQTTGauge
+            topic={Topic.SEEED_HUM_STATUS}
+            symbol="%"
+            label="Humidity"
+            max={MaxPercentage}
+          />
+
+          <MQTTImage topic={Topic.SEEED_CAM} />
+
+          <MQTTimeSeries
+            label="Air Quality Chart"
+            topic={Topic.SEEED_AIR_TIMESERIES}
+          />
           <MQTTimeSeries
             label="Temp Chart"
             topic={Topic.SEEED_TEMP_TIMESERIES}
           />
-          <MQTTImage topic={Topic.SEEED_CAM} />
+          <MQTTimeSeries
+            label="Humidity Chart"
+            topic={Topic.SEEED_HUM_TIMESERIES}
+          />
         </Card>
 
         {/* <Card title="Test">
