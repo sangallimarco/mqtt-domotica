@@ -49,8 +49,8 @@ export interface TimeSeriesData {
 }
 
 export function stringToTimeSeries(value: string): TimeSeriesData {
-  let xBounds = [Infinity, -Infinity]
-  let yBounds = [Infinity, -Infinity]
+  let xBounds = [-Infinity, Infinity]
+  let yBounds = [-Infinity, Infinity]
   let values = []
 
   if (value && value.length > 0) {
@@ -62,19 +62,27 @@ export function stringToTimeSeries(value: string): TimeSeriesData {
     }
 
     values = result.map((item: TimeSeries, index: number) => {
-      const [timestamp, itemValue] = item;
-      const value = new Decimal(itemValue).toDecimalPlaces(2).toNumber()
+      const [timestamp, itemValue] = item
+      const ts = parseInt(timestamp, 10)
+      let value = 0
 
-      if (value > yBounds[1]) {
-        yBounds[1] = value
-      }else if (value < yBounds[0]) {
-        yBounds[0] = value
+      try {
+        value = new Decimal(itemValue).toDecimalPlaces(2).toNumber()
+      } catch (e) {
+        //
       }
 
-      return [index, value]
-    }
-    )
-    xBounds = [0, values.length - 1]
+      // first element as index
+      if (index === 0) {
+        yBounds = [value, value]
+        xBounds = [ts, ts]
+      } else {
+        xBounds = getBounds(ts, xBounds)
+        yBounds = getBounds(value, yBounds)
+      }
+
+      return [ts, value]
+    })
   }
 
   return {
@@ -82,4 +90,17 @@ export function stringToTimeSeries(value: string): TimeSeriesData {
     yBounds,
     values
   }
+}
+
+export function getBounds(value: number, bounds: number[]): number[] {
+  const [low = -Infinity, high = Infinity] = bounds
+  const newBounds = [low, high]
+
+  if (value > newBounds[1]) {
+    newBounds[1] = value
+  } else if (value < newBounds[0]) {
+    newBounds[0] = value
+  }
+
+  return newBounds
 }
