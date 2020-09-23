@@ -1,4 +1,5 @@
 import { Decimal } from 'decimal.js'
+import { isEmpty, isNil } from 'lodash'
 import { TimeSeries } from './mqtt.types'
 
 export function numberToFixed(value: number | string, decimal: number = 2): string {
@@ -67,13 +68,13 @@ export function stringToTimeSeries(value: string): TimeSeriesData {
       let value = 0
 
       try {
-        value = new Decimal(itemValue).toDecimalPlaces(2).toNumber()
+        value = new Decimal(itemValue).toDecimalPlaces(1).toNumber()
       } catch (e) {
-        //
+        return [,]
       }
 
       // first element as index
-      if (index === 0) {
+      if (xBounds[0] === -Infinity) {
         yBounds = [value, value]
         xBounds = [ts, ts]
       } else {
@@ -83,6 +84,7 @@ export function stringToTimeSeries(value: string): TimeSeriesData {
 
       return [ts, value]
     })
+    .filter((tuple: number[]) =>!isNil(tuple[0]))
   }
 
   return {
