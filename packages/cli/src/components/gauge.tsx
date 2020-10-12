@@ -47,7 +47,7 @@ export const MQTTGauge: React.FC<MQTTGaugeProps> = ({
             thickness={thickness}
           />
         </Box>
-        <Box direction="row" align="center" margin="small" gap="xxsmall">
+        <Box direction="row" align="center" margin="medium" gap="xxsmall">
           <Text size="medium" weight={500}>
             {formattedValue}
           </Text>
