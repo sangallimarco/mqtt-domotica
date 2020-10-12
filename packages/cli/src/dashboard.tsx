@@ -21,7 +21,7 @@ import { Topic } from './shared/mqtt.types'
 
 export const Dashboard: React.FC = () => {
   return (
-    <Box round="full" direction="column" gap="medium">
+    <Box round="full" direction="column" gap="small">
       <Header background="dark-3" pad="small" gap="small">
         <Box round="full">
           <Text size="large">Dashboard</Text>

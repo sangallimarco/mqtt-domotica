@@ -2,6 +2,8 @@ import { grommet } from 'grommet'
 import { deepMerge } from 'grommet/utils'
 import styled from 'styled-components'
 
+// https://v2.grommet.io/color
+
 const size = {
   mobileS: '320px',
   mobileM: '375px',
@@ -30,11 +32,14 @@ export const customTheme = deepMerge(grommet, {
       size: '12px',
       height: '20px',
     },
+    colors: {
+      brand: 'neutral-3',
+    },
     drop: {
       // background: { dark: 'dark-2', light: 'neutral-2' },
       border: { radius: '2em' },
       zIndex: '13',
-      shadowSize: '0',
+      shadowSize: '1',
     },
     breakpoints: {
       xsmall: {

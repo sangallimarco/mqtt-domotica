@@ -1,4 +1,5 @@
 import { Box, Button, ButtonProps, Drop } from 'grommet'
+import { startCase } from 'lodash'
 import React, { useRef, useState } from 'react'
 import { booleanToString } from '../shared/formatters'
 import { UseMQTT } from '../shared/mqtt.service'
@@ -30,7 +31,9 @@ export const MQTTSwitch: React.FC<MQTTSwitchProps> = ({
   const sanitisedMessage = message.toString()
 
   const on = onStatuses.includes(sanitisedMessage)
-  const formattedLabel = showStatus ? `${label}: ${sanitisedMessage}` : label
+  const formattedLabel = showStatus
+    ? `${label}: ${startCase(sanitisedMessage)}`
+    : label
 
   const handleToggle = () => {
     const toggleStatus = !on
@@ -55,7 +58,7 @@ export const MQTTSwitch: React.FC<MQTTSwitchProps> = ({
   }
 
   return (
-    <Box align="start" fill="horizontal">
+    <Box align="start" fill="horizontal" pad="small">
       <Button
         size="large"
         ref={boxRef as any}

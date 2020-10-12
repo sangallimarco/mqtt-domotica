@@ -1,6 +1,5 @@
 import { Box, Text } from 'grommet'
 import React from 'react'
-import styled from 'styled-components'
 
 export interface CardProps {
   title: string
