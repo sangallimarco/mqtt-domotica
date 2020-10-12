@@ -53,7 +53,7 @@ export const MQTTGauge: React.FC<MQTTGaugeProps> = ({
           margin="medium"
           gap="xsmall"
         >
-          <Text size="medium" weight="bold">
+          <Text size="medium" weight={600}>
             {formattedValue}
           </Text>
           <Text size="small"> {symbol}</Text>
