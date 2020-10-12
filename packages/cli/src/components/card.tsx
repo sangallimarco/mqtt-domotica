@@ -13,13 +13,19 @@ export const Card: React.FC<CardProps> = ({ title, children }) => {
       align="start"
       pad="medium"
       background="light-2"
-      gap="medium"
+      gap="small"
       round={true}
       margin="small"
     >
-      <Text color="dark-3" size="large">
-        {title}
-      </Text>
+      <Box
+        fill="horizontal"
+        border={{ color: 'light-4', side: 'bottom' }}
+        pad={{ bottom: 'small' }}
+      >
+        <Text color="dark-2" size="large">
+          {title}
+        </Text>
+      </Box>
       {children}
     </Box>
   )

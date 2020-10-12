@@ -37,8 +37,8 @@ export const MQTTimeSeries: React.FC<MQTTimeSeriesProps> = ({
           <FontAwesomeIcon size="1x" icon={faArrowUp} /> {yBounds[1]}
         </Text>
       </Box>
-      <Stack fill>
-        <Box align="center" fill background="light-3">
+      <Box align="center" fill background="light-3" round="small">
+        <Stack fill>
           <Chart
             type="line"
             values={values}
@@ -47,28 +47,28 @@ export const MQTTimeSeries: React.FC<MQTTimeSeriesProps> = ({
             size={{ width: 'full', height: 'full' }}
             color="brand"
           />
-        </Box>
-        <Box fill>
-          <Box flex justify="between">
-            <Box align="start">
-              <Box
-                pad="xxsmall"
-                background={{ color: 'white', opacity: 'medium' }}
-              >
-                <Text size="xsmall">{yBounds[1]}</Text>
+          <Box fill>
+            <Box flex justify="between">
+              <Box align="start">
+                <Box
+                  pad="xxsmall"
+                  background={{ color: 'white', opacity: 'medium' }}
+                >
+                  <Text size="xsmall">{yBounds[1]}</Text>
+                </Box>
               </Box>
-            </Box>
-            <Box align="start">
-              <Box
-                pad="xxsmall"
-                background={{ color: 'white', opacity: 'medium' }}
-              >
-                <Text size="xsmall">{yBounds[0]}</Text>
+              <Box align="start">
+                <Box
+                  pad="xxsmall"
+                  background={{ color: 'white', opacity: 'medium' }}
+                >
+                  <Text size="xsmall">{yBounds[0]}</Text>
+                </Box>
               </Box>
             </Box>
           </Box>
-        </Box>
-      </Stack>
+        </Stack>
+      </Box>
     </Box>
   )
 }

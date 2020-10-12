@@ -31,29 +31,24 @@ export const MQTTGauge: React.FC<MQTTGaugeProps> = ({
     <Box align="start" direction="column" fill="horizontal" gap="xsmall">
       <Text size="medium">{label}</Text>
       <Stack anchor="left" fill="horizontal">
-        <Meter
-          type="bar"
-          round={false}
-          values={[
-            {
-              value,
-              color,
-            },
-          ]}
-          aria-label="meter"
-          size="full"
-          max={max}
-          background="light-3"
-          thickness={thickness}
-        />
-        <Box
-          direction="row"
-          align="center"
-          pad={{ bottom: 'xsmall' }}
-          margin="medium"
-          gap="xsmall"
-        >
-          <Text size="medium" weight={600}>
+        <Box round="small" fill="horizontal" overflow="hidden">
+          <Meter
+            type="bar"
+            round={false}
+            values={[
+              {
+                value,
+                color,
+              },
+            ]}
+            aria-label="meter"
+            max={max}
+            background="light-3"
+            thickness={thickness}
+          />
+        </Box>
+        <Box direction="row" align="center" margin="small" gap="xxsmall">
+          <Text size="medium" weight={500}>
             {formattedValue}
           </Text>
           <Text size="small"> {symbol}</Text>

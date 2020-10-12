@@ -56,7 +56,7 @@ export const Dashboard: React.FC = () => {
           <MQTTimeSeries label="Socket Temp Chart" topic={Topic.TEMP2_SERIES} />
         </Card>
 
-        <Card title="Indoor Pumps">
+        <Card title="Indoor Garden">
           <MQTTSwitch
             topic={Topic.PUMPS_SWITCH}
             feedBackTopic={Topic.PUMPS_STATUS}
@@ -64,6 +64,7 @@ export const Dashboard: React.FC = () => {
             confirmLabel="Click to Confirm"
             safe={true}
           />
+          <MQTTImage topic={Topic.CAM} label="Cam" />
           <MQTTGauge
             topic={Topic.TEMP1}
             symbol="C"
@@ -71,10 +72,9 @@ export const Dashboard: React.FC = () => {
             max={MaxTemp}
           />
           <MQTTimeSeries label="Temp Chart" topic={Topic.TEMP1_SERIES} />
-          <MQTTImage topic={Topic.CAM} />
         </Card>
 
-        <Card title="Sterilisation">
+        <Card title="UVC Room">
           <MQTTSwitch
             topic={Topic.PROCESS_SWITCH}
             feedBackTopic={Topic.PROCESS_STATUS}
@@ -102,7 +102,7 @@ export const Dashboard: React.FC = () => {
           />
         </Card>
 
-        <Card title="Outdoor">
+        <Card title="Outdoor Garden">
           <MQTTSwitch
             topic={Topic.OUTDOOR_PUMPS_SWITCH}
             feedBackTopic={Topic.OUTDOOR_PUMPS_STATUS}
@@ -151,6 +151,8 @@ export const Dashboard: React.FC = () => {
             onStatuses={FloodDrainOnStatuses}
           />
 
+          <MQTTImage topic={Topic.SEEED_CAM} label="Cam" />
+
           <MQTTGauge
             topic={Topic.SEEED_LIGHT_STATUS}
             symbol=""
@@ -181,8 +183,6 @@ export const Dashboard: React.FC = () => {
             label="Humidity"
             max={MaxPercentage}
           />
-
-          <MQTTImage topic={Topic.SEEED_CAM} />
 
           <MQTTimeSeries
             label="Air Quality Chart"

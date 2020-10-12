@@ -90,16 +90,16 @@ export const customTheme = deepMerge(grommet, {
 
 export const LayoutGrid = styled.div`
   display: grid;
-  grid-gap: 1em;
+  grid-gap: 0.5em;
   grid-auto-rows: min-content;
   grid-template-columns: 1fr;
 
-  @media ${device.laptop} {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
   @media ${device.tablet} {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${device.laptop} {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   @media ${device.desktopL} {
@@ -108,7 +108,7 @@ export const LayoutGrid = styled.div`
 `
 
 export const MaxTemp = 60
-export const MaxPower = 100
+export const MaxPower = 50
 export const MaxQuality = 256
 export const MaxEnergy = 50000
 export const MinTemp = 10
