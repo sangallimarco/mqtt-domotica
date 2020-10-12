@@ -119,7 +119,7 @@ export const MQTTSwitch: React.FC<MQTTSwitchProps> = ({
         >
           <Box pad="medium">
             <Button
-              size="large"
+              size="medium"
               primary
               label={confirmLabel}
               onClick={handleConfirm}
