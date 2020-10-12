@@ -1,5 +1,6 @@
-import { Box } from 'grommet/components/Box'
+import { Box, Text } from 'grommet'
 import React from 'react'
+import styled from 'styled-components'
 
 export interface CardProps {
   title: string
@@ -10,13 +11,16 @@ export const Card: React.FC<CardProps> = ({ title, children }) => {
     <Box
       direction="column"
       justify="start"
-      align="center"
+      align="start"
       pad="medium"
-      background="dark-1"
+      background="light-2"
       gap="medium"
       round={true}
+      margin="small"
     >
-      <h1>{title}</h1>
+      <Text color="dark-3" size="large">
+        {title}
+      </Text>
       {children}
     </Box>
   )

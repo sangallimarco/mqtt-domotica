@@ -1,6 +1,5 @@
-import { Box } from 'grommet'
-import { Header } from 'grommet/components/Header'
-import React, { ReactNode } from 'react'
+import { Box, Header, Text } from 'grommet'
+import React from 'react'
 import { MQTTActivity } from './components/activity'
 import { Card } from './components/card'
 import { MQTTGauge } from './components/gauge'
@@ -9,44 +8,23 @@ import { MQTTSwitch } from './components/switch'
 import { MQTTimeSeries } from './components/timeseries'
 import { MQTTWeatherIcon } from './components/weather-icon'
 import {
-  DesktopGrid,
   FloodDrainOnStatuses,
+  LayoutGrid,
   MaxADC,
   MaxEnergy,
   MaxPercentage,
   MaxPower,
   MaxQuality,
   MaxTemp,
-  MobileGrid,
-  TabletGrid,
-  BigScreenGrid,
 } from './layout.conf'
 import { Topic } from './shared/mqtt.types'
-
-interface ResponsiveGridProps {
-  children: ReactNode[]
-}
-
-const ResponsiveGrid = (props: ResponsiveGridProps) => {
-  const { innerWidth } = window
-
-  if (innerWidth > 3000) {
-    return <BigScreenGrid>{props.children}</BigScreenGrid>
-  } else if (innerWidth > 1440) {
-    return <DesktopGrid>{props.children}</DesktopGrid>
-  } else if (innerWidth > 750) {
-    return <TabletGrid>{props.children}</TabletGrid>
-  } else {
-    return <MobileGrid>{props.children}</MobileGrid>
-  }
-}
 
 export const Dashboard: React.FC = () => {
   return (
     <Box round="full" direction="column" gap="medium">
       <Header background="dark-3" pad="small" gap="small">
         <Box round="full">
-          <h1>Dashboard</h1>
+          <Text size="large">Dashboard</Text>
         </Box>
         <Box direction="row" gap="medium">
           <MQTTActivity topic={Topic.CONNECTED} />
@@ -54,7 +32,7 @@ export const Dashboard: React.FC = () => {
         </Box>
       </Header>
 
-      <ResponsiveGrid>
+      <LayoutGrid>
         <Card title="Living room">
           <MQTTSwitch
             topic={Topic.LIVINGROOM_SWITCH}
@@ -223,7 +201,7 @@ export const Dashboard: React.FC = () => {
         {/* <Card title="Test">
           <MQTTImage topic={Topic.SPY_CAM} />
         </Card> */}
-      </ResponsiveGrid>
+      </LayoutGrid>
     </Box>
   )
 }

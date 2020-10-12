@@ -12,6 +12,8 @@ const ImageContainer = styled.img`
   max-width: 100%;
   border-radius: 1em;
 `
+
+// TODO use Img object instead when image src changes
 function getImage(message: Buffer | string): string {
   if (message instanceof Buffer) {
     return `data:image/jpg;base64,${message.toString('base64')}`
@@ -25,8 +27,7 @@ export const MQTTImage: React.FC<MQTTImageProps> = ({ topic }) => {
 
   return (
     <Box
-      pad="xsmall"
-      background="dark-2"
+      background="light-1"
       alignContent="center"
       justify="center"
       round={true}

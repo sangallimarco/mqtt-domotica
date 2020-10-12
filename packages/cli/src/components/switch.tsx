@@ -9,20 +9,28 @@ export interface MQTTSwitchProps extends ButtonProps {
   feedBackTopic: Topic
   confirmLabel: string
   safe: boolean
-  shellyMode?: boolean,
-  showStatus?:boolean
+  shellyMode?: boolean
+  showStatus?: boolean
   onStatuses?: string[]
 }
 
-export const MQTTSwitch: React.FC<MQTTSwitchProps> = ({ topic, label, feedBackTopic, confirmLabel, safe, shellyMode, showStatus, onStatuses = ['on', '1']}) => {
-
+export const MQTTSwitch: React.FC<MQTTSwitchProps> = ({
+  topic,
+  label,
+  feedBackTopic,
+  confirmLabel,
+  safe,
+  shellyMode,
+  showStatus,
+  onStatuses = ['on', '1'],
+}) => {
   const boxRef = useRef()
   const [openDrop, setOpenDrop] = useState(false)
   const { message, sendMessage } = UseMQTT(feedBackTopic)
   const sanitisedMessage = message.toString()
 
   const on = onStatuses.includes(sanitisedMessage)
-  const formattedLabel = showStatus ? `${label}: ${sanitisedMessage}` : label;
+  const formattedLabel = showStatus ? `${label}: ${sanitisedMessage}` : label
 
   const handleToggle = () => {
     const toggleStatus = !on
@@ -47,13 +55,15 @@ export const MQTTSwitch: React.FC<MQTTSwitchProps> = ({ topic, label, feedBackTo
   }
 
   return (
-    <Box align="center" fill="horizontal">
+    <Box align="start" fill="horizontal">
       <Button
-        ref={boxRef as any}
         size="large"
+        ref={boxRef as any}
         primary={on}
         label={formattedLabel}
         onClick={handleToggle}
+        fill="horizontal"
+        gap="medium"
       />
       {safe && openDrop && (
         <Drop

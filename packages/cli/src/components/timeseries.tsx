@@ -22,36 +22,40 @@ export const MQTTimeSeries: React.FC<MQTTimeSeriesProps> = ({
 
   return (
     <Box
-      align="center"
+      align="start"
       direction="column"
-      gap="medium"
+      gap="small"
       fill="horizontal"
       height="small"
-      pad="medium"
     >
-      <Box direction="row" gap="small">
-        <Text size="large" weight="normal">
+      <Box direction="row" gap="small" align="baseline">
+        <Text size="medium" weight="normal">
           {label}
         </Text>
-        <Text size="small">
+        <Text size="xsmall">
           <FontAwesomeIcon size="1x" icon={faArrowDown} /> {yBounds[0]}{' '}
           <FontAwesomeIcon size="1x" icon={faArrowUp} /> {yBounds[1]}
         </Text>
       </Box>
       <Stack fill>
         <Box align="center" fill>
-          <Chart
-            type="line"
-            values={values}
-            bounds={[xBounds, yBounds]}
-            thickness="xxxsmall"
-            size={{ width: 'full', height: 'full' }}
-            color="accent-1"
-          />
+          {values && (
+            <Chart
+              type="line"
+              values={values}
+              bounds={[xBounds, yBounds]}
+              thickness="xxxsmall"
+              size={{ width: 'full', height: 'full' }}
+              color="accent-2"
+            />
+          )}
         </Box>
         <Box fill>
           <Box flex justify="between">
-            <Box border={{color: `dark-2`, side: 'top', style: 'dotted' }} align="start">
+            <Box
+              border={{ color: `dark-2`, side: 'top', style: 'dotted' }}
+              align="start"
+            >
               <Box
                 pad="xxsmall"
                 background={{ color: 'white', opacity: 'medium' }}
@@ -59,7 +63,10 @@ export const MQTTimeSeries: React.FC<MQTTimeSeriesProps> = ({
                 <Text size="small">{yBounds[1]}</Text>
               </Box>
             </Box>
-            <Box border={{color: `dark-2`, side: 'bottom', style: 'dotted' }} align="start">
+            <Box
+              border={{ color: `dark-2`, side: 'bottom', style: 'dotted' }}
+              align="start"
+            >
               <Box
                 pad="xxsmall"
                 background={{ color: 'white', opacity: 'medium' }}
