@@ -50,10 +50,7 @@ export const MQTTimeSeries: React.FC<MQTTimeSeriesProps> = ({
         </Box>
         <Box fill>
           <Box flex justify="between">
-            <Box
-              border={{ color: `light-4`, side: 'top', style: 'dotted' }}
-              align="start"
-            >
+            <Box align="start">
               <Box
                 pad="xxsmall"
                 background={{ color: 'white', opacity: 'medium' }}
@@ -61,10 +58,7 @@ export const MQTTimeSeries: React.FC<MQTTimeSeriesProps> = ({
                 <Text size="xsmall">{yBounds[1]}</Text>
               </Box>
             </Box>
-            <Box
-              border={{ color: `light-4`, side: 'bottom', style: 'dotted' }}
-              align="start"
-            >
+            <Box align="start">
               <Box
                 pad="xxsmall"
                 background={{ color: 'white', opacity: 'medium' }}
