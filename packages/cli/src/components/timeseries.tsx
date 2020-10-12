@@ -38,7 +38,7 @@ export const MQTTimeSeries: React.FC<MQTTimeSeriesProps> = ({
         </Text>
       </Box>
       <Stack fill>
-        <Box align="center" fill>
+        <Box align="center" fill background="light-3">
           <Chart
             type="line"
             values={values}
