@@ -1,8 +1,11 @@
 import { Decimal } from 'decimal.js'
-import { isEmpty, isNil } from 'lodash'
+import { isEmpty } from 'lodash'
 import { TimeSeries } from './mqtt.types'
 
-export function numberToFixed(value: number | string, decimal: number = 2): string {
+export function numberToFixed(
+  value: number | string,
+  decimal: number = 2
+): string {
   try {
     return new Decimal(value).toFixed(decimal)
   } catch (e) {
@@ -42,7 +45,6 @@ export function getMeterColor(value: number, max: number): string {
   return 'status-ok'
 }
 
-
 export interface TimeSeriesData {
   xBounds: number[]
   yBounds: number[]
@@ -62,35 +64,36 @@ export function stringToTimeSeries(value: string): TimeSeriesData {
       //
     }
 
-    values = result.map((item: TimeSeries, index: number) => {
-      const [timestamp, itemValue] = item
-      const ts = parseInt(timestamp, 10)
-      let value = 0
+    values = result
+      .map((item: TimeSeries, index: number) => {
+        const [timestamp, itemValue] = item
+        const ts = parseInt(timestamp, 10)
+        let value = 0
 
-      try {
-        value = new Decimal(itemValue).toDecimalPlaces(1).toNumber()
-      } catch (e) {
-        return []
-      }
+        try {
+          value = new Decimal(itemValue).toDecimalPlaces(1).toNumber()
+        } catch (e) {
+          return []
+        }
 
-      // first element as index
-      if (xBounds[0] === -Infinity) {
-        yBounds = [value, value]
-        xBounds = [ts, ts]
-      } else {
-        xBounds = getBounds(ts, xBounds)
-        yBounds = getBounds(value, yBounds)
-      }
+        // first element as index
+        if (xBounds[0] === -Infinity) {
+          yBounds = [value, value]
+          xBounds = [ts, ts]
+        } else {
+          xBounds = getBounds(ts, xBounds)
+          yBounds = getBounds(value, yBounds)
+        }
 
-      return [ts, value]
-    })
-    .filter((tuple: number[]) =>!isEmpty(tuple))
+        return [ts, value]
+      })
+      .filter((tuple: number[]) => !isEmpty(tuple))
   }
 
   return {
     xBounds,
     yBounds,
-    values
+    values,
   }
 }
 

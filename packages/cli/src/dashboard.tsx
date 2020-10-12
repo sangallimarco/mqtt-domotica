@@ -1,6 +1,5 @@
-import { Box } from 'grommet'
-import { Header } from 'grommet/components/Header'
-import React, { ReactNode } from 'react'
+import { Box, Header, Text } from 'grommet'
+import React from 'react'
 import { MQTTActivity } from './components/activity'
 import { Card } from './components/card'
 import { MQTTGauge } from './components/gauge'
@@ -9,44 +8,23 @@ import { MQTTSwitch } from './components/switch'
 import { MQTTimeSeries } from './components/timeseries'
 import { MQTTWeatherIcon } from './components/weather-icon'
 import {
-  DesktopGrid,
   FloodDrainOnStatuses,
+  LayoutGrid,
   MaxADC,
   MaxEnergy,
   MaxPercentage,
   MaxPower,
   MaxQuality,
   MaxTemp,
-  MobileGrid,
-  TabletGrid,
-  BigScreenGrid,
 } from './layout.conf'
 import { Topic } from './shared/mqtt.types'
 
-interface ResponsiveGridProps {
-  children: ReactNode[]
-}
-
-const ResponsiveGrid = (props: ResponsiveGridProps) => {
-  const { innerWidth } = window
-
-  if (innerWidth > 3000) {
-    return <BigScreenGrid>{props.children}</BigScreenGrid>
-  } else if (innerWidth > 1440) {
-    return <DesktopGrid>{props.children}</DesktopGrid>
-  } else if (innerWidth > 750) {
-    return <TabletGrid>{props.children}</TabletGrid>
-  } else {
-    return <MobileGrid>{props.children}</MobileGrid>
-  }
-}
-
 export const Dashboard: React.FC = () => {
   return (
-    <Box round="full" direction="column" gap="medium">
+    <Box round="full" direction="column" gap="small">
       <Header background="dark-3" pad="small" gap="small">
         <Box round="full">
-          <h1>Dashboard</h1>
+          <Text size="large">Dashboard</Text>
         </Box>
         <Box direction="row" gap="medium">
           <MQTTActivity topic={Topic.CONNECTED} />
@@ -54,13 +32,13 @@ export const Dashboard: React.FC = () => {
         </Box>
       </Header>
 
-      <ResponsiveGrid>
+      <LayoutGrid>
         <Card title="Living room">
           <MQTTSwitch
             topic={Topic.LIVINGROOM_SWITCH}
             feedBackTopic={Topic.LIVINGROOM_STATUS}
             label="Switch"
-            confirmLabel="On"
+            confirmLabel="Click to Confirm"
             safe={false}
           />
           <MQTTGauge
@@ -78,14 +56,15 @@ export const Dashboard: React.FC = () => {
           <MQTTimeSeries label="Socket Temp Chart" topic={Topic.TEMP2_SERIES} />
         </Card>
 
-        <Card title="Indoor Pumps">
+        <Card title="Indoor Garden">
           <MQTTSwitch
             topic={Topic.PUMPS_SWITCH}
             feedBackTopic={Topic.PUMPS_STATUS}
             label="Switch"
-            confirmLabel="On"
+            confirmLabel="Click to Confirm"
             safe={true}
           />
+          <MQTTImage topic={Topic.CAM} label="Cam" />
           <MQTTGauge
             topic={Topic.TEMP1}
             symbol="C"
@@ -93,15 +72,14 @@ export const Dashboard: React.FC = () => {
             max={MaxTemp}
           />
           <MQTTimeSeries label="Temp Chart" topic={Topic.TEMP1_SERIES} />
-          <MQTTImage topic={Topic.CAM} />
         </Card>
 
-        <Card title="Sterilisation">
+        <Card title="UVC Room">
           <MQTTSwitch
             topic={Topic.PROCESS_SWITCH}
             feedBackTopic={Topic.PROCESS_STATUS}
             label="Switch"
-            confirmLabel="On"
+            confirmLabel="Click to Confirm"
             safe={true}
           />
           <MQTTGauge
@@ -124,12 +102,12 @@ export const Dashboard: React.FC = () => {
           />
         </Card>
 
-        <Card title="Outdoor">
+        <Card title="Outdoor Garden">
           <MQTTSwitch
             topic={Topic.OUTDOOR_PUMPS_SWITCH}
             feedBackTopic={Topic.OUTDOOR_PUMPS_STATUS}
             label="Switch"
-            confirmLabel="On"
+            confirmLabel="Click to Confirm"
             safe={true}
             shellyMode={true}
           />
@@ -158,7 +136,7 @@ export const Dashboard: React.FC = () => {
             topic={Topic.SEEED_LAMP_SWITCH}
             feedBackTopic={Topic.SEEED_LAMP_STATUS}
             label="Lamp"
-            confirmLabel="On"
+            confirmLabel="Click to Confirm"
             safe={true}
             shellyMode={true}
           />
@@ -166,12 +144,14 @@ export const Dashboard: React.FC = () => {
             topic={Topic.SEEED_PUMP_SWITCH}
             feedBackTopic={Topic.SEEED_PUMP_STATUS}
             label="Pump"
-            confirmLabel="On"
+            confirmLabel="Click to Confirm"
             safe={true}
             shellyMode={true}
             showStatus={true}
             onStatuses={FloodDrainOnStatuses}
           />
+
+          <MQTTImage topic={Topic.SEEED_CAM} label="Cam" />
 
           <MQTTGauge
             topic={Topic.SEEED_LIGHT_STATUS}
@@ -204,8 +184,6 @@ export const Dashboard: React.FC = () => {
             max={MaxPercentage}
           />
 
-          <MQTTImage topic={Topic.SEEED_CAM} />
-
           <MQTTimeSeries
             label="Air Quality Chart"
             topic={Topic.SEEED_AIR_TIMESERIES}
@@ -223,7 +201,7 @@ export const Dashboard: React.FC = () => {
         {/* <Card title="Test">
           <MQTTImage topic={Topic.SPY_CAM} />
         </Card> */}
-      </ResponsiveGrid>
+      </LayoutGrid>
     </Box>
   )
 }

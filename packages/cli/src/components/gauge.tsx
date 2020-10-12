@@ -14,8 +14,13 @@ export interface MQTTGaugeProps extends MeterProps {
   label: string
 }
 
-export const MQTTGauge: React.FC<MQTTGaugeProps> = ({ topic, symbol, label, max = 1, thickness = 'large' }) => {
-
+export const MQTTGauge: React.FC<MQTTGaugeProps> = ({
+  topic,
+  symbol,
+  label,
+  max = 1,
+  thickness = 'large',
+}) => {
   const { message } = UseMQTT(topic)
   const sanitisedMessage = message.toString()
   const value = stringToNumber(sanitisedMessage)
@@ -23,35 +28,31 @@ export const MQTTGauge: React.FC<MQTTGaugeProps> = ({ topic, symbol, label, max 
   const color = getMeterColor(value, max)
 
   return (
-    <Box align="center" direction="column" gap="small" fill="horizontal">
-      <Text size="large">{label} </Text>
-      <Stack anchor="center">
-        <Meter
-          type="bar"
-          round={true}
-          values={[
-            {
-              value,
-              color,
-            },
-          ]}
-          aria-label="meter"
-          size="medium"
-          max={max}
-          thickness={thickness}
-        />
-          <Box
-            direction="row"
-            align="center"
-            pad={{ bottom: 'xsmall' }}
-            gap="xsmall"
-          >
-            
-            <Text size="xlarge" weight="bold">
-              {formattedValue}
-            </Text>
-            <Text size="medium"> {symbol}</Text>
-          </Box>
+    <Box align="start" direction="column" fill="horizontal" gap="xsmall">
+      <Text size="medium">{label}</Text>
+      <Stack anchor="left" fill="horizontal">
+        <Box round="small" fill="horizontal" overflow="hidden">
+          <Meter
+            type="bar"
+            round={false}
+            values={[
+              {
+                value,
+                color,
+              },
+            ]}
+            aria-label="meter"
+            max={max}
+            background="light-3"
+            thickness={thickness}
+          />
+        </Box>
+        <Box direction="row" align="center" margin="small" gap="xxsmall">
+          <Text size="medium" weight={500}>
+            {formattedValue}
+          </Text>
+          <Text size="small"> {symbol}</Text>
+        </Box>
       </Stack>
     </Box>
   )

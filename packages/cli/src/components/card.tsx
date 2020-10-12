@@ -1,4 +1,4 @@
-import { Box } from 'grommet/components/Box'
+import { Box, Text } from 'grommet'
 import React from 'react'
 
 export interface CardProps {
@@ -10,13 +10,22 @@ export const Card: React.FC<CardProps> = ({ title, children }) => {
     <Box
       direction="column"
       justify="start"
-      align="center"
+      align="start"
       pad="medium"
-      background="dark-1"
-      gap="medium"
+      background="light-2"
+      gap="small"
       round={true}
+      margin="small"
     >
-      <h1>{title}</h1>
+      <Box
+        fill="horizontal"
+        border={{ color: 'light-4', side: 'bottom' }}
+        pad={{ bottom: 'small' }}
+      >
+        <Text color="dark-2" size="large">
+          {title}
+        </Text>
+      </Box>
       {children}
     </Box>
   )
