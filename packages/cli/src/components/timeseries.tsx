@@ -43,7 +43,7 @@ export const MQTTimeSeries: React.FC<MQTTimeSeriesProps> = ({
             type="line"
             values={values}
             bounds={[xBounds, yBounds]}
-            thickness="xxxsmall"
+            thickness="hair"
             size={{ width: 'full', height: 'full' }}
             color="brand"
           />
