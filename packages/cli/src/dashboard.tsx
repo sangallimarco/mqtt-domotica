@@ -38,7 +38,6 @@ export const Dashboard: React.FC = () => {
             topic={Topic.LIVINGROOM_SWITCH}
             feedBackTopic={Topic.LIVINGROOM_STATUS}
             label="Switch"
-            confirmLabel="Click to Confirm"
             safe={false}
           />
           <MQTTGauge
@@ -61,7 +60,6 @@ export const Dashboard: React.FC = () => {
             topic={Topic.PUMPS_SWITCH}
             feedBackTopic={Topic.PUMPS_STATUS}
             label="Switch"
-            confirmLabel="Click to Confirm"
             safe={true}
           />
           <MQTTImage topic={Topic.CAM} label="Cam" />
@@ -79,7 +77,6 @@ export const Dashboard: React.FC = () => {
             topic={Topic.PROCESS_SWITCH}
             feedBackTopic={Topic.PROCESS_STATUS}
             label="Switch"
-            confirmLabel="Click to Confirm"
             safe={true}
           />
           <MQTTGauge
@@ -107,7 +104,6 @@ export const Dashboard: React.FC = () => {
             topic={Topic.OUTDOOR_PUMPS_SWITCH}
             feedBackTopic={Topic.OUTDOOR_PUMPS_STATUS}
             label="Switch"
-            confirmLabel="Click to Confirm"
             safe={true}
             shellyMode={true}
           />
@@ -136,7 +132,6 @@ export const Dashboard: React.FC = () => {
             topic={Topic.SEEED_LAMP_SWITCH}
             feedBackTopic={Topic.SEEED_LAMP_STATUS}
             label="Lamp"
-            confirmLabel="Click to Confirm"
             safe={true}
             shellyMode={true}
           />
@@ -144,7 +139,6 @@ export const Dashboard: React.FC = () => {
             topic={Topic.SEEED_PUMP_SWITCH}
             feedBackTopic={Topic.SEEED_PUMP_STATUS}
             label="Pump"
-            confirmLabel="Click to Confirm"
             safe={true}
             shellyMode={true}
             showStatus={true}
@@ -203,15 +197,13 @@ export const Dashboard: React.FC = () => {
             topic={Topic.ZERO2_LAMP_SWITCH}
             feedBackTopic={Topic.ZERO2_LAMP_STATUS}
             label="Lamp"
-            confirmLabel="Click to Confirm"
-            safe={true}
+            safe={false}
             shellyMode={true}
           />
           <MQTTSwitch
             topic={Topic.ZERO2_PUMP_SWITCH}
             feedBackTopic={Topic.ZERO2_PUMP_STATUS}
             label="Pump"
-            confirmLabel="Click to Confirm"
             safe={true}
             shellyMode={true}
             showStatus={true}

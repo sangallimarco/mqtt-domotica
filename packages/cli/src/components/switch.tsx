@@ -38,7 +38,7 @@ const ButtonRight = styled(BaseButton)`
 export interface MQTTSwitchProps extends ButtonProps {
   topic: Topic
   feedBackTopic: Topic
-  confirmLabel: string
+  confirmLabel?: string
   safe: boolean
   shellyMode?: boolean
   showStatus?: boolean
@@ -51,7 +51,7 @@ export const MQTTSwitch: React.FC<MQTTSwitchProps> = ({
   topic,
   label,
   feedBackTopic,
-  confirmLabel,
+  confirmLabel = 'Click to Confirm',
   safe,
   shellyMode,
   showStatus,
