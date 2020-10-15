@@ -7,7 +7,7 @@ export enum Topic {
   OUTDOOR_ENERGY = 'shellies/shelly1pm-8CAAB5056D9C/relay/0/energy',
   OUTDOOR_PUMPS_STATUS = 'shellies/shelly1pm-8CAAB5056D9C/relay/0',
   OUTDOOR_PUMPS_SWITCH = 'shellies/shelly1pm-8CAAB5056D9C/relay/0/command',
-  
+
   // Shelly Sterilisation Room
   INDOOR_POWER = 'shellies/shelly1pm-8CAAB505F8A6/relay/0/power',
   INDOOR_TEMP = 'shellies/shelly1pm-8CAAB505F8A6/temperature',
@@ -53,7 +53,14 @@ export enum Topic {
   SEEED_LAMP_STATUS = 'rpis/seeed/lamp/status',
   SEEED_LAMP_SWITCH = 'rpis/seeed/lamp/command',
 
-  SPY_CAM = 'rpis/spy/cam',
+  // RPIzero2
+  ZERO2_AIR_STATUS = 'rpis/zero2/air/status',
+  ZERO2_AIR_TIMESERIES = 'rpis/zero2/air/timeseries',
+  ZERO2_WATER_STATUS = 'rpis/zero2/water/status',
+  ZERO2_PUMP_STATUS = 'rpis/zero2/pump/status',
+  ZERO2_PUMP_SWITCH = 'rpis/zero2/pump/command',
+  ZERO2_LAMP_STATUS = 'rpis/zero2/lamp/status',
+  ZERO2_LAMP_SWITCH = 'rpis/zero2/lamp/command',
 }
 
 // Subscribe to sensors
@@ -74,7 +81,7 @@ export const SensorTopics = [
   Topic.INDOOR_TEMP,
   Topic.INDOOR_POWER,
   Topic.INDOOR_ENERGY,
- 
+
   Topic.WEATHER,
   Topic.LIVINGROOM_STATUS,
 
@@ -86,13 +93,16 @@ export const SensorTopics = [
   Topic.SEEED_LAMP_STATUS,
   Topic.SEEED_LIGHT_STATUS,
   Topic.SEEED_AIR_TIMESERIES,
-  Topic.SEEED_AIR_TIMESERIES,
   Topic.SEEED_TEMP_TIMESERIES,
   Topic.SEEED_HUM_TIMESERIES,
 
+  Topic.ZERO2_AIR_STATUS,
+  Topic.ZERO2_PUMP_STATUS,
+  Topic.ZERO2_LAMP_STATUS,
+  Topic.ZERO2_AIR_TIMESERIES,
+
   Topic.CAM,
   Topic.SEEED_CAM,
-  Topic.SPY_CAM
 ]
 export const AllTopics = Object.values(Topic)
 

@@ -131,7 +131,7 @@ export const Dashboard: React.FC = () => {
           />
         </Card>
 
-        <Card title="RPI Seeed">
+        <Card title="IGarden 1">
           <MQTTSwitch
             topic={Topic.SEEED_LAMP_SWITCH}
             feedBackTopic={Topic.SEEED_LAMP_STATUS}
@@ -198,9 +198,38 @@ export const Dashboard: React.FC = () => {
           />
         </Card>
 
-        {/* <Card title="Test">
-          <MQTTImage topic={Topic.SPY_CAM} />
-        </Card> */}
+        <Card title="IGarden 2">
+          <MQTTSwitch
+            topic={Topic.ZERO2_LAMP_SWITCH}
+            feedBackTopic={Topic.ZERO2_LAMP_STATUS}
+            label="Lamp"
+            confirmLabel="Click to Confirm"
+            safe={true}
+            shellyMode={true}
+          />
+          <MQTTSwitch
+            topic={Topic.ZERO2_PUMP_SWITCH}
+            feedBackTopic={Topic.ZERO2_PUMP_STATUS}
+            label="Pump"
+            confirmLabel="Click to Confirm"
+            safe={true}
+            shellyMode={true}
+            showStatus={true}
+            onStatuses={FloodDrainOnStatuses}
+          />
+
+          <MQTTGauge
+            topic={Topic.ZERO2_AIR_STATUS}
+            symbol=""
+            label="Air Quality"
+            max={MaxQuality}
+          />
+
+          <MQTTimeSeries
+            label="Air Quality Chart"
+            topic={Topic.ZERO2_AIR_TIMESERIES}
+          />
+        </Card>
       </LayoutGrid>
     </Box>
   )
