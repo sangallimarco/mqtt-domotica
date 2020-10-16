@@ -61,6 +61,7 @@ export enum Topic {
   ZERO2_PUMP_SWITCH = 'rpis/zero2/pump/command',
   ZERO2_LAMP_STATUS = 'rpis/zero2/lamp/status',
   ZERO2_LAMP_SWITCH = 'rpis/zero2/lamp/command',
+  ZERO2_UV_STATUS = 'rpis/zero2/uv/status',
 }
 
 // Subscribe to sensors
@@ -97,6 +98,7 @@ export const SensorTopics = [
   Topic.SEEED_HUM_TIMESERIES,
 
   Topic.ZERO2_AIR_STATUS,
+  Topic.ZERO2_UV_STATUS,
   Topic.ZERO2_PUMP_STATUS,
   Topic.ZERO2_LAMP_STATUS,
   Topic.ZERO2_AIR_TIMESERIES,
