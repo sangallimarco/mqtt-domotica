@@ -219,7 +219,7 @@ export const Dashboard: React.FC = () => {
           <MQTTGauge
             topic={Topic.ZERO2_CONDUCTIVITY_STATUS}
             symbol=""
-            label="1 / Conductivity"
+            label="Conductivity"
             max={MaxADC}
           />
           <MQTTGauge
