@@ -217,10 +217,16 @@ export const Dashboard: React.FC = () => {
             max={MaxQuality}
           />
           <MQTTGauge
+            topic={Topic.ZERO2_CONDUCTIVITY_STATUS}
+            symbol=""
+            label="1 / Conductivity"
+            max={MaxADC}
+          />
+          <MQTTGauge
             topic={Topic.ZERO2_UV_STATUS}
             symbol=""
             label="UV Index"
-            max={MaxQuality}
+            max={11}
           />
 
           <MQTTimeSeries

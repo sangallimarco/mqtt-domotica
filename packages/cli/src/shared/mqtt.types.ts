@@ -56,7 +56,7 @@ export enum Topic {
   // RPIzero2
   ZERO2_AIR_STATUS = 'rpis/zero2/air/status',
   ZERO2_AIR_TIMESERIES = 'rpis/zero2/air/timeseries',
-  ZERO2_WATER_STATUS = 'rpis/zero2/water/status',
+  ZERO2_CONDUCTIVITY_STATUS = 'rpis/zero2/conductivity/status',
   ZERO2_PUMP_STATUS = 'rpis/zero2/pump/status',
   ZERO2_PUMP_SWITCH = 'rpis/zero2/pump/command',
   ZERO2_LAMP_STATUS = 'rpis/zero2/lamp/status',
@@ -99,6 +99,7 @@ export const SensorTopics = [
 
   Topic.ZERO2_AIR_STATUS,
   Topic.ZERO2_UV_STATUS,
+  Topic.ZERO2_CONDUCTIVITY_STATUS,
   Topic.ZERO2_PUMP_STATUS,
   Topic.ZERO2_LAMP_STATUS,
   Topic.ZERO2_AIR_TIMESERIES,
