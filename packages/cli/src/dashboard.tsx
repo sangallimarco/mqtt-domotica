@@ -213,7 +213,7 @@ export const Dashboard: React.FC = () => {
           <MQTTGauge
             topic={Topic.ZERO2_AIR_STATUS}
             symbol=""
-            label="Air Quality"
+            label="UV Index"
             max={MaxQuality}
           />
           <MQTTGauge
