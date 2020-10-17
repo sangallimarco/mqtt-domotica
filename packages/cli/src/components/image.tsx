@@ -1,5 +1,6 @@
 import { Box, Text } from 'grommet'
-import React from 'react'
+import { isNil } from 'lodash'
+import React, { MutableRefObject, useRef } from 'react'
 import styled from 'styled-components'
 import { UseMQTT } from '../shared/mqtt.service'
 import { Topic } from '../shared/mqtt.types'
@@ -15,16 +16,30 @@ const ImageContainer = styled.img`
 `
 
 // TODO use Img object instead when image src changes
-function getImage(message: Buffer | string): string {
+function getImage(message: Buffer | string, ref: MutableRefObject<null>): void {
+  let src: string
   if (message instanceof Buffer) {
-    return `data:image/jpg;base64,${message.toString('base64')}`
+    src = `data:image/jpg;base64,${message.toString('base64')}`
+  } else {
+    src = message
   }
-  return message
+  const img = new Image()
+  img.onload = () => {
+    const elRef: HTMLImageElement | null | undefined = ref.current
+      ? ref.current
+      : null
+    // assign new image to the component when it is loaded
+    if (!isNil(elRef)) {
+      ;(elRef as any).src = src
+    }
+  }
+  img.src = src
 }
 
 export const MQTTImage: React.FC<MQTTImageProps> = ({ topic, label }) => {
   const { message } = UseMQTT(topic)
-  const img = getImage(message)
+  const imgRef = useRef(null)
+  getImage(message, imgRef)
 
   return (
     <Box align="start" fill="horizontal" direction="column" gap="xsmall">
@@ -35,7 +50,7 @@ export const MQTTImage: React.FC<MQTTImageProps> = ({ topic, label }) => {
         justify="center"
         round={true}
       >
-        <ImageContainer src={img} />
+        <ImageContainer ref={imgRef} src="./640x480.png" />
       </Box>
     </Box>
   )
