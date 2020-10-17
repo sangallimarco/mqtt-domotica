@@ -16,6 +16,7 @@ import {
   MaxPower,
   MaxQuality,
   MaxTemp,
+  MotorControllerStatuses,
 } from './layout.conf'
 import { Topic } from './shared/mqtt.types'
 
@@ -207,7 +208,7 @@ export const Dashboard: React.FC = () => {
             safe={true}
             shellyMode={true}
             showStatus={true}
-            onStatuses={FloodDrainOnStatuses}
+            onStatuses={MotorControllerStatuses}
           />
 
           <MQTTGauge

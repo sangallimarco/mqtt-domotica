@@ -116,3 +116,4 @@ export const MaxPercentage = 100
 export const MaxADC = 1024
 
 export const FloodDrainOnStatuses = ['flood', 'drain']
+export const MotorControllerStatuses = ['forward', 'reverse']
