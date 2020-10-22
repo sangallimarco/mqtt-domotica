@@ -5,7 +5,7 @@ export const CONFIG_PATH = 'config'
 
 export function getConfigOptions(): IClientOptions {
   const storedData = window.localStorage.getItem(CONFIG_PATH)
-  return storedData ? JSON.parse(storedData) : {}
+  return storedData ? { ...JSON.parse(storedData), connectTimeout: 2000 } : {}
 }
 
 export function storeConfigOptions(options: IClientOptions): void {

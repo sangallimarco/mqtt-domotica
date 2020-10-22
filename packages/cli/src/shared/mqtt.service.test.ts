@@ -1,8 +1,10 @@
-import { renderHook, act } from '@testing-library/react-hooks'
-import { UseMQTT, MessageBusRead } from './mqtt.service'
+import { act, renderHook } from '@testing-library/react-hooks'
+import { mqttCore, UseMQTT } from './mqtt.service'
 import { Topic } from './mqtt.types'
 
 describe('UseMQTT', () => {
+  const messageBus = mqttCore.getMessageBus()
+
   test('message should be an empty string', () => {
     const { result } = renderHook(() => UseMQTT(Topic.CONNECTED))
     expect(result.current.message).toEqual('')
@@ -10,7 +12,7 @@ describe('UseMQTT', () => {
   test('should filter bus message and set message', () => {
     const { result } = renderHook(() => UseMQTT(Topic.CONNECTED))
     act(() => {
-      MessageBusRead.next({ topic: Topic.CONNECTED, payload: '1' })
+      messageBus.next({ topic: Topic.CONNECTED, payload: '1' })
     })
     expect(result.current.message).toEqual('1')
   })
@@ -18,7 +20,7 @@ describe('UseMQTT', () => {
   test('should filter bus message and set message', () => {
     const { result } = renderHook(() => UseMQTT(Topic.CONNECTED))
     act(() => {
-      MessageBusRead.next({ topic: Topic.OUTDOOR_ENERGY, payload: '1' })
+      messageBus.next({ topic: Topic.OUTDOOR_ENERGY, payload: '1' })
     })
     expect(result.current.message).toEqual('')
   })

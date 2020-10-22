@@ -4,6 +4,7 @@ import { MQTTActivity } from './components/activity'
 import { Card } from './components/card'
 import { MQTTGauge } from './components/gauge'
 import { MQTTImage } from './components/image'
+import { MQTTSpinner } from './components/spinner'
 import { MQTTSwitch } from './components/switch'
 import { MQTTimeSeries } from './components/timeseries'
 import { MQTTWeatherIcon } from './components/weather-icon'
@@ -32,6 +33,8 @@ export const Dashboard: React.FC = () => {
           <MQTTWeatherIcon topic={Topic.WEATHER} />
         </Box>
       </Header>
+
+      <MQTTSpinner />
 
       <LayoutGrid>
         <Card title="Living room">
