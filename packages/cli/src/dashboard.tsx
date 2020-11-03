@@ -1,3 +1,8 @@
+import {
+  faLightbulb,
+  faLeaf,
+  faRadiation,
+} from '@fortawesome/free-solid-svg-icons'
 import { Box, Header, Text } from 'grommet'
 import React from 'react'
 import { MQTTActivity } from './components/activity'
@@ -37,7 +42,7 @@ export const Dashboard: React.FC = () => {
       <MQTTSpinner />
 
       <LayoutGrid>
-        <Card title="Living room">
+        <Card title="Living room" icon={faLightbulb}>
           <MQTTSwitch
             topic={Topic.LIVINGROOM_SWITCH}
             feedBackTopic={Topic.LIVINGROOM_STATUS}
@@ -59,7 +64,7 @@ export const Dashboard: React.FC = () => {
           <MQTTimeSeries label="Socket Temp Chart" topic={Topic.TEMP2_SERIES} />
         </Card>
 
-        <Card title="Indoor Garden">
+        <Card title="Indoor Garden" icon={faLeaf}>
           <MQTTSwitch
             topic={Topic.PUMPS_SWITCH}
             feedBackTopic={Topic.PUMPS_STATUS}
@@ -76,7 +81,7 @@ export const Dashboard: React.FC = () => {
           <MQTTimeSeries label="Temp Chart" topic={Topic.TEMP1_SERIES} />
         </Card>
 
-        <Card title="UVC Room">
+        <Card title="UVC Room" icon={faRadiation}>
           <MQTTSwitch
             topic={Topic.PROCESS_SWITCH}
             feedBackTopic={Topic.PROCESS_STATUS}
@@ -103,7 +108,7 @@ export const Dashboard: React.FC = () => {
           />
         </Card>
 
-        <Card title="Outdoor Garden">
+        <Card title="Outdoor Garden" icon={faLeaf}>
           <MQTTSwitch
             topic={Topic.OUTDOOR_PUMPS_SWITCH}
             feedBackTopic={Topic.OUTDOOR_PUMPS_STATUS}
@@ -131,7 +136,7 @@ export const Dashboard: React.FC = () => {
           />
         </Card>
 
-        <Card title="IGarden 1">
+        <Card title="IGarden 1" icon={faLeaf}>
           <MQTTSwitch
             topic={Topic.SEEED_LAMP_SWITCH}
             feedBackTopic={Topic.SEEED_LAMP_STATUS}
@@ -196,7 +201,7 @@ export const Dashboard: React.FC = () => {
           />
         </Card>
 
-        <Card title="IGarden 2">
+        <Card title="IGarden 2" icon={faLeaf}>
           <MQTTSwitch
             topic={Topic.ZERO2_LAMP_SWITCH}
             feedBackTopic={Topic.ZERO2_LAMP_STATUS}
