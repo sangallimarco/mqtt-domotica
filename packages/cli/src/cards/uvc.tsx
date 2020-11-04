@@ -6,7 +6,7 @@ import { MQTTSwitch } from '../components/switch'
 import { MaxEnergy, MaxPower, MaxTemp } from '../layout.conf'
 import { Topic } from '../shared/mqtt.types'
 
-export const Uvcard = () => (
+export const UvcCard = () => (
   <Card title="UVC Room" icon={faRadiation}>
     <MQTTSwitch
       topic={Topic.PROCESS_SWITCH}

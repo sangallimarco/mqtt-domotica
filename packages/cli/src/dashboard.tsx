@@ -5,7 +5,7 @@ import { IGarden2Card } from './cards/igarden-2'
 import { IndoorGardenCard } from './cards/indoor'
 import { LivingRoomCard } from './cards/living-room'
 import { OutdoorCard } from './cards/outdoor'
-import { Uvcard } from './cards/uvc'
+import { UvcCard } from './cards/uvc'
 import { MQTTActivity } from './components/activity'
 import { MQTTSpinner } from './components/spinner'
 import { MQTTWeatherIcon } from './components/weather-icon'
@@ -29,7 +29,7 @@ export const Dashboard: React.FC = () => {
       <LayoutGrid>
         <LivingRoomCard />
         <IndoorGardenCard />
-        <Uvcard />
+        <UvcCard />
         <OutdoorCard />
         <IGarden1Card />
         <IGarden2Card />
