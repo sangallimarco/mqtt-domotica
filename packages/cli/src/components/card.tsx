@@ -31,14 +31,14 @@ export const Card: React.FC<CardProps> = ({ title, children, icon }) => {
       align="start"
       pad="medium"
       background="light-2"
-      gap="small"
+      gap="medium"
       round={true}
       margin="small"
     >
       <Box
         fill="horizontal"
         border={{ color: 'light-4', side: 'bottom' }}
-        pad={{ bottom: 'small' }}
+        pad={{ bottom: 'medium' }}
       >
         <CardHeader>
           <FontAwesomeIcon icon={icon} size="2x" />
