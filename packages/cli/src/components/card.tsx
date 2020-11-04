@@ -10,6 +10,7 @@ const CardHeader = styled.div`
   grid-template-columns: 3em auto;
   align-items: center;
   color: ${themeColors['dark-3']};
+  font-weight: 500;
 `
 
 export interface CardIcon {
@@ -41,9 +42,7 @@ export const Card: React.FC<CardProps> = ({ title, children, icon }) => {
       >
         <CardHeader>
           <FontAwesomeIcon icon={icon} size="2x" />
-          <Text color="dark-2" size="xlarge">
-            {title}
-          </Text>
+          <Text size="xlarge">{title}</Text>
         </CardHeader>
       </Box>
       {children}

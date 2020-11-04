@@ -30,7 +30,7 @@ const ButtonLeft = styled(BaseButton)`
 const ButtonRight = styled(BaseButton)`
   border-radius: 0 0.5em 0.5em 0;
   background-color: ${({ active }) =>
-    active ? themeColors['accent-1'] : themeColors['light-4']};
+    active ? themeColors['accent-2'] : themeColors['light-4']};
   color: ${({ active }) =>
     active ? themeColors['light-1'] : themeColors['dark-2']};
   font-weight: ${({ active }) => (active ? '700' : 'normal')};

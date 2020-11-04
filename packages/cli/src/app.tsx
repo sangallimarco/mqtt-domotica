@@ -8,7 +8,7 @@ import { hasValidConfig } from './shared/mqtt.config'
 const App: React.FC = () => {
   const hasConfig = hasValidConfig()
   return (
-    <Grommet full theme={customTheme} themeMode="light">
+    <Grommet full theme={customTheme} themeMode="light" background="light-4">
       {hasConfig ? <Dashboard /> : <ConfigForm />}
     </Grommet>
   )
