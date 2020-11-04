@@ -20,7 +20,7 @@ export const IGarden1Card = () => (
       topic={Topic.SEEED_LAMP_SWITCH}
       feedBackTopic={Topic.SEEED_LAMP_STATUS}
       label="Lamp"
-      safe={true}
+      safe={false}
       shellyMode={true}
     />
     <MQTTSwitch
