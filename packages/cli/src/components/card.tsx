@@ -42,7 +42,7 @@ export const Card: React.FC<CardProps> = ({ title, children, icon }) => {
       >
         <CardHeader>
           <FontAwesomeIcon icon={icon} size="2x" />
-          <Text size="xlarge">{title}</Text>
+          <Text size="large">{title}</Text>
         </CardHeader>
       </Box>
       {children}
