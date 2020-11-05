@@ -1,7 +1,7 @@
 import { faNetworkWired, faPlug } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { stringToBoolean } from '@myhydroponics/core/src/formatters'
+import { stringToBoolean } from '@myhydroponics/core'
 import { UseMQTT } from '../shared/mqtt.service'
 import { Topic } from '@myhydroponics/core'
 

@@ -3,7 +3,7 @@ import { startCase } from 'lodash'
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import { themeColors } from '../layout.conf'
-import { booleanToString } from '@myhydroponics/core/src/formatters'
+import { booleanToString } from '@myhydroponics/core'
 import { UseMQTT } from '../shared/mqtt.service'
 import { Topic } from '@myhydroponics/core'
 

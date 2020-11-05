@@ -1,7 +1,7 @@
 import mqtt from 'mqtt'
 import { Observable, Subject } from 'rxjs'
 import { filter } from 'rxjs/operators'
-import { booleanToString } from '@myhydroponics/core/src/formatters'
+import { booleanToString } from '@myhydroponics/core'
 import { getConfigOptions } from './mqtt.config'
 import { SensorTopics, Topic, TopicMessage } from '@myhydroponics/core'
 
