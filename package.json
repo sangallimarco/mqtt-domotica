@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "lerna run build",
+    "start": "lerna run start --scope=@myhydroponics/cli",
     "test": "lerna run test --stream"
   },
   "workspaces": [
