@@ -6,7 +6,7 @@
   "types": "build/main.d.ts",
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "test": "jest --watchAll=false"
+    "test": "jest --forceExit"
   },
   "devDependencies": {
     "@types/jest": "^26.0.15",
