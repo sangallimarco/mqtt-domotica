@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "bootstrap": "cd packages/core && lerna link && cd .. && lerna bootstrap",
     "build": "lerna run build --stream",
     "start": "lerna run start --scope=@myhydroponics/cli",
     "test": "lerna run test --stream"
