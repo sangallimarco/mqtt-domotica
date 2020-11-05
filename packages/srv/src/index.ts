@@ -1,5 +1,6 @@
 import { mqttClient, addToMQTT } from './services/mqtt'
-import { SensorTopics, Topic } from './services/mqtt.types'
+import { SensorTopics } from './services/mqtt.types'
+import {Topic} from '@myhydroponics/core'
 import { addToRedis } from './services/redis'
 import dotenv from 'dotenv'
 

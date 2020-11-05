@@ -1,4 +1,4 @@
-import { Topic } from './mqtt.types'
+import { Topic } from '@myhydroponics/core'
 import mqtt from 'mqtt'
 import dotenv from 'dotenv'
 
