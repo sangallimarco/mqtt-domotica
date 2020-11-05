@@ -1,8 +1,20 @@
-### WIP
+## Hydroponics app
 
-Small application able to connect to MQTT broker using WS.
+Interface to MQTT broker for IoT projects
 
 Please defined your `.env.production.local` containing all the required details present in `.env`
+
+
+## LERNA
+
+link core lib first
+
+```
+cd packages/core
+
+lerna link
+lerna bootstrap
+```
 
 
 ## RCA
