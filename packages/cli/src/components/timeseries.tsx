@@ -4,7 +4,7 @@ import { Box, Chart, Stack, Text } from 'grommet'
 import React from 'react'
 import { stringToTimeSeries } from '@myhydroponics/core/src/formatters'
 import { UseMQTT } from '../shared/mqtt.service'
-import { Topic } from '../shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 export interface MQTTimeSeriesProps {
   topic: Topic

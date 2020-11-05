@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { stringToBoolean } from '@myhydroponics/core/src/formatters'
 import { UseMQTT } from '../shared/mqtt.service'
-import { Topic } from '../shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 export interface MQTTActivityProps {
   topic: Topic

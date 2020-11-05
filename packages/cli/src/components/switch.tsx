@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { themeColors } from '../layout.conf'
 import { booleanToString } from '@myhydroponics/core/src/formatters'
 import { UseMQTT } from '../shared/mqtt.service'
-import { Topic } from '../shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 const BaseButton = styled.div<{ active?: boolean }>`
   border-radius: 0.5em;

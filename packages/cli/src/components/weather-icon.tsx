@@ -10,7 +10,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { UseMQTT } from '../shared/mqtt.service'
-import { Topic } from '../shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 export interface MQTTWeatherIconProps {
   topic: Topic

@@ -1,6 +1,6 @@
 import React from 'react'
 import { UseMQTT } from '../shared/mqtt.service'
-import { Topic } from '../shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 import { Box, Text } from 'grommet'
 
 export interface MQTTLabelProps {
