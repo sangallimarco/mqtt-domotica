@@ -10,7 +10,7 @@ import { MQTTActivity } from './components/activity'
 import { MQTTSpinner } from './components/spinner'
 import { MQTTWeatherIcon } from './components/weather-icon'
 import { LayoutGrid } from './layout.conf'
-import { Topic } from './shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 export const Dashboard: React.FC = () => {
   return (

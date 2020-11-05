@@ -1,0 +1,25 @@
+{
+  "name": "@myhydroponics/core",
+  "private": true,
+  "version": "1.0.0",
+  "main": "build/main.js",
+  "types": "build/main.d.ts",
+  "scripts": {
+    "build": "tsc --project tsconfig.prod.json",
+    "test": "jest --watchAll=false"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "lodash": "^4.17.20",
+    "typescript": "^4.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "dependencies": {
+    "decimal.js": "^10.2.1",
+    "lodash": "^4.17.20"
+  }
+}

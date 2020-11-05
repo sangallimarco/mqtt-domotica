@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "outDir": "build",
+    "rootDir": "src",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -15,5 +17,5 @@
     "noEmit": true,
     "jsx": "react"
   },
-  "include": ["src", "../core/src/formatters.ts"]
+  "include": ["src"]
 }

@@ -5,7 +5,7 @@ import {
   stringToNumber,
   getMeterColor,
   stringToTimeSeries,
-} from '@myhydroponics/core/src/formatters'
+} from '../formatters'
 
 describe('Formatters', () => {
   describe('stringToBoolean()', () => {

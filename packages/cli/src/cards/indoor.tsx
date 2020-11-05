@@ -6,7 +6,7 @@ import { MQTTImage } from '../components/image'
 import { MQTTSwitch } from '../components/switch'
 import { MQTTimeSeries } from '../components/timeseries'
 import { MaxTemp } from '../layout.conf'
-import { Topic } from '../shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 export const IndoorGardenCard = () => (
   <Card title="Indoor Garden" icon={faLeaf}>

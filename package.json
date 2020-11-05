@@ -1,5 +1,14 @@
 {
-    "name": "root",
-    "private": true,
-    "workspaces": [ "packages/*"]
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "build": "lerna run build",
+    "test": "lerna run test --stream"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.19.0"
+  }
 }

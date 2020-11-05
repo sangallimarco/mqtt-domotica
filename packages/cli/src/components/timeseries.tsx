@@ -2,7 +2,7 @@ import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Box, Chart, Stack, Text } from 'grommet'
 import React from 'react'
-import { stringToTimeSeries } from '../shared/formatters'
+import { stringToTimeSeries } from '@myhydroponics/core/src/formatters'
 import { UseMQTT } from '../shared/mqtt.service'
 import { Topic } from '../shared/mqtt.types'
 

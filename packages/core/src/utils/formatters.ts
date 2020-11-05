@@ -1,6 +1,6 @@
 import { Decimal } from 'decimal.js'
 import { isEmpty } from 'lodash'
-import { TimeSeries } from './mqtt.types'
+import { TimeSeries } from '../mqtt/mqtt'
 
 export function numberToFixed(
   value: number | string,

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { MQTTCore } from './mqtt.core'
-import { Topic, TopicMessage } from './mqtt.types'
+import { Topic, TopicMessage } from '@myhydroponics/core'
 
 export const mqttCore = new MQTTCore()
 

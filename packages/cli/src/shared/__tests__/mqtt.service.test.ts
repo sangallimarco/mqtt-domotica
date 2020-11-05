@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 import { mqttCore, UseMQTT } from '../mqtt.service'
-import { Topic } from '../mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 describe('UseMQTT', () => {
   const messageBus = mqttCore.getMessageBus()

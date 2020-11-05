@@ -6,7 +6,7 @@ import {
   stringToNumber,
   numberToFixed,
   getMeterColor,
-} from '../shared/formatters'
+} from '@myhydroponics/core/src/formatters'
 
 export interface MQTTGaugeProps extends MeterProps {
   topic: Topic
