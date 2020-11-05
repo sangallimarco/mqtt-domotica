@@ -1,5 +1,5 @@
-import { getMQTTPath } from "./mqtt"
-import { GPIO_PIN, Direction } from "./types"
+import { getMQTTPath } from "../mqtt"
+import { GPIO_PIN, Direction } from "../types"
 
 describe('mqtt', () => {
     describe('getMQTTPath',() => {

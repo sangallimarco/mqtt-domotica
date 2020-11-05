@@ -5,7 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { themeColors } from '../layout.conf'
 import { UseMQTT } from '../shared/mqtt.service'
-import { Topic } from '../shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 export const Overlay = styled.div`
   position: fixed;

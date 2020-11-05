@@ -1,9 +1,9 @@
 import mqtt from 'mqtt'
 import { Observable, Subject } from 'rxjs'
 import { filter } from 'rxjs/operators'
-import { booleanToString } from './formatters'
+import { booleanToString } from '@myhydroponics/core'
 import { getConfigOptions } from './mqtt.config'
-import { SensorTopics, Topic, TopicMessage } from './mqtt.types'
+import { SensorTopics, Topic, TopicMessage } from '@myhydroponics/core'
 
 export class MQTTCore {
   private mqttClient = mqtt.connect(

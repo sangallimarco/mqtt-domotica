@@ -1,4 +1,4 @@
-import { convertInput, convertOutput } from "./converters"
+import { convertInput, convertOutput } from "../converters"
 
 describe('converters', () => {
     describe('convertInput',() => {

@@ -3,9 +3,9 @@ import { startCase } from 'lodash'
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import { themeColors } from '../layout.conf'
-import { booleanToString } from '../shared/formatters'
+import { booleanToString } from '@myhydroponics/core'
 import { UseMQTT } from '../shared/mqtt.service'
-import { Topic } from '../shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 const BaseButton = styled.div<{ active?: boolean }>`
   border-radius: 0.5em;

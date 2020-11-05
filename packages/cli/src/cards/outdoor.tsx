@@ -4,7 +4,7 @@ import React from 'react'
 import { MQTTGauge } from '../components/gauge'
 import { MQTTSwitch } from '../components/switch'
 import { MaxEnergy, MaxPower, MaxTemp } from '../layout.conf'
-import { Topic } from '../shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 export const OutdoorCard = () => (
   <Card title="Outdoor Garden" icon={faLeaf}>

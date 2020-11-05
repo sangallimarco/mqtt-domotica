@@ -3,7 +3,7 @@ import { isNil } from 'lodash'
 import React, { MutableRefObject, useRef } from 'react'
 import styled from 'styled-components'
 import { UseMQTT } from '../shared/mqtt.service'
-import { Topic } from '../shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 export interface MQTTImageProps {
   topic: Topic

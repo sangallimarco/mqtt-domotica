@@ -5,7 +5,7 @@ import { MQTTGauge } from '../components/gauge'
 import { MQTTSwitch } from '../components/switch'
 import { MQTTimeSeries } from '../components/timeseries'
 import { MaxADC, MaxQuality, MotorControllerStatuses } from '../layout.conf'
-import { Topic } from '../shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 export const IGarden2Card = () => (
   <Card title="IGarden 2" icon={faLeaf}>

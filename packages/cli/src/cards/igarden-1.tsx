@@ -12,7 +12,7 @@ import {
   MaxQuality,
   MaxTemp,
 } from '../layout.conf'
-import { Topic } from '../shared/mqtt.types'
+import { Topic } from '@myhydroponics/core'
 
 export const IGarden1Card = () => (
   <Card title="IGarden 1" icon={faLeaf}>
