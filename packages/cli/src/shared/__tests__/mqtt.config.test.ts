@@ -3,7 +3,7 @@ import {
   getConfigOptions,
   storeConfigOptions,
   hasValidConfig,
-} from './mqtt.config'
+} from '../mqtt.config'
 
 describe('MQTT config helpers', () => {
   beforeEach(() => {
@@ -16,7 +16,11 @@ describe('MQTT config helpers', () => {
         CONFIG_PATH,
         JSON.stringify({ username: 'me', password: 'pwd' })
       )
-      expect(getConfigOptions()).toEqual({ password: 'pwd', username: 'me' })
+      expect(getConfigOptions()).toEqual({
+        connectTimeout: 2000,
+        password: 'pwd',
+        username: 'me',
+      })
     })
   })
 
@@ -37,7 +41,11 @@ describe('MQTT config helpers', () => {
     test('should return true if localStorage does  contain a configg', () => {
       window.localStorage.setItem(
         CONFIG_PATH,
-        JSON.stringify({ username: 'me', password: 'pwd' })
+        JSON.stringify({
+          connectTimeout: 2000,
+          username: 'me',
+          password: 'pwd',
+        })
       )
       expect(hasValidConfig()).toEqual(true)
     })

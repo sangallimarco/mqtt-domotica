@@ -3,8 +3,9 @@ import {
   booleanToString,
   numberToFixed,
   stringToNumber,
-  getMeterColor, stringToTimeSeries
-} from './formatters'
+  getMeterColor,
+  stringToTimeSeries,
+} from '../formatters'
 
 describe('Formatters', () => {
   describe('stringToBoolean()', () => {
@@ -57,30 +58,26 @@ describe('Formatters', () => {
 
   describe('stringToTimeSeries()', () => {
     test('should return a valid TimeSeriesData', () => {
-
       const data = JSON.stringify([
-        ["1600571077371", ""], 
-        ["1600571077373", "24.5"], 
-        ["1600572877374", "24.562"], 
-        ["1600574677383", "24.5"], 
-        ["1600576477384", "24.5"], 
-        ["1600578277366", "24.5"]
+        ['1600571077371', ''],
+        ['1600571077373', '24.5'],
+        ['1600572877374', '24.562'],
+        ['1600574677383', '24.5'],
+        ['1600576477384', '24.5'],
+        ['1600578277366', '24.5'],
       ])
 
       const timeseriesData = stringToTimeSeries(data)
-      
+
       expect(timeseriesData.xBounds).toEqual([1600571077373, 1600578277366])
       expect(timeseriesData.yBounds).toEqual([24.5, 24.6])
       expect(timeseriesData.values).toEqual([
-        [1600571077373, 24.5], 
-        [1600572877374, 24.6], 
-        [1600574677383, 24.5], 
-        [1600576477384, 24.5], 
-        [1600578277366, 24.5]
+        [1600571077373, 24.5],
+        [1600572877374, 24.6],
+        [1600574677383, 24.5],
+        [1600576477384, 24.5],
+        [1600578277366, 24.5],
       ])
     })
   })
-
-
-
 })
