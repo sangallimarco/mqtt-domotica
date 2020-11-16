@@ -112,7 +112,15 @@ export const AllTopics = Object.values(Topic)
 // JSON stringified data transported by MQTT
 export type TimeSeries = [string, string]
 
+export type TopicPayload = Buffer | string
 export interface TopicMessage {
   topic: Topic
-  payload: Buffer | string
+  payload: TopicPayload
+}
+
+export enum MqttState {
+  CONNECT,
+  DISCONNECT,
+  RECONNECT,
+  ERROR,
 }

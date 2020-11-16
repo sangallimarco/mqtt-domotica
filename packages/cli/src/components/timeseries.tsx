@@ -15,7 +15,7 @@ export const MQTTimeSeries: React.FC<MQTTimeSeriesProps> = ({
   topic,
   label,
 }) => {
-  const { message } = UseMQTT(topic)
+  const { message = '' } = UseMQTT(topic)
   const sanitisedMessage = message.toString()
 
   const { xBounds, yBounds, values = [] } = stringToTimeSeries(sanitisedMessage)

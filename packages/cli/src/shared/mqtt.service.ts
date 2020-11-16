@@ -1,28 +1,39 @@
 import { useEffect, useState } from 'react'
 import { MQTTCore } from './mqtt.core'
-import { Topic, TopicMessage } from '@myhydroponics/core'
+import {
+  MqttState,
+  Topic,
+  TopicMessage,
+  TopicPayload,
+} from '@myhydroponics/core'
 
 export const mqttCore = new MQTTCore()
 
-// Custom Hook
 export interface UseMQTTReturnType {
-  message: Buffer | string
+  message: TopicPayload | undefined
+  status: MqttState
   sendMessage: (message: TopicMessage) => void
 }
 
 export function UseMQTT(topic: Topic): UseMQTTReturnType {
-  const [message, setMessage] = useState<Buffer | string>('')
+  const [message, setMessage] = useState<TopicPayload | undefined>('')
+  const [status, setStatus] = useState<MqttState>(MqttState.DISCONNECT)
   const sendMessage = (message: TopicMessage) => mqttCore.sendMessage(message)
 
   useEffect(() => {
-    const sub = mqttCore.filterByTopic(topic).subscribe(({ payload }) => {
+    const contextSub = mqttCore.filterByTopic(topic).subscribe((payload) => {
       setMessage(payload)
     })
 
+    const statusSub = mqttCore.getMessageBus().subscribe((payload) => {
+      setStatus(payload)
+    })
+
     return () => {
-      sub.unsubscribe()
+      contextSub.unsubscribe()
+      statusSub.unsubscribe()
     }
   }, [topic])
 
-  return { message, sendMessage }
+  return { message, status, sendMessage }
 }

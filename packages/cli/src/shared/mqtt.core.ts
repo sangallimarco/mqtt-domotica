@@ -1,63 +1,56 @@
+import {
+  MqttState,
+  SensorTopics,
+  Topic,
+  TopicMessage,
+  TopicPayload,
+} from '@myhydroponics/core'
 import mqtt from 'mqtt'
-import { Observable, Subject } from 'rxjs'
-import { filter } from 'rxjs/operators'
-import { booleanToString } from '@myhydroponics/core'
+import { Observable, ReplaySubject } from 'rxjs'
+import { map } from 'rxjs/operators'
 import { getConfigOptions } from './mqtt.config'
-import { SensorTopics, Topic, TopicMessage } from '@myhydroponics/core'
 
 export class MQTTCore {
   private mqttClient = mqtt.connect(
     process.env.REACT_APP_MQTT,
     getConfigOptions()
   )
-  private messageBus = new Subject<TopicMessage>()
+  private contextBus = new ReplaySubject<Map<Topic, TopicPayload>>(1) // use last stored for cold subscribers
+  private messageBus = new ReplaySubject<MqttState>(1)
+  private context = new Map<Topic, TopicPayload>()
 
   constructor() {
     // Events
     this.mqttClient.on('connect', () => {
-      // this.mqttClient.subscribe('presence', (err) => {
-      //     if (!err) {
-      //         this.mqttClient.publish('presence', 'Hello mqtt')
-      //     }
-      // })
-
       // subscribe to all topics
       this.mqttClient.subscribe(SensorTopics)
-      this.messageBus.next({
-        topic: Topic.CONNECTED,
-        payload: booleanToString(true),
-      })
+      this.messageBus.next(MqttState.CONNECT)
     })
 
-    this.mqttClient.on('message', (topic: Topic, message: Buffer) => {
+    this.mqttClient.on('message', (topic: Topic, payload: Buffer) => {
       // message is Buffer
-      const payload = message
-      this.messageBus.next({ topic, payload })
+      this.context.set(topic, payload)
+      this.contextBus.next(this.context)
     })
 
     this.mqttClient.on('disconnect', () => {
-      this.handleError()
+      this.messageBus.next(MqttState.DISCONNECT)
     })
 
     this.mqttClient.on('reconnect', () => {
-      this.handleError()
+      this.messageBus.next(MqttState.RECONNECT)
     })
 
     this.mqttClient.on('error', () => {
-      this.handleError()
-    })
-  }
-
-  handleError(): void {
-    this.messageBus.next({
-      topic: Topic.CONNECTED,
-      payload: booleanToString(false),
+      this.messageBus.next(MqttState.ERROR)
     })
   }
 
   // Helpers
-  filterByTopic<T extends Topic>(topic: T): Observable<TopicMessage> {
-    return this.messageBus.pipe(filter((message) => message.topic === topic))
+  filterByTopic<T extends Topic>(
+    topic: T
+  ): Observable<TopicPayload | undefined> {
+    return this.contextBus.pipe(map((message) => message.get(topic)))
   }
 
   sendMessage(message: TopicMessage): void {
@@ -65,11 +58,11 @@ export class MQTTCore {
       const { topic, payload } = message
       this.mqttClient.publish(topic, payload, { qos: 1 })
     } else {
-      this.handleError()
+      this.messageBus.next(MqttState.ERROR)
     }
   }
 
-  getMessageBus(): Subject<TopicMessage> {
+  getMessageBus(): ReplaySubject<MqttState> {
     return this.messageBus
   }
 }

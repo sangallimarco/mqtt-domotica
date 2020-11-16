@@ -27,7 +27,7 @@ export const iconConfig: Record<string, IconDefinition> = {
 }
 
 export const MQTTWeatherIcon: React.FC<MQTTWeatherIconProps> = ({ topic }) => {
-  const { message } = UseMQTT(topic)
+  const { message = '' } = UseMQTT(topic)
   const sanitisedMessage = message.toString()
   const icon = iconConfig[sanitisedMessage] || faExclamation
 
