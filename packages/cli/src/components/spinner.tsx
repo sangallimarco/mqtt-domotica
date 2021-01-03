@@ -5,7 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { themeColors } from '../layout.conf'
 import { UseMQTT } from '../shared/mqtt.service'
-import { Topic } from '@myhydroponics/core'
+import { MqttState, Topic } from '@myhydroponics/core'
 
 export const Overlay = styled.div`
   position: fixed;
@@ -23,8 +23,8 @@ export const Overlay = styled.div`
 export interface MQTTSpinnerProps {}
 
 export const MQTTSpinner: React.FC<MQTTSpinnerProps> = () => {
-  const { message } = UseMQTT(Topic.CONNECTED)
-  const active = message === '1'
+  const { status } = UseMQTT(Topic.CONNECTED)
+  const active = status === MqttState.CONNECT
 
   return !active ? (
     <Overlay>

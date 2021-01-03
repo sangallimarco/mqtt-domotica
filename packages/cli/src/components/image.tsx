@@ -37,7 +37,7 @@ function getImage(message: Buffer | string, ref: MutableRefObject<null>): void {
 }
 
 export const MQTTImage: React.FC<MQTTImageProps> = ({ topic, label }) => {
-  const { message } = UseMQTT(topic)
+  const { message = '' } = UseMQTT(topic)
   const imgRef = useRef(null)
   getImage(message, imgRef)
 

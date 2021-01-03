@@ -57,6 +57,7 @@ export enum Topic {
   ZERO2_AIR_STATUS = 'rpis/zero2/air/status',
   ZERO2_AIR_TIMESERIES = 'rpis/zero2/air/timeseries',
   ZERO2_CONDUCTIVITY_STATUS = 'rpis/zero2/conductivity/status',
+  ZERO2_CONDUCTIVITY_TIMESERIES = 'rpis/zero2/conductivity/timeseries',
   ZERO2_PUMP_STATUS = 'rpis/zero2/pump/status',
   ZERO2_PUMP_SWITCH = 'rpis/zero2/pump/command',
   ZERO2_LAMP_STATUS = 'rpis/zero2/lamp/status',
@@ -112,7 +113,15 @@ export const AllTopics = Object.values(Topic)
 // JSON stringified data transported by MQTT
 export type TimeSeries = [string, string]
 
+export type TopicPayload = Buffer | string
 export interface TopicMessage {
   topic: Topic
-  payload: Buffer | string
+  payload: TopicPayload
+}
+
+export enum MqttState {
+  CONNECT,
+  DISCONNECT,
+  RECONNECT,
+  ERROR,
 }

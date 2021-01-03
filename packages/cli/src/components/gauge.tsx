@@ -21,7 +21,7 @@ export const MQTTGauge: React.FC<MQTTGaugeProps> = ({
   max = 1,
   thickness = 'large',
 }) => {
-  const { message } = UseMQTT(topic)
+  const { message = '' } = UseMQTT(topic)
   const sanitisedMessage = message.toString()
   const value = stringToNumber(sanitisedMessage)
   const formattedValue = numberToFixed(value)

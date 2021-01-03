@@ -49,5 +49,9 @@ export const IGarden2Card = () => (
       label="Air Quality Chart"
       topic={Topic.ZERO2_AIR_TIMESERIES}
     />
+    <MQTTimeSeries
+      label="Conductivity Chart"
+      topic={Topic.ZERO2_CONDUCTIVITY_TIMESERIES}
+    />
   </Card>
 )

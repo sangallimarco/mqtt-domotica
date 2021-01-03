@@ -61,7 +61,7 @@ export const MQTTSwitch: React.FC<MQTTSwitchProps> = ({
 }) => {
   const boxRef = useRef()
   const [openDrop, setOpenDrop] = useState(false)
-  const { message, sendMessage } = UseMQTT(feedBackTopic)
+  const { message = '', sendMessage } = UseMQTT(feedBackTopic)
   const sanitisedMessage = message.toString()
 
   const on = onStatuses.includes(sanitisedMessage)
