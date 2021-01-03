@@ -1,13 +1,6 @@
-import {
-  MqttState,
-  SensorTopics,
-  Topic,
-  TopicMessage,
-  TopicPayload,
-} from '@myhydroponics/core'
+import { MqttState, SensorTopics, Topic, TopicMessage, TopicPayload } from '@myhydroponics/core'
 import mqtt from 'mqtt'
 import { Observable, ReplaySubject } from 'rxjs'
-import { map } from 'rxjs/operators'
 import { getConfigOptions } from './mqtt.config'
 
 export class MQTTCore {
