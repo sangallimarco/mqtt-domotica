@@ -63,6 +63,17 @@ export enum Topic {
   ZERO2_LAMP_STATUS = 'rpis/zero2/lamp/status',
   ZERO2_LAMP_SWITCH = 'rpis/zero2/lamp/command',
   ZERO2_UV_STATUS = 'rpis/zero2/uv/status',
+
+  //RPIzero3
+  ZERO3_PUMP_STATUS = 'rpis/zero3/pump/status',
+  ZERO3_PUMP_SWITCH = 'rpis/zero3/pump/command',
+  ZERO3_CAM = 'rpis/zero3/cam',
+  ZERO3_UV_STATUS = 'rpis/zero3/uv/status',
+  ZERO3_HUM_STATUS = 'rpis/zero3/humidity/status',
+  ZERO3_HUM_TIMESERIES = 'rpis/zero3/humidity/timeseries',
+  ZERO3_TEMP_STATUS = 'rpis/zero3/temp/status',
+  ZERO3_TEMP_TIMESERIES = 'rpis/zero3/temp/timeseries',
+
 }
 
 // Subscribe to sensors
@@ -105,6 +116,14 @@ export const SensorTopics = [
   Topic.ZERO2_PUMP_STATUS,
   Topic.ZERO2_LAMP_STATUS,
   Topic.ZERO2_AIR_TIMESERIES,
+
+  Topic.ZERO3_UV_STATUS,
+  Topic.ZERO3_PUMP_STATUS,
+  Topic.ZERO3_CAM,
+  Topic.ZERO3_HUM_STATUS,
+  Topic.ZERO3_HUM_TIMESERIES,
+  Topic.ZERO3_TEMP_STATUS,
+  Topic.ZERO3_TEMP_TIMESERIES,
 
   Topic.CAM,
   Topic.SEEED_CAM,
