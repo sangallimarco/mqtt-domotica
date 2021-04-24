@@ -3,10 +3,9 @@ import { Topic } from '@myhydroponics/core'
 import React from 'react'
 import { Card } from '../components/card'
 import { MQTTGauge } from '../components/gauge'
-import { MQTTImage } from '../components/image'
 import { MQTTSwitch } from '../components/switch'
 import { MQTTimeSeries } from '../components/timeseries'
-import { MaxADC, MaxQuality } from '../layout.conf'
+import { MaxPercentage, MaxTemp } from '../layout.conf'
 
 export const IGarden3Card = () => (
   <Card title="IGarden 3" icon={faLeaf}>
@@ -25,13 +24,13 @@ export const IGarden3Card = () => (
       topic={Topic.ZERO3_HUM_STATUS}
       symbol=""
       label="Humidity"
-      max={MaxQuality}
+      max={MaxPercentage}
     />
     <MQTTGauge
       topic={Topic.ZERO3_TEMP_STATUS}
       symbol=""
       label="Temperature"
-      max={MaxADC}
+      max={MaxTemp}
     />
     {/* <MQTTGauge
       topic={Topic.ZERO3_UV_STATUS}
